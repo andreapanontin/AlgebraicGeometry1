@@ -1,0 +1,156 @@
+global !p
+texMathZones = ['texMathZone'+x for x in ['A', 'AS', 'B', 'BS', 'C',
+'CS', 'D', 'DS', 'E', 'ES', 'F', 'FS', 'G', 'GS', 'H', 'HS', 'I', 'IS',
+'J', 'JS', 'K', 'KS', 'L', 'LS', 'DS', 'V', 'W', 'X', 'Y', 'Z']]
+
+texIgnoreMathZones = ['texMathText']
+
+texMathZoneIds = vim.eval('map('+str(texMathZones)+", 'hlID(v:val)')")
+texIgnoreMathZoneIds = vim.eval('map('+str(texIgnoreMathZones)+", 'hlID(v:val)')")
+
+ignore = texIgnoreMathZoneIds[0]
+
+def math():
+        synstackids = vim.eval("synstack(line('.'), col('.') - (col('.')>=2 ? 1 : 0))")
+        try:
+                first = next(
+            i for i in reversed(synstackids)
+            if i in texIgnoreMathZoneIds or i in texMathZoneIds
+        )
+                return first != ignore
+        except StopIteration:
+                return False
+endglobal
+
+snippet VFF "Vector Field" wA
+Vector Field $0
+endsnippet
+
+context "math()"
+snippet man "Manifold" w
+\mathcal{$1}$0
+endsnippet
+
+snippet lmb "lambda" wA
+\lambda
+endsnippet
+
+snippet Lmb "Lambda" wA
+\Lambda
+endsnippet
+
+snippet sgm "sigma" wA
+\sigma
+endsnippet
+
+snippet Sgm "Sigma" wA
+\Sigma
+endsnippet
+
+snippet dt "dot" wA
+\dot{$1}$0
+endsnippet
+
+snippet gmm "Gamma" wA
+\gamma$0
+endsnippet
+
+snippet Gmm "Gamma" wA
+\Gamma$0
+endsnippet
+
+snippet f1 "form 1" i
+\omega$0
+endsnippet
+
+snippet f2 "form 2" i
+\theta$0
+endsnippet
+
+snippet f3 "form 3" i
+\alpha$0
+endsnippet
+
+snippet fctc "Functor Category" wA
+\mathsf{Fct}\left($1, $2 \right) $0
+endsnippet
+
+snippet op "Opposite category" i
+^{op}
+endsnippet
+
+snippet psh "Presheaves" wA
+\mathsf{PSh}\left( $1 \right)$0
+endsnippet
+
+snippet mod "Cat of modules" w
+\mathsf{Mod}\left( $1 \right)$0
+endsnippet
+
+snippet Mod "Cat of modules" w
+\mathsf{Mod}\left( $1 \right)$0
+endsnippet
+
+snippet cat "category" i
+\mathsf{$1}
+endsnippet
+
+snippet opnss "Open subset" wA
+\stackrel{\text{open}}{\subset} $0
+endsnippet
+
+snippet flsct "Full subcategory" wA
+\stackrel{\text{full}}{\subset} $0
+endsnippet
+
+snippet hom "Hom set" w
+\mathrm{Hom}_{$1} \left( $2, $3 \right)
+endsnippet
+
+snippet Hom "Hom set" w
+\mathrm{Hom}_{$1} \left( $2, $3 \right)
+endsnippet
+
+snippet homc "Hom set of a category" wA
+\mathrm{Hom}_{\mathsf{$1}} \left( $2, $3 \right)
+endsnippet
+
+snippet Homc "Hom set of a category" wA
+\mathrm{Hom}_{\mathsf{$1}} \left( $2, $3 \right)
+endsnippet
+
+snippet ihom "internal Hom set" w
+\mathcal{H}\mathrm{om}_{$1} \left( $2, $3 \right)
+endsnippet
+
+snippet prlim "projective limit" wA
+\varprojlim
+endsnippet
+
+snippet inlim "injective limit" wA
+\varinjlim
+endsnippet
+
+snippet tns "Tensor product" iA
+\otimes_{$1} $0
+endsnippet
+
+snippet obc "set of objects of a category" wA
+\mathrm{Ob} \left(\mathsf{$1}\right)
+endsnippet
+
+snippet ccc "Category C" iA
+\mathsf{C}
+endsnippet
+
+snippet ccd "Category D" iA
+\mathsf{D}
+endsnippet
+
+snippet ccs "Category of Sets" iA
+\mathsf{Set}
+endsnippet
+
+snippet dp "p-simplex" w
+\Delta^{p$1}
+endsnippet
