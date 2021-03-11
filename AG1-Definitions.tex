@@ -1,0 +1,122 @@
+%Formattazione
+%Scelgo report al posto di article per poter dividere l'elaborato in 3 capitoli
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{palatino}
+
+%Pacchetti che avevo già in altri file
+%\usepackage{ucs}
+\usepackage[british]{babel}
+%Per i circuiti quantistici
+%\usepackage[braket, qm]{qcircuit}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{physics}
+%Mi serve solo per la freccia mapsfrom:
+\usepackage{stmaryrd}
+
+%Pacchetti aggiunti dall'internet:
+%Questo Pacchetto serve per modificare le impostazioni del line spacing inline
+\usepackage{setspace}
+\usepackage{graphicx}
+%Per centrare il circuito di QFT (Chapter_2)
+\usepackage{changepage}
+%Per le liste nelle descrizioni degli algoritmi
+\usepackage{enumitem}
+%Per la sfera di Bloch
+\usepackage{tikz}
+%Per i diagrammini commutativi
+\usetikzlibrary{cd}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{decorations.pathmorphing} %For squiggly lines
+% Per sistemare il simbolo di misurazione nel testo
+\usepackage{adjustbox}
+
+%Per le appendici
+\usepackage[title]{appendix}
+
+%Per il Frontespizio
+\usepackage{tabularx}
+\usepackage{geometry}
+
+%Dal Darione
+\usepackage{layaureo}
+
+\usepackage{mathtools}
+\setlist[description]{leftmargin=3.2em,labelindent=3.2em}
+
+%Comandi miei
+%Sillabazione
+%\hyphenation{distinto}
+\newcommand{\R}{\mathbb{R}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\C}[1]{\mathbb{C}^{#1}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\T}{\mathbb{T}}
+\newcommand{\K}{\mathbb{K}}
+%New useful operators:
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\ima}{im}
+\DeclareMathOperator{\fct}{Fct}
+
+\newtheorem{post}{Postulate}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+
+\newtheoremstyle{algoritmo}
+{1.7em}%〈Space above〉
+{1em}%〈Space below〉
+{}%〈Body font〉
+{}%〈Indent amount〉
+{\bfseries}%〈Theorem head font〉
+{}%〈Punctuation after theorem head〉
+{.5em}%〈Space after theorem head〉
+{\thmname{#1}\thmnumber{ #2}\thmnote{: #3.}}%〈Theorem head spec(can be left empty, meaning ‘normal’)〉
+
+\newtheoremstyle{definizione}
+{1.0em}
+{0.7em}
+{}
+{}
+{\bfseries}
+{}
+{1.0em}
+{\thmname{#1}\thmnumber{ #2}\thmnote{: #3. \\*}}
+
+
+\theoremstyle{algoritmo}
+\newtheorem*{algo}{Algoritmo}
+\newtheorem*{ex}{Example}
+
+\theoremstyle{definizione}
+\newtheorem{defn}[thm]{Definition}%[section]
+\newtheorem{constr}[thm]{Construction}%[section]
+%\theoremstyle{definizione}
+\newtheorem{rem}{Remark}
+
+\numberwithin{equation}{section}
+
+%Simbolo QED
+\renewcommand{\qedsymbol}{\ensuremath{\blacksquare}}
+\usepackage{hyperref}
+
+\begin{document}
+
+\tableofcontents
+\include{Sections/1-Varieties}
+\include{Sections/2-Sheaves}
+\include{Sections/3-Morphisms}
+\include{Sections/4-Prevarieties}
+\include{Sections/5-Projective}
+\include{Sections/6-Projective2}
+\include{Sections/7-MainTheorem}
+\include{Sections/8-BlowUps}
+\include{Sections/9-Smooth}
+\include{Sections/10-AffineSchemes}
+\include{Sections/11-Schemes}
+
+\end{document}

@@ -1,0 +1,212 @@
+\section{Prevarieties}
+
+\begin{defn}[Prevariety]
+	A \textbf{prevariety} over $\K$ is a ringed space $\left( X, \mathcal{O}_{ X } \right)$ satisfying
+	\begin{enumerate}
+		\item $X$ is irreducible,
+		\item $\mathcal{O}_X$ is a \textbf{sheaf} of $\K$-algebras s.t. the elements of $\mathcal{O}_X(U)$ are $\K$-valued functions on $U$, hence the restriction morphisms are restrictions of functions,
+		\item there is a \textbf{finite} open conver $\left\{ U_i \right\}_{i \in I}$ of $X$ s.t., for all $i$, $\left(U_i, \left.\mathcal{O}_X\right|_{U_i} \right)$ is an affine variety.
+	\end{enumerate}
+	Open subsets $U \subset X$ which are isomorphic to affine varieties are called affine open sets.
+	Morphisms of prevarieties are just morphisms of ringed spaces.
+\end{defn}
+\begin{rem}[]
+	An open cover $\left\{ U_i \right\}_{i \in I}$ of $X$,
+	in which each $\left( U_i, \left.\mathcal{O}_{ X }\right|_{U_i}  \right)$ is an affine variety,
+	is called \textbf{affine open} cover of $X$.
+\end{rem}
+
+
+\begin{ex}\leavevmode\vspace{-.2\baselineskip}
+	\begin{enumerate}
+		\item Affine varieties,
+		\item open subsets of affine varieties (sometimes called \textit{quasi-affine varieties}), which are finite unions of distinguished open subsets.
+	\end{enumerate}
+\end{ex} 
+
+\begin{defn}[Gluing of prevarieties]
+	Consider two prevarieties $X_1$ and $X_2$, and $U_1 \stackrel{\text{open}}{\subset} X_1$, $U_2 \stackrel{\text{open}}{\subset} X_2$ with an isomorphism $f: U_1 \to U_2$.
+	We define
+	\begin{equation}
+		X = X_1 \cup_{f} X_2 := \left(X_1 \sqcup X_2 \right) / \mathcal{R}_f
+	,\end{equation} 
+	where $\mathcal{R}_f$ is the equivalence relation defined by
+	\begin{equation}
+		\mathcal{R}_f := \left\{ \left(x, x\right) \ \middle|\ x \in X_1 \sqcup X_2 \right\} \cup 
+		\left\{ \left(x, f(x)\right), \left(f(x), x \right) \ \middle|\ x \in U_1 \right\}
+	.\end{equation} 
+	Finally we endow $X$ with the quotient topology.
+
+	We now define a \textbf{structure sheaf} on $X$ to make it a prevariety
+	\begin{equation}
+		\mathcal{O}_X(U) := \left\{ \left(\phi_1, \phi_2\right) \in  \mathcal{O}_{X_1}
+		\left( X_1 \cap_{} U \right) \cross \mathcal{O}_{X_2} \left( X_2 \cap_{} U \right)
+		\ \middle|\ \left.\phi_1\right|_{U_1 \cap U}
+		= \left.f^* \phi_2\right|_{U_2 \cap U}  \right\}
+	.\end{equation} 
+	(Explicitly it just states that, on the intersection of the union over $f$, the two functions have to coincide).
+\end{defn}
+
+\begin{ex}[$\mathbb{P}^1(\K)$ the projective line]
+	Let $X_1 = X_2 := \mathbb{A}^1 \supset \mathbb{A}^1 \setminus \left\{ 0 \right\} =: U_1 = U_2$ 
+	and
+	 \begin{align}
+		f: U_1 &\to U_2 \\
+		x &\mapsto \frac{1}{x}
+	.\end{align} 
+	We then define the projective space
+	 \begin{equation}
+		 \mathbb{P}^1(\K) := \mathbb{P}^1 := \mathbb{A}^1 \cup_{f} \mathbb{A}^1
+	.\end{equation} 
+	Set theoretically $\mathbb{P}^1 = \mathbb{A}^1 \cup_{} \left\{ \infty \right\} $.
+\end{ex} 
+\begin{rem}
+	The set of fixed points, by a morphism of prevarieties, can be an open subset of a variety, a different behaviour from what we'd expect from morphisms of algebraic sets.
+\end{rem} 
+
+\begin{lem}[gluing of prevarieties]
+	Let $X_1, \ldots, X_r$ be \textbf{prevarieties},
+	$\left\{ \left(U_{ij}, f_{ij}\right) \right\}_{1 \leq i, j \leq r}$ with $U_{ij} \stackrel{\text{open}}{\subset} X_i$, $f_{ij}: U_{ij} \xrightarrow{\cong} U_{ji}$ s.t.
+	\begin{enumerate}
+		\item $U_{ii} = X_i$ and $f_{ii} = id_{X_i}$ for any $i$,
+		\item $f_{ij} \left( U_{ij} \cap_{} U_{ik} \right) \subset U_{jk}$ and $f_{jk} \circ f_{ij} = f_{ik}$ for all $i,j,k \in \left\{ 1, \ldots, r \right\}$.
+	\end{enumerate}
+	As a special case for the second condition we obtain that $f_{ij}^{-1} = f_{ji}$.
+
+	Then there exists a unique prevariety $X$ up to isomorphism, obtained by gluing $X_1, \ldots, X_r$ along the $U_{ij}$ via the isomorphisms $f_{ij}$.
+\end{lem} 
+
+\subsection{Regular functions on prevarieties}
+\begin{prop}
+	$\mathcal{O}_{\mathbb{P}^1}(\mathbb{P}^1) = \left\{ \phi: \mathbb{P}^1 \to \K \ \middle|\ \phi \text{ is constant } \right\} \cong \K$.
+\end{prop} 
+\begin{cor}
+	$\mathbb{P}^1$ is not an \textbf{affine variety}.
+	In fact, for $X$ affine we have $\mathbb{K}[X] \cong \K \iff X = \left\{ pt \right\}$.
+	(By gluing prevarieties together we can obtain spaces which are not affine varieties).
+\end{cor} 
+\begin{rem}
+	This is analogous to the theory of holomorphic functions (again).
+	(The only holomorphic functions on the Riemann sphere are the constant functions).
+\end{rem} 
+\begin{lem}
+	Let $f: X \to Y$ a set theoretic map between two prevarieties $X$ and $Y$.
+	If there exists an open cover $\left\{ U_1, \ldots, U_r \right\}$ of $X$ and an affine open cover $\left\{ V_1, \ldots, V_r \right\}$ of $Y$ s.t.
+	\begin{equation}
+	\begin{cases}
+		f \left( U_i \right) \subset V_i\\
+		\left( \left.f\right|_{U_i} \right)^* \phi \in \mathcal{O}_X(U_i)
+	\end{cases} 
+	\end{equation} 
+	for all $i$ and all $\phi \in \mathcal{O}_{Y} \left( V_i \right)$, then $f$ is a morphism of prevarieties.
+\end{lem} 
+
+\subsection{Geometrical remarks}
+\begin{lem}
+	Given a prevariety $\left( X, \mathcal{O}_{ X } \right)$, then $X$ is a \textbf{noetherian} topological space.
+\end{lem} 
+
+\begin{defn}[Dimension of a prevariety]
+	Given a \textbf{prevariety} $\left( X, \mathcal{O}_{ X } \right)$, we proved that $X$ is a Noetherian topological space, hence we can consider $\dim X$, as usual, as the largest integer $d$ s.t. we can construct a chain of irreducible closed subsets of $X$ 
+	\begin{equation}
+	\emptyset \subsetneq X_0 \subsetneq X_1 \subsetneq \ldots \subsetneq X_d = X
+	.\end{equation} 
+\end{defn}
+
+\begin{lem}
+	Any open subset $U$ of a prevariety $\left( X, \mathcal{O}_{ X } \right)$ is itself a prevariety, with structure sheaf $\left.\mathcal{O}_{X}\right|_{U}$.
+\end{lem} 
+
+\begin{defn}[Subprevarieties]
+	Given a prevariety $\left( X, \mathcal{O}_{ X } \right)$ we define its subprevarieties corresponding to:
+	\begin{itemize}
+		\item $U \stackrel{\text{open}}{\subset} X$, then $\left( U, \left.\mathcal{O}_{ X }\right|_{U} \right)$ is a prevariety and it is called \textbf{open subprevariety} of $X$,
+		\item $Y \subset X$ is a closed subset, we define a a sheaf $\mathcal{O}_{Y}$ on $Y$ by setting, on $U \stackrel{\text{open}}{\subset} Y$,
+			\begin{align}
+			\mathcal{O}_{Y} \left( U \right) :=
+			\big\{ \phi: U \to \K \ \big|\ &\,\forall\, x \in U,
+				\exists\, x \in V_x \stackrel{\text{open}}{\subset} X,
+				\psi_x \in \mathcal{O}_{X} \left( V_x \right)\\
+				&\text{ s.t. } \left.\phi\right|_{U \cap_{} V_x} =
+				\left.\psi_x\right|_{U \cap_{} V_x}  \big\}
+			.\end{align} 
+			$\left( Y, \mathcal{O}_{ Y } \right)$ is called \textbf{closed subprevariety} of $X$,
+		\item Given $Y \stackrel{\text{open}}{\subset} X \stackrel{\text{closed}}{\supset} Y$, then, by a combination of the previous constructions, $U \cap_{ } Y$ is a prevariety.
+			It is called \textbf{locally closed subprevariety} of $X$.
+	\end{itemize}
+\end{defn}
+
+\begin{defn}[Product of prevarieties]
+	Given $\left( X, \mathcal{O}_{ X } \right)$, $\left( Y, \mathcal{O}_{ Y } \right)$ prevarieties, we define their product, as prevarieties, as the prevariety $P$, with the two morphisms
+	\begin{equation}
+	\begin{tikzcd}
+		& P \arrow[ld, "\pi_X"', rightarrow] \arrow[rd, "\pi_Y", rightarrow] & \\
+		X & & Y
+	\end{tikzcd}
+	\end{equation} 
+	satisfying the universal property for pruducts, i.e.
+	for every prevariety $Z$ with morphisms
+	\begin{equation}
+	\begin{tikzcd}
+		& Z \arrow[ld, "f_X"', rightarrow] \arrow[rd, "f_Y", rightarrow] \\
+		X & & Y
+	\end{tikzcd}
+	.\end{equation} 
+	then there exists a unique morphism $f: Z \to P$ s.t. the following diagram commutes
+	\begin{equation}
+	\begin{tikzcd}
+		& & X\\
+		Z \arrow[r, "\exists\, ! f", rightarrow] \arrow[rru, "f_X", rightarrow, bend left] \arrow[drr, "f_Y"', rightarrow, bend right] & P \arrow[ru, "\pi_X"', rightarrow] \arrow[rd, "\pi_Y", rightarrow] & \\
+		& & Y
+	\end{tikzcd}	
+	\end{equation}
+	We can construct the product prevariety $\left( P, \mathcal{O}_{ P } \right)$ as the topological space $P := X \cross Y$.
+	The structure of prevariety, then, is obtained from $X$ and $Y$ considering their open covers
+	$\left\{ U_i \right\}_{i \in I}$ and $\left\{ V_j \right\}_{j \in J}$,
+	where $U_i$ and $V_j$ are affine varieties, respectively for each $i$ and $j$.
+	In fact, then $\left\{ U_i \cross V_j \right\}_{\left(i, j\right) \in I \cross J}$ is an open cover for $P$,
+	in which every element is an affine variety (the product variety).
+	We can now obtain $P$ by gluing all of these affine varieties (viewed as prevarieties) together.
+\end{defn}
+
+\subsection{Abstract varieties}
+\begin{defn}[Variety]
+	Let $X$ be a prevariety.
+	We say that $X$ is \textbf{separated} iff, for every prevariety $Y$ and morphisms $f_1, f_2: Y \to X$ we have that
+	\begin{equation}
+	\left\{ p \in Y \ \middle|\ f_1(p) = f_2(p) \right\} \stackrel{\text{closed}}{\subset} Y
+	.\end{equation}
+	Separated prevarieties are called \textbf{varieties}.
+\end{defn}
+
+\begin{rem}
+	Given a variety $X$ and two morphisms $Y\to X$ that coincide on a dense subset of $Y$, then they coincide on all of $Y$.
+\end{rem}
+
+\begin{defn}[Diagonal morphism]
+	Let $X$ be a \textbf{prevariety}, then we have the diagonal morphism
+	\begin{align}
+		\Delta: X &\to X \cross X \\
+		p &\mapsto \left(p, p\right)
+	.\end{align} 
+	Its image, $\Delta(X)$, is the diagonal in $X \cross X$.
+	(Notice: $\Delta$, in universal property's terms is given by the morphisms $\left(id_X, id_X\right)$).
+\end{defn}
+
+\begin{lem}
+	A prevariety $X$ is \textbf{separated} iff $\Delta(X)$ is closed in $X \cross X$.
+	Often this is taken as the definition of separatedness.
+\end{lem} 
+
+\begin{rem}
+	There is a similar result for \textbf{Hausdorff} spaces:
+	a topological space $X$ is Hausdorff iff its diagonal is closed in $X \cross X$ (taken with the product topology).
+	Notice that, in our situation, the topology on $X \cross X$ is not the product topology.
+\end{rem}
+
+\begin{lem}\leavevmode\vspace{-.2\baselineskip}
+	\begin{itemize}
+		\item Every \textbf{affine} variety is a \textbf{variety}.
+		\item If $X$ ia a variety, then every locally closed subprevariety of $X$ is a variety.
+	\end{itemize}
+\end{lem} 

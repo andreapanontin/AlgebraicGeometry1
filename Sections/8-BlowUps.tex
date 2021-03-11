@@ -1,0 +1,560 @@
+\section{Blow-ups}
+
+\begin{defn}[Rational map]
+	Let $X,Y$ be varieties.
+	A \textbf{rational map} $f: X \dashrightarrow Y$ is a morphism $f: U \to Y$, for some
+	$\emptyset \neq U \subset X$ open.
+	(Notice that we denote rational maps via a dashed arrow, since it might not be defined on the whole variety $X$).
+	If $f: U \to Y$ and $f': V \to Y$ are morphisms with
+	$\emptyset \neq U \subset X \supset V \neq \emptyset$ both open, then
+	$f$ and $g$ define the same rational map iff
+	\begin{equation}
+	\left.f\right|_{U \cap V} = \left.g\right|_{U \cap V} 
+	.\end{equation} 
+	(Recall that, since $X$ is irreducible, then $U \cap V \neq \emptyset$).
+\end{defn}
+
+\begin{defn}[]\leavevmode\vspace{-.2\baselineskip}
+	\begin{itemize}
+		\item A rational map $f: X \dashrightarrow Y$, given by a morphism $f: U \to Y$, 
+			is dominant iff $f(U)$ contains a non-empty open subset $V \subset Y$
+			(in particular its image is dense in $Y$).
+		\item If $f: X \dashrightarrow Y$ is dominant, for every $g: Y \dashrightarrow Z$, 
+			the composition $g \circ f: X \dashrightarrow Z$ is a rational map.
+		\item A birational map is a rational map $f: X \dashrightarrow Y$ with a rational inverse,
+			i.e. $f$ is a dominant rational map s.t. there exists a dominant $g: Y \dashrightarrow X$ satisfying
+			\begin{equation}
+			g \circ f = id_X \qquad \text{ and } \qquad
+			f \circ g = id_Y \qquad
+			\text{(as rational maps)}
+			.\end{equation} 
+		\item Two varieties $X$ and $Y$ are said to be birational,
+			or birationally equivalent, iff there is a birational map 
+			$f: X \dashrightarrow Y$.
+	\end{itemize}
+\end{defn}
+
+\begin{thm}[]
+$X$ and $Y$ are birational iff there exist non-empty open subsets
+$U \subset X$ and $V \subset Y$ that are isomorphic to each other.
+\end{thm}
+
+Let's now construct the most important class of birational maps: the blow-ups.
+Since this is a local construction, we'll start from affine varieties.
+\begin{defn}[Construction of blow-up]
+	Let $X \subset \mathbb{A}^{n}$ be an affine variety, and $f_0, \ldots, f_r \notin \mathbb{I}(X)$
+	be polynomials in $x_1, \ldots, x_n$.
+	Then $U := X \setminus \mathbb{V}\left( f_0, \ldots, f_r \right)$ is a non-empty open
+	subset of $X$.
+	We can consider the morphism
+	\begin{align}
+		f: U &\to \mathbb{P}^{r} \\
+		x &\mapsto \left[ f_0(x) , \ldots , f_r(x) \right]
+	.\end{align} 
+	The graph $\Gamma := \left\{ \left(p, f(p)\right) \ \middle|\ p \in U \right\} \subset X \cross \mathbb{P}^{r}$
+	is isomorphic to $U$ via the projection $\left(p, q\right) \mapsto p$.
+	We define the \textbf{blow-up} of $X$ at $\left( f_0, \ldots, f_r \right)$ to be 
+	the Zariski closure
+	\begin{equation}
+	\widetilde{X} := \overline{\Gamma} \subset X \cross \mathbb{P}^{r}
+	.\end{equation} 
+\end{defn}
+
+\begin{rem}[]\leavevmode\vspace{-.2\baselineskip}
+	\begin{itemize}
+		\item By definition $\widetilde{X}$ is closed in $X \cross \mathbb{P}^{r}$, hence it
+			is a quasi-projective variety.
+		\item $\widetilde{X}$ is irreducible, since $U \cong \Gamma$ is irreducible.
+		\item $\dim \widetilde{X} = \dim X$.
+		\item The projections $p_X: X \cross \mathbb{P}^{r} \to X$ and
+			$p_{\mathbb{P}^{r}}: X \cross \mathbb{P}^{r} \to \mathbb{P}^{r}$
+			induce the projection morphisms
+			\begin{equation}
+			\pi: \widetilde{X} \to X \qquad \text{ and } \qquad
+			p: \widetilde{X} \to \mathbb{P}^{r}
+			.\end{equation} 
+	\end{itemize}
+\end{rem}
+
+\begin{ex}
+	Let $r = 0$, then the blow-up of $X$ at $f_0 \notin \mathbb{I}(X)$ is isomorphic to $X$.
+	In fact $\widetilde{X} \subset X \cross \mathbb{P}^{0} \cong X$, since $\mathbb{P}^{0}$ is just a point.
+	Then an irreducible subvariety of $X \cross \mathbb{P}^{0}$, with the same dimension as $X$,
+	is isomorphic to $X$.	
+\end{ex} 
+
+\begin{ex}
+	Let $X = \mathbb{A}^{2}$, with coordinates $x_0, x_1$.
+	Set $f_0 := x_0$ and $f_1 := x_1$.
+	Then $\widetilde{X} \subset \mathbb{A}^{2} \cross \mathbb{P}^{1}$.
+	Then
+	\begin{align}
+		f: U = \mathbb{A}^{2}\setminus \left\{ (0, 0) \right\} &\to \mathbb{P}^{1} \\
+		(x_0, x_1) &\mapsto \left[ x_0 , x_1 \right]
+	.\end{align} 
+	The graph of $f$ is
+	\begin{equation}
+		\Gamma = \left\{ \left((x_0, x_1), [y_0,y_1] \right) \ \middle|\ 
+		x_0y_1 = x_1y_0 \right\} \subset U \cross \mathbb{P}^{1}
+	.\end{equation} 
+	Then, if we compute its closure, we obtain
+	\begin{equation}
+		\widetilde{X} = \left\{ \left((x_0, x_1), [y_0,y_1] \right) \ \middle|\ 
+		x_0y_1 = x_1y_0 \right\} \subset \mathbb{A}^{2} \cross \mathbb{P}^{1}
+	,\end{equation} 
+	in which we allow $(x_0, x_1) = (0,0)$.
+	Denoting $\pi: \widetilde{X} \to X$ the projection, we obtain
+	\begin{align}
+		\pi^{-1}\left( (x_0, x_1) \right) &= \left\{ \left((x_0, x_1), [x_0,x_1] \right) \right\}
+		\qquad \text{ if } (x_0, x_1) \neq (0,0)\\
+		\pi^{-1}\left( (x_0, x_1) \right) &= \left( (0,0) \right) \cross \mathbb{P}^{1} \cong \mathbb{P}^{1}
+	.\end{align} 
+\end{ex} 
+
+\begin{defn}[Strict transform]
+	Let $Y \subset X$ be a closed subset with $Y \cap U \neq \emptyset$,
+	then the Zariski closure of $Y \cap U$ in $\widetilde{X}$ is called the
+	\textbf{strict transform} $\widetilde{Y}$ of $Y$.
+	This is the same as the blow-up of $Y$ at $(f_0, \ldots, f_r)$.
+\end{defn}
+
+\begin{ex}
+	In the above example the strict transform is interesting for a curve $C$ in $\mathbb{A}^{2}$
+	passing through $(0,0)$.
+	Since $C$ is a curve, then $C = \mathbb{V}\left( g \right)$, for
+	\begin{equation}
+		g(x_0,x_1) = \sum_{i,j \geq 0}^{} a_{ij} x_0^i x_1^j = 
+		a_{00} + a_{10} x_0 + a_{01} x_1 + h.o.t
+	.\end{equation} 
+	Let's assume that $a_{00} = 0$, i.e. $(0.0) \in C$, and $(a_{01}, a_{10}) \neq (0,0)$, so that
+	\begin{equation}
+	L := \mathbb{V}\left( a_{10} x_0 + a_{01} x_1 \right)
+	\end{equation} 
+	is a line, which we call the tangent line to $C$ at $(0,0)$.
+	If $\left((x_0,x_1), [y_0,y_1]\right) \in \widetilde{D}$, then it satisfies
+	\begin{equation}\label{eqn:strtrexcond}
+	\begin{cases}
+		a_{10}x_0 + a_{01}x_1 + a_{20}x_0^2 + \ldots = 0\\
+		x_0y_1 - x_1y_0 = 0
+	\end{cases} 
+	.\end{equation} 
+	But the solution set of \eqref{eqn:strtrexcond} is larger than $\widetilde{C}$, since
+	it contains the whole $\pi^{-1} \left( (0,0) \right) \cong \mathbb{P}^{1}$.
+	But $\widetilde{C}$ is irreducible, hence it cannot contain such additional component.
+
+	To get the equations for $\widetilde{C}$, we work first on $\mathbb{A}^{2} \setminus \left\{ x_0x_1 = 0 \right\}$.
+	There we can multiply the equation of $C$ by $\frac{y_0}{x_0}$, which is
+	a regular function on $\mathbb{A}^{2} \setminus \left\{ x_0x_1 = 0 \right\} \cross \mathbb{P}^{1}$,
+	and obtain
+	\begin{equation}
+	a_{10}y_0 + a_{01} \frac{y_0}{x_0} x_1 + a_{20} y_0 x_0 +
+	a_{11} y_0 x_1 + \ldots
+	.\end{equation} 
+	Using $\frac{y_0}{x_0} = \frac{y_1}{x_1}$ this is equivalent to
+	\begin{equation}
+	\begin{cases}
+		a_{10}y_0 + a_{01} y_1 + a_{20}y_0x_0 +
+		a_{11}y_0x_1 + a_{02}y_1x_1 + \ldots = 0\\
+		x_0y_1 - x_1y_0 = 0
+	\end{cases} 
+	.\end{equation} 
+	This equation should hold on $\widetilde{C}$.
+	For every $C \ni (x_0, x_1) \neq (0,0)$, the above equations give the
+	single point $\left((x_0,x_1), [x_0,x_1]\right)$.
+	Instead over $(0,0)$ we obtain the point $\left((0,0), [y_0,y_1]\right)$
+	with $a_{10}y_0 + a_{01}y_1 = 0$, which is exactly the equation of the tangent line at $(0,0)$.
+\end{ex} 
+
+\begin{ex}[Blow-up of $\mathbb{A}^{2}$ at $(x_0,x_1)$]
+	It is a subset
+	\begin{equation}
+	\widetilde{\mathbb{A}^{2}} \subset \mathbb{A}^{2} \cross \mathbb{P}^{1}
+	,\end{equation} 
+	whose points are 
+	\begin{equation}
+	\left( (x_0, x_1), [y_0,y_1] \right)\quad \text{ s.t. }\quad \mathrm{rk}\, 
+	\begin{pmatrix}
+		x_0 & x_1\\y_0 & y_1
+	\end{pmatrix} = 1
+	.\end{equation} 
+	Moreover it comes endowed with two morphisms (since they are given by the
+	restriction of the projection morphisms)
+	\begin{itemize}
+		\item $p: \widetilde{\mathbb{A}^{2}} \to \mathbb{P}^{1}$ that extends the map
+			used to define the projective space $\mathbb{P}^{1}$
+			\begin{align}
+				\K^2\setminus\left\{ \textbf{0} \right\} &\to \mathbb{P}^{1} \\
+				(y_0,y_1) &\mapsto [y_0,y_1]
+			.\end{align} 
+			Then the fibers of $p$ are isomorphic to the lines of $\mathbb{A}^{2}$
+			through the origin via $\pi$.
+		\item $\pi: \widetilde{\mathbb{A}^{2}} \to \mathbb{A}^{2}$, which is an isomorphism
+			outside $(0,0) = \mathbf{0}$.
+			In fact $\pi^{-1}(\left\{ \mathbf{0} \right\}) = \left\{ \mathbf{0} \right\} \cross \mathbb{P}^{1}$.
+	\end{itemize}
+	In particular we can say that the points of $\pi^{-1}\left( \left\{ \mathbf{0} \right\} \right)$ correspond
+	to the directions of the lines through the origin $\mathbf{0}$.
+
+	Looking at the strict transform, then we can identify $\pi^{-1}(\left\{ \mathbf{0} \right\})$
+	with the set of tangent directions to $\mathbb{A}^{2}$ at the origin $\mathbf{0}$.
+\end{ex} 
+
+\begin{lem}
+	The blow-up of an affine variety $X$ at $(f_0, \ldots, f_r)$
+	only depends on the ideal generated by $(f_0, \ldots, f_r)$ in $\mathbb{K}[X]$.
+\end{lem} 
+
+\begin{defn}[Blow-up at an ideal]
+	Given an affine variety $X$ and $\mathcal{I} \subset \mathbb{K}[X]$ an ideal,
+	we define the blow-up of $X$ at $\mathcal{I}$ as the
+	blow-up of $X$ at $(f_0, \ldots, f_r)$, for any $f_0, \ldots, f_r$ generators 
+	of $\mathcal{I}$.
+
+	In particular, for $Y \subset X$ a closed subset, we can define the blow-up of $X$
+	along $Y$ as the blow-up of $X$ at $\mathbb{I}(Y)$.
+\end{defn}
+
+\begin{rem}[]
+	The construction of the blow-up is local.
+	In fact let $X$ be an arbitrary variety and $Y \subset X$ a closed subset.
+	If $\left\{ U_i \right\}_{i \in I}$ is an affine open cover of $X$, 
+	let us denote by $\widetilde{U}_i$ the blow-up of the affine variety $U_i$
+	along $Y \cap U_i$.
+
+	It is easy to check that we can glue together the $\widetilde{U}_i$ in 
+	a natural way, to construct a variety $\widetilde{X}$, which we will call the
+	blow-up of $X$ along $Y$.
+
+	Actually we can blow-up a sheaf of ideals on $X$.
+	In fact the construction of the blow-up of an ideal can be generalized to arbitrary varieties.
+	In order to do so we need
+	\begin{itemize}
+		\item $I(U) \subset \mathcal{O}_{X} \left( U \right)$, for each open subset $U \subset X$,
+		\item gluing conditions.
+	\end{itemize}
+\end{rem}
+Let's specialize the above remark to the case of projective varieties.
+\begin{defn}[Blow-up for projective varieties]
+	Let $X$ be a projective variety, and let
+	$f_0, \ldots, f_r$ homogeneous polynomials of degree $d$, not in $\mathbb{I}_p(X)$.
+	Let $U := X \setminus \mathbb{V}_p\left( f_0, \ldots, f_r \right)$ and
+	\begin{equation}
+		\Gamma := \left\{ \left(x, [f_0(x), \ldots, f_r(x)]\right) \ \middle|\ 
+		x \in U\right\} \subset X \cross \mathbb{P}^{r}
+	.\end{equation} 
+	Then we define $\widetilde{X} := \Gamma \cross \mathbb{P}^{r}$ to be the \textbf{blow-up}
+	of $X$ at $(f_0, \ldots, f_r)$.
+\end{defn}
+
+\begin{rem}[]
+	In particular, the blow-up of a projective variety is a projective variety.
+\end{rem}
+
+\begin{lem}\leavevmode\vspace{-.2\baselineskip}
+	\begin{enumerate}
+	\item $\widetilde{X} \subset \left\{ \left(x, [y_0, \ldots, y_r]\right) \ \middle|\ 
+		y_i f_j(x) - y_j f_i(x) = 0, \text{ for all } i,j = 0, \ldots, r\right\}
+		\subset X \cross \mathbb{P}^{r}$.
+	\item The inverse image $E := \pi^{-1} \left( \mathbb{V}_p\left( f_0, \ldots, f_r \right) \right)$
+		is of pure dimension $\dim X - 1$.
+		$E$ is called the {\em exceptional hypersurface} of the blow-up.
+	\end{enumerate}
+\end{lem} 
+
+\begin{rem}[]
+	The equations $y_i f_j(x) = y_j f_i(x)$, in general, are not the only
+	equations defining $\widetilde{X}$ inside $X \cross \mathbb{P}^{r}$.
+
+	In case they actually are the only ones, then
+	\begin{equation}
+		E = \left( X \cap \mathbb{V}\left( f_0, \ldots, f_r \right) \right) \cross \mathbb{P}^{r}
+	.\end{equation} 
+	The dimensions are: $\dim E = \dim X -1$, whereas $X \cap \mathbb{V}\left( f_0, \ldots, f_r \right)$ might have
+	dimension $> \dim X - r -1$, then the r.h.s. might have dimension $> \dim X -1$.
+\end{rem}
+
+\begin{defn}[Initial polynomial/ideal]
+	Consider $0 \neq f \in \mathbb{K}\left[x_1, \ldots, x_n \right]$.
+	\begin{itemize}
+		\item We can decompose in homogeneous components $f = \sum_{i \in \N}^{} f_i$,
+			for $f_i \in \mathbb{K}\left[x_1, \ldots, x_n \right]_i$
+			homogeneous of degree $i$.
+			The minimal $i \in \N$ s.t. $f_i \neq 0$ is called the \textbf{minimal degree},
+			denoted with $\mathrm{mindeg}\, f$, of $f$.
+			For $i = \mathrm{mindeg}\, f$, we call $f^{in}:= f_i$ the \textbf{initial polynomial}
+			of $f$.
+		\item For an ideal $(0) \neq \mathcal{I} \subset \mathbb{K}\left[x_1, \ldots, x_n \right]$,
+			we define the \textbf{initial ideal} of $\mathcal{I}$ to be
+			\begin{equation}
+			\mathcal{I}^{in} :=
+			\left( f^{in} \ \middle|\ f \in \mathcal{I} \right)
+			,\end{equation} 
+			the homogeneous ideal generated by the initial polynomials of the elements of $\mathcal{I}$.
+	\end{itemize}
+\end{defn}
+
+\begin{rem}[]
+	Notice that, given $\mathcal{I} = \left( g_1, \ldots, g_l \right)$, then it is not always
+	true that $\mathcal{I}^{in} = \left( g_1^{in}, \ldots, g_l^{in} \right)$.
+\end{rem}
+
+\begin{rem}[]
+	Let's now study the blow-up of an affine variety $X \subset \mathbb{A}^{n}$ at a point,
+	wlog $\left( 0, \ldots, 0 \right)$.
+	Let us denote by $\widetilde{\mathbb{A}^{n}}$ the blow up of $\mathbb{A}^{n}$
+	at $\left( x_1, \ldots, x_n \right)$.
+	We want to cover it with affine varieties:
+	let's start covering $\mathbb{P}^{n-1}$ with the affine varieties
+	$U_i := \left\{ \left[ y_1 , \ldots , y_n \right] \in \mathbb{P}^{n-1} \ \middle|\ y_i \neq 0 \right\}$.
+	In particular, for $i = 1$, we have $y_1 \neq 0$.
+	Then, by the condition on the rank we obtain $x_j = x_1 y_j$ for the elements in
+	$\widetilde{\mathbb{A}^{n}}$, hence we can define a map $\varphi$, with which we can cover the blow-up
+	\begin{align}
+		\varphi: \mathbb{A}^{n} &\to \widetilde{\mathbb{A}^{n}} \subset \mathbb{A}^{n} \cross \mathbb{P}^{n-1}
+		\supset \mathbb{A}^{n} \cross U_1\\
+		\big( x_1, \underbrace{x_1y_2, \ldots, x_1y_n}_{\text{inhom. coord. on }U_1} \big) &\mapsto 
+		\left(\left( x_1, x_1y_2, \ldots, x_1y_n \right), \left[ 1, y_2 , \ldots , y_n \right]\right)
+	,\end{align} 
+	Then, by choosing the various affine charts of $\mathbb{P}^{n-1}$, we can cover
+	the blow-up $\widetilde{\mathbb{A}^{n}}$ by affine spaces.
+
+	Then the blow-up of any $X := \mathbb{V}\left( \mathcal{I} \right) \subset \mathbb{A}^{n}$ containing $\mathbf{0}$
+	is defined, on this coordinate patch, by the vanishing of
+	\begin{equation}
+		\frac{f(x_1, x_1y_2, \ldots, x_1y_n)}{x_1^{\mathrm{mindeg}\, f}} \qquad
+		\text{ for all } f \in \mathcal{I}, f \neq 0
+	.\end{equation} 
+	The exceptional hypersurface $E \subset \widetilde{X}$ is
+	\begin{equation}
+	\left\{ \mathbf{0} \right\} \cross \mathbb{V}_p\left( \mathcal{I}^{in} \right)
+	\subset \left\{ \mathbf{0} \right\} \cross \mathbb{P}^{n-1}
+	.\end{equation} 
+	The geometric interpretation of $E$ is similar to taking the lower terms of
+	the Taylor expansion of a function.
+	In fact $\mathbb{I}(X)^{in}$ approximates $\mathbb{I}(X)$ by keeping only the terms of smallest degree.
+	Since $\mathbb{I}^{in}$ is a homogeneous ideal, then
+	$\hat{Y} := \mathbb{V}\left( \mathbb{I}(X)^{in} \right) \subset \mathbb{A}^{n}$ is
+	a cone with vertex in the origin.
+	By construction, $\hat{Y}$ is the cone (of the same dimension as $X$) that approximates $X$ best around $\mathbf{0}$.
+	In fact
+	\begin{equation}
+		\dim \hat{Y} = \dim \underbrace{\mathbb{V}_p\left( \mathbb{I}(X)^{in} \right)}_{E} + 1 =
+		\dim X - 1 + 1 = \dim X
+	.\end{equation} 
+\end{rem}
+
+\begin{defn}[Tangent cone]
+	Let $p \in X \subset \mathbb{A}^{n}$ a point of the Zariski closed subset $X$
+	(wlog $p = \left( 0, \ldots, 0 \right) \in \mathbb{A}^{n}$).
+	Then the tangent cone to $X$ at the point $p$ is
+	\begin{equation}
+		C_{X,p} := \mathbb{V}\left( \mathbb{I}(X)^{in} \right) \subset \mathbb{A}^{n}
+	.\end{equation} 
+\end{defn}
+\begin{rem}[]
+	Then the exceptional hypersurface $E \subset \widetilde{X}$ is the projectivization of this cone
+	and corresponds to the limit tangent directions to $X$ at $p$.
+\end{rem}
+
+\begin{ex}\leavevmode\vspace{-.2\baselineskip}
+\begin{enumerate}
+	\item Let $X:= \mathbb{V}\left( y - x^2 + x \right) \subset \mathbb{A}^{2}$.
+		Let $f(x,y) = y-x^x + x$, then $\mathrm{mindeg}\, f = 1$.
+		Then $C_{X,0} = \mathbb{V}\left( y + x \right) \subset \mathbb{A}^{2}$ is the tangent line to $X$
+		at the origin $\mathbf{0}$.
+	\item Let $X:= \mathbb{V}\left( x^2 + x^3 -y^2 \right) \subset \mathbb{A}^{2}$.
+		Let $f(x,y) = x^2 + x^3 - y^2$, then $\mathrm{mindeg}\, f = 2$.
+		Then $C_{X,0} = \mathbb{V}\left( x^2 - y^2 \right) = \mathbb{V}\left( x - y \right) \cup
+		\mathbb{V}\left( x + y \right) \subset \mathbb{A}^{2}$ is the tangent line to $X$
+		at the origin $\mathbf{0}$.
+		If we blow up $X$ at $\mathbf{0}$, then $\widetilde{X}$ separates the two branches 
+		of $X$ at the origin $\mathbf{0}$.
+	\item Let $X:= \mathbb{V}\left( x^3 -y^2 \right) \subset \mathbb{A}^{2}$.
+		Let $f(x,y) = x^3 - y^2$, then $\mathrm{mindeg}\, f = 2$.
+		Then $C_{X,0} = \mathbb{V}\left( y^2 \right) = \mathbb{V}\left( y \right)
+		\subset \mathbb{A}^{2}$ is the tangent line to $X$
+		at the origin $\mathbf{0}$.
+		But this line comes with some nontrivial multiplicity.
+		In fact, if we blow-up the origin $\widetilde{X}$ is tangent
+		to $\left\{ \mathbf{0} \right\} \cross \mathbb{P}^{1} = E \subset \widetilde{\mathbb{A}^{2}}$
+		at its point corresponding to the line $y = 0$.
+\end{enumerate}
+\end{ex} 
+
+\begin{rem}
+	Given a rational map $f: X \dashrightarrow \mathbb{P}^{r}$, given by
+	$x \mapsto \left[ f_0(x) , \ldots , f_f(x) \right]$ for $r+1$ polynomials of the same degree
+	(not all of them in the homogeneous ideal of $X$), then
+	$f$ is a well defined morphism only on an open subset
+	$U := X \setminus \mathbb{V}\left( f_0, \ldots, f_r \right)$.
+	Then we have a closed subset on which $f$ is not determined: $\mathbb{V}\left( f_0, \ldots, f_r \right)$.
+	We will call it the \textit{indeterminacy locus} of $f$.
+
+	However, we can always extend $f$ to a morphism $\tilde{f}: \widetilde{X} \to \mathbb{P}^{r}$, 
+	where $\widetilde{X}$ is a the blow-up of $X$ at $\left( f_0, \ldots, f_r \right)$, and
+	$f$ is defined by the composition $\widetilde{X} \hookrightarrow X \cross \mathbb{P}^{r} \xrightarrow{\pi} \mathbb{P}^{r}$.
+	If we blow-up the indeterminacy locus, we can always extend $f: X \dashrightarrow \mathbb{P}^{r}$
+	to a projective variety birational to $X$.
+	
+	If, moreover, we start from a birational map $f: X \dashrightarrow Y$ this gives rise to interesting situations.
+	Let's look at how to extend such a map to isomorphisms $\widetilde{X} \to \widetilde{Y}$.
+\end{rem} 
+
+\begin{ex}[Cremona transformation]
+	It is a birational map
+	\begin{align}
+		f: \mathbb{P}^{2} &\dashrightarrow \mathbb{P}^{2} \\
+		\left[ x_0, x_1 , x_2 \right] &\mapsto [ x_1x_2, x_0x_2, x_0x_1]
+	.\end{align} 
+	Its indeterminacy locus is $\mathbb{V}_p\left( x_1x_2, x_0x_2, x_0x_1 \right) = \left\{ 
+	p_0 := [1,0,0], p_1 := [0,1,0], p_3 := [0,0,1] \right\}$.
+	Since there are no relations in $S(\mathbb{P}^{2}) = \mathbb{K}\left[x_0, x_1, x_2 \right]$,
+	we cannot extend $f$ to a morphism outside $U:= \mathbb{P}^{2} \setminus \left\{ p_0, p_1, p_2 \right\}$.
+
+	Let's show that $f$ is a birational map: in such case there are $U \subset \mathbb{P}^{2} \supset V$
+	open subsets s.t. $\left.f\right|_{U}: U \to V$ is an isomorphism.
+	In fact, on $V := \mathbb{V}_p\left( x_0x_1x_2 \right)$, we can divide by $x_0x_1x_2$, and obtain that
+	\begin{equation}
+		f([x_0, x_1, x_2]) = [x_1x_2, x_0x_2, x_0x_1] = 
+		[ \frac{1}{x_0}, \frac{1}{x_1}, \frac{1}{x_2}]
+	.\end{equation} 
+	Clearly, when restricted to $V$, $f \circ f = id_V$, hence $\left.f\right|_{U}: V \to V$
+	is an isomorphism (f is an involution of $V$).
+	Moreover, denoting by $L_i := \mathbb{V}_p\left( x_i \right)$, we can notice that
+	$f(L_i) = p_i$, where $p_i$ are the points defined above.
+	In fact $f(L_0) = f([0,x_1,x_2]) = [x_1x_2, 0, 0] = p_0$.
+
+	Finally we can extend $f$ to a morphism by using blow-ups.
+	Let's take $\widetilde{\mathbb{P}^{2}}$ the blow-up of $\mathbb{P}^{2}$ at
+	$(x_1x_2, x_0x_2, x_0x_1)$, i.e. the blow-up at $p_0, p_1, p_2$.
+	Then we can extend $f$ to $\tilde{f}: \widetilde{\mathbb{P}^{2}} \to \widetilde{\mathbb{P}^{2}}$.
+	In fact $\widetilde{\mathbb{P}^{2}} \subset \mathbb{P}^{2} \cross \mathbb{P}^{2}$, and
+	\begin{equation}
+		\left( [x], [u] \right) \in \widetilde{\mathbb{P}^{2}} \iff
+		\mathrm{rk}
+		\begin{pmatrix}
+			x_1x_2 & x_0x_2 & x_0x_1\\
+			u_0 & u_1 & u_2
+		\end{pmatrix} = 1
+	.\end{equation} 
+	Notice that this is equivalent (in general), to asking that $u_0, u_1, u_2$ is proportional to $1/x_0, 1/x_1, 1/x_2$,
+	hence the condition is symmetric in $[x]$ and $[u]$.
+	The we can define
+	\begin{equation}
+		\tilde{f} \left( [x_0, x_1, x_2], [u_0, u_1, u_2] \right) =
+		\left( [u_0, u_1, u_2], [x_0, x_1, x_2] \right)
+	,\end{equation} 
+	and $[u_0, u_1, u_2] = f([x_0, x_1, x_2])$, where defined.
+	Then this is clearly an extension of $f$ and also clearly an isomorphism.
+	We only need to check that its image is $\widetilde{\mathbb{P}^{2}}$.
+	In order to do so we only need to check that the image of the three exceptional divisors
+	is contained in $\widetilde{\mathbb{P}^{2}}$.
+	This is true, since $f$ is a birational inverse to itself.
+
+	More explicitly, in $\widetilde{\mathbb{P}^{2}}$ the points $p_i$ get mapped to the exceptional lines $E_i$, and $L_i$
+	get mapped to their strict transform $\widetilde{L_i}$.
+	Then $\tilde{f}$ sends $\widetilde{L_i}$ to $E_i$ and vice-versa.
+\end{ex} 
+
+\begin{ex}
+	Another example of a couple of birational projective varieties is given by
+	\begin{equation}
+	f: \mathbb{P}^{2} \dashrightarrow \mathbb{P}^{1} \cross \mathbb{P}^{1}
+	,\end{equation} 
+	since they contain the isomorphic open subsets $\mathbb{A}^{2} \cong \mathbb{A}^{1} \cross \mathbb{A}^{1}$.
+	In particular we can explicitly write $f$ as, in the affine chart $U_0 \subset \mathbb{P}^{2}$
+	\begin{equation}
+	[1,x,y] \xrightarrow{f} s_{1,1} \left( [1,x], [1,y] \right) = [1, x, y, xy]
+	.\end{equation} 
+	In homogeneous coordinates (homogenizing everything with respect to $x_0$) it becomes
+	\begin{equation}
+		f \left( [x_0, x_1, x_2] \right) = [x_0^2, x_0x_1, x_0x_2, x_1x_2]
+	.\end{equation} 
+	Its indeterminacy locus is exactly
+	\begin{equation}
+	\mathbb{V}_p\left( x_0^2, x_0x_1, x_0x_2, x_1x_2 \right) =
+	\mathbb{V}_p\left( x_0, x_1x_2 \right) = 
+	\left\{ q_1 := [0,1,0], q_2 := [0,0,1] \right\}
+	.\end{equation} 
+	To extend $f$ to a morphism (to resolve $f$) we need to blow-up $\mathbb{P}^{2}$ at
+	$\mathcal{I} = \left( x_0^2, x_0x_1, x_0x_2, x_1x_2 \right) \subsetneq \mathbb{I}_p(\left\{ q_1, q_2 \right\})$
+	(notice that they have the same zero locus: they are related by saturations).
+
+	Let $\widetilde{\mathbb{P}^{2}} \subset \mathbb{P}^{2} \cross \mathbb{P}^{3}$ be the blow-up at $\mathcal{I}$.
+	Then $\widetilde{\mathbb{P}^{2}}$ is isomorphic to the blow-up
+	of $\mathbb{P}^{2}$ at $q_1$ and $q_2$.
+	In $U_1 = \left\{ x_1 \neq 0 \right\} \ni q_1$, we can take $x_1 = 1$ and then $\mathcal{I}$
+	restricts to 
+	\begin{equation}
+	\left( x_0^2, x_0, x_0x_2, x_2 \right) = \left( x_0, x_2 \right) =
+	\mathbb{I}(q_2) \subset \mathbb{K}\left[x_0, x_2 \right] = \mathbb{K}[U_1]
+	.\end{equation} 
+	andalogously, on $U_2$, $\mathcal{I}$ restricts to 
+	\begin{equation}
+		\left( x_0^2, x_0x_1, x_0, x_1 \right) = \left( x_0, x_1 \right) =
+		\mathbb{I}(q_1) \subset \mathbb{K}\left[x_0, x_1 \right] = \mathbb{K}[U_2]
+	.\end{equation} 
+	The birational inverse of $f$ is
+	\begin{align}
+		g: \mathbb{P}^{1} \cross \mathbb{P}^{1} &\to \mathbb{P}^{2} \\
+		[u_0, u_1, u_2, u_3] &\mapsto [u_0, u_1, u_2]
+	.\end{align} 
+	This is the projection from $p = [0,0,0,1] = s_{1,1} \left( [0,1],[0,1] \right)$
+	on $\mathbb{P}^{1} \cross \mathbb{P}^{1}$.
+	Hence $p$ is the indeterminacy locus and we need
+	to blow it up, to obtain
+	\begin{equation}
+	\widetilde{\mathbb{P}^{1} \cross \mathbb{P}^{1}} \subset \mathbb{P}^{1} \cross \mathbb{P}^{1} \cross \mathbb{P}^{2}
+	\subset \mathbb{P}^{3} \cross \mathbb{P}^{2}
+	.\end{equation} 
+	Now we want to define an isomorphism between $\widetilde{\mathbb{P}^{2}}$ and $\widetilde{\mathbb{P}^{1} \cross \mathbb{P}^{1}}$.
+	\begin{align}
+		\tilde{f}: \widetilde{\mathbb{P}^{2}} &\to \widetilde{\mathbb{P}^{1} \cross \mathbb{P}^{1}} \\
+		\left( [x_0, x_1, x_2], [y_0, y_1, y_2, y_3] \right) &\mapsto 
+		\left( [y_0,y_1, y_2, y_3], [x_0, x_1, x_2] \right)
+	,\end{align} 
+	where the points $\left( [x_0, x_1, x_2], [y_0, y_1, y_2, y_3] \right) \in \widetilde{\mathbb{P}^{2}}$
+	have to satisfy
+	\begin{equation}
+	1 = \mathrm{rk}\, 
+	\begin{pmatrix}
+		y_0 & y_1 & y_2 & y_3\\
+		x_0^2 & x_0x_1 & x_0x_2 & x_1x_2
+	\end{pmatrix}
+	\Rightarrow \mathrm{rk}\, 
+	\begin{pmatrix}
+		y_0 & y_1 & y_2\\
+		x_0^2 & x_0x_1 & x_0x_2
+	\end{pmatrix} = 1
+	\ \ \text{ for } x_0 \neq 0
+	.\end{equation} 
+	This is the restriction to $\widetilde{\mathbb{P}^{2}}$ of an isomorphism between
+	$\mathbb{P}^{2} \cross \mathbb{P}^{3}$ and $\mathbb{P}^{3} \cross \mathbb{P}^{2}$.
+	Hence we only have to check that
+	\begin{equation}
+		\tilde{f} \left( \widetilde{\mathbb{P}^{2}} \right) \subset \widetilde{\mathbb{P}^{1} \cross \mathbb{P}^{1}}
+		\qquad \text{ and } \qquad
+		\tilde{f}^{-1} \left( \widetilde{\mathbb{P}^{1} \cross \mathbb{P}^{1}} \right) \subset
+		\widetilde{\mathbb{P}^{2}}
+	.\end{equation} 
+	Since $\widetilde{\mathbb{P}^{2}}$ is an irreducible projective variety, it is sufficient 
+	to show the above inclusions for dense open subsets of the required varieties.
+	Take $\mathbb{A}^{2} \cong \mathbb{P}^{2} \setminus \mathbb{V}_p\left( x_0 \right) \subset \widetilde{\mathbb{P}^{2}}$,
+	where $\mathbb{V}_p\left( x_0 \right)$ is the line passing trhough $q_1$ and $q_2$.
+	We know that
+	\begin{equation}
+		\tilde{f} \left(  \mathbb{A}^{2} \right) = f \left( \mathbb{A}^{2} \right) =
+		\mathbb{A}^{1} \cross \mathbb{A}^{1} \subset
+		\mathbb{P}^{1} \cross \mathbb{P}^{1} \setminus \mathbb{V}_p\left( x_0y_0 \right)
+		\hookrightarrow \widetilde{\mathbb{P}^{1} \cross \mathbb{P}^{1}}
+	.\end{equation} 
+	The result for $\tilde{f}^{-1}$ follows analogously.
+\end{ex} 
+
+\begin{lem}
+	$\mathbb{P}^{1} \cross \mathbb{P}^{1}$ blown-up at one point is isomorphic to the blow-up 
+	of $\mathbb{P}^{2}$ at two points.
+\end{lem} 
+\begin{proof}
+	The proof is a generalzation of the above example.
+\end{proof}

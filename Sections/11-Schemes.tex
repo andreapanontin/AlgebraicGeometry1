@@ -1,0 +1,488 @@
+\section{Schemes}
+When gluing together affine varieties one obtaines prevarieties.
+Let's define, in an analogous way, schemes, as locally ringed spaces which can be covered by
+affine schemes.
+
+\begin{defn}[Scheme]
+	A \textbf{scheme} is a locally ringed space $\left( X, \mathcal{O}_{ X } \right)$
+	that can be covered by open subsets $U_i \subset X$ s.t.
+	\begin{equation}
+	\left( U_i, \left.\mathcal{O}_X\right|_{U_i} \right) \cong
+		\left( \mathrm{Spec}\, R, \mathcal{O}_{ \mathrm{Spec}\, R } \right)
+	,\end{equation} 
+	for some ring $R_i$ and for all $i$.
+
+	Moreover a morphism of schemes is just a morphism of locally ringed
+	spaces between schemes.
+\end{defn}
+
+\begin{rem}[]
+	Each affine variety $X$ over a field $\K$ has an associated affine scheme
+	\begin{equation}
+	X_{\text{sch}} := \mathrm{Spec}\, \mathbb{K}[X]
+	.\end{equation} 
+\end{rem}
+
+\begin{defn}[Scheme associated to a prevariety]
+	Let $\K$ be a algebraically closed field and
+	$X$ a prevariety over $\K$.
+	Then the scheme associated with $X$ is
+	\begin{equation}
+	X_{\text{sch}} :=
+	\left\{ Z \subset X \ \middle|\ \emptyset \neq Z \text{ is irreducible} \right\}
+	\end{equation} 
+	with the topology defined by $\left\{ U_{\text{sch}} \ \middle|\ U \stackrel{\text{open}}{\subset} X \right\}$
+	with
+	\begin{align}
+	U_{\text{sch}} := \left\{ V \subset U \ \middle|\ V \text{ is an 
+	irreducible closed subset of } U \right\} &\hookrightarrow X_{\text{sch}}\\
+	U \supset Z &\mapsto \overline{Z} \subset X	
+	,\end{align} 
+	and structure sheaf $\mathcal{O}_{X_{\text{sch}}} \left( U_{\text{sch}} \right) := \mathcal{O}_{X} \left( U \right)$,
+	with natural restrictions.
+\end{defn}
+
+\begin{prop}
+	$X_{\text{sch}}$ is a scheme for every prevariety $X$.
+	Moreover any morphism of prevarieties $f: X \to Y$
+	naturally extends to a morphism of schemes
+	\begin{align}
+		f: X_{\text{sch}} &\to Y_{\text{sch}} \\
+		Z &\mapsto \overline{f(Z)}
+	\end{align} 
+	for $Z \subset X$ an irreducible closed subset.
+\end{prop} 
+
+Moreover a scheme $X$ comes from a prevariety over $\K$ if
+locally it is given by $\mathrm{Spec}\, R_i$, for $R_i = \mathbb{K}[Y_i]$
+for $Y_i$ an affine variety over $\K$.
+(More explicitly $R_i$ are all finitely generated $\K$-algebras which are also domains).
+
+\begin{defn}[]
+	Let $Y$ be a scheme.
+	A scheme over $Y$ is a scheme $X$, together with a morphism $f: X \to Y$.
+	A morphism of schemes $X_1 \to Y$, $X_2 \to Y$ over $Y$
+	is a morphism of schemes s.t. the following diagram commutes
+	\begin{equation}
+	\begin{tikzcd}
+		X_1 \arrow[r, "f", rightarrow] \arrow[d, "", rightarrow] &
+		X_2 \arrow[d, "", rightarrow] \\
+		Y \arrow[r, "", equal] &
+		Y
+	\end{tikzcd}
+	.\end{equation} 
+	If $Y = \mathrm{Spec}\, R$, then we call schemes over $Y$, schemes over $R$.
+\end{defn}
+
+\begin{defn}[Scheme over $Y$ of finite type]
+	A scheme $X$ over $Y$ is of finite type iff there is a covering of $Y$
+	by affine open subsets $V_i := \mathrm{Spec}\, B_i$
+	and a covering of $f^{-1}(V_i)$ by affine open subsets
+	\begin{equation}
+	U_{ij} := \mathrm{Spec}\, A_{ij} \qquad \text{ for all indeces } i
+	\end{equation} 
+	with the property that each $A_{ij}$ is a finitely generated $B_i$-algebra
+	(induced by $U_{ij} \to V_i$).
+\end{defn}
+
+\begin{rem}[]
+	Recall that, given a ring $B$, then a $B$-algebra is a ring $A$ together with
+	an injective ring homomorphism $B \hookrightarrow  A$.
+	The $B$-algebra $A$ is finitely generated iff there are finitely many
+	$\alpha_1, \ldots, \alpha_k \in A$ s.t.
+	\begin{align}
+		B [t_1, \ldots, t_k] &\to A \\
+		f &\mapsto f(\alpha_1, \ldots, \alpha_k)
+	\end{align} 
+	is surjective.
+
+	Moreover recall that, if $X \subset \mathbb{A}^{n}$ is a Zariski closed subset,
+	then $\mathbb{I}\left( X \right) \subset \mathbb{K}\left[x_1, \ldots, x_n \right]$
+	is a radical ideal
+	and
+	\begin{equation}
+	\mathbb{K}[X] = \frac{\mathbb{K}\left[x_1, \ldots, x_n \right]}{\mathbb{I}\left( X \right)}
+	\end{equation} 
+	does not contain any nilpotent element.
+\end{rem}
+
+\begin{defn}[Reduced ring]
+	A ring $R$ is reduced iff, for every $f \in R$,
+	\begin{equation}
+	f^r = 0 \implies f = 0
+	.\end{equation} 
+\end{defn}
+
+\begin{defn}[Reduced scheme]
+	A scheme $X$ is called reduced iff $\mathcal{O}_{X} \left( U \right)$ is
+	a reduced ring for all $U \stackrel{\text{open}}{\subset} X$.
+\end{defn}
+
+\begin{prop}
+	Let $\K$ be an algebraically closed field, then
+	\begin{itemize}
+		\item For any affine variety $X$ over $\K$,
+			the associated scheme $X_{\text{sch}} = \mathrm{Spec}\, \mathbb{K}[X]$
+			is a reduced and irreducible affine scheme
+			of finite type over $\K$.
+			Moreover any reduced and irreducible affine scheme of finite type over
+			$\K$ is of this form.
+		\item Let $X,Y$ be affine schemes over $\K$, then there
+			are one to one correspondences
+			\begin{equation*}
+			\begin{tikzcd}
+				\left\{ 
+				\begin{matrix}
+					\text{morphisms}\\
+					X \to Y\\
+					\text{as varieties}
+				\end{matrix} 
+				\right\} \arrow[r, "1:1", leftrightarrow] &
+				\left\{ 
+				\begin{matrix}
+					\K\text{-algebra}\\
+					\text{homomorphisms}\\
+					\mathbb{K}[X] \to \K[Y]
+				\end{matrix} 
+				\right\} \arrow[r, "1:1", leftrightarrow] &
+				\left\{ 
+				\begin{matrix}
+					\text{morphisms as}\\
+					\text{schemes over }\K\\
+					X_{\text{sch}} \to Y_{\text{sch}}\\
+				\end{matrix} 
+				\right\} 
+			\end{tikzcd}
+			.\end{equation*} 
+		In particular the category of affine $\K$-varieties is equivalent to
+		the category of reduced and irreducible affine schemes of
+		finite type over $\K$.
+		Moreover both are equivalent to the opposite of the category of finitely 
+		generated reduced $\K$-algebras.
+	\end{itemize}
+\end{prop} 
+
+\begin{prop}
+	Let $\K$ be an algebraically closed field.
+	Then there is an equivalence of categories between the category of {\em prevarieties over $\K$}
+	and the category of {\em reduced and irreducible schemes of finite type over $\K$}.
+	
+	In particualr all such schemes arise from prevarieties over $\K$.
+	Moreover, for any two prevarieties $X$ and $Y$, we have a
+	one to one correspondance
+	\begin{equation*}
+	\begin{tikzcd}
+		\left\{ 
+		\begin{matrix}
+			\text{morphisms}\\
+			X \to Y\\
+			\text{as prevarieties}
+		\end{matrix} 
+		\right\} \arrow[r, "1:1", leftrightarrow] &
+		\left\{ 
+		\begin{matrix}
+			\text{morphisms as}\\
+			\text{schemes over }\K\\
+			X_{\text{sch}} \to Y_{\text{sch}}\\
+		\end{matrix} 
+		\right\} 
+	\end{tikzcd}
+	.\end{equation*} 
+\end{prop} 
+
+\begin{rem}
+	Schemes can be constructed by gluing other schemes.
+	In fact we need
+	\begin{itemize}
+		\item a collection $\left\{ X_i \right\}_{i \in I}$ of shcemes ($I$
+			may even be infinite)
+		\item a collection $\left\{ U_{ij}, f_{ij} \right\}_{i,j \in I}$ of open subsets
+			$U_{ij} \subset X$ and isomorphisms
+			\begin{equation}
+			f_{ij}: U_{ij} \to U_{ji}
+			.\end{equation} 
+	\end{itemize}
+	All of these satifying the conditions:
+	\begin{enumerate}
+		\item $U_{ii} = X_i$ and $f_{ii} = id_{X_i}$ for all $i \in I$,
+		\item $f_{ij} \left( U_{ij} \cap U_{ik} \right) \subset U_{jk}$ and
+			$f_{ik} = f_{jk} \circ f_{ij}$
+			for all $i,j,k \in I$.
+	\end{enumerate}
+	The case where $U_{ij}$ is empty gives rise to a reducible scheme.
+	Then a morphism from the scheme $X$, obtained by gluing the $X_i$,
+	to a scheme $Y$ is a collection of morphisms of scheme
+	\begin{equation}
+	\left\{ X_i \to Y \right\}_{i \in I} 
+	\end{equation} 
+	compatible with the overla maps $f_{ij}: U_{ij} \to U_{ji} \subset X_j$.
+\end{rem} 
+
+\begin{prop}
+	Let $X$ be a scheme and $Y := \mathrm{Spec}\, R$ an affine scheme.
+	Thene there is a one to one correspondence
+	\begin{equation*}
+	\begin{tikzcd}
+		\left\{ 
+		\begin{matrix}
+			\text{morphisms}\\
+			X \to Y\\
+			\text{as schemes}
+		\end{matrix} 
+		\right\} \arrow[r, "1:1", leftrightarrow] &
+		\left\{ 
+		\begin{matrix}
+			\text{ring homomorphisms}\\
+			 \mathcal{O}_{Y} \left( Y \right) = R \to \mathcal{O}_{X} \left( X \right)\\
+		\end{matrix} 
+		\right\} 
+	\end{tikzcd}
+	.\end{equation*} 
+\end{prop} 
+
+\begin{rem}[]
+	Every ring $R$ has a natural ring homomorphism
+	\begin{align}
+		\Z:  &\to R \\
+		0 \leq m &\mapsto \underbrace{1 + 1 + \ldots + 1}_{m \text{ times}}\\
+		0 > m &\mapsto \underbrace{- 1 - 1 - \ldots - 1}_{-m \text{ times}}
+	.\end{align} 
+	In view of the proposition, this yields that every scheme $X$ is a
+	scheme over $\Z$, by using
+	\begin{align}
+		\Z &\to \mathcal{O}_{X} \left( X \right) \\
+		X &\mapsto \mathrm{Spec}\, \Z
+	.\end{align} 
+	Is $X$ is a scheme over $\mathbb{C}$, then the image of
+	this morphism is the point
+	$(0) \in \mathrm{Spec}\, \Z$.
+\end{rem}
+
+\subsection{Fiber products}
+\begin{defn}[Fiber product of schemes]
+	Let $X \xrightarrow{f} S$ and $Y \xrightarrow{g} S$ be two schemes
+	over a fixed scheme $S$.
+	The fiber product $\left(X \cross_S Y, \pi_X, \pi_Y\right)$ is a scheme
+	endowed with two morphisms s.t. the following diagram commutes
+	\begin{equation}
+	\begin{tikzcd}
+		X \cross_S Y \arrow[r, "\pi_X", rightarrow] \arrow[d, "\pi_Y"', rightarrow] &
+		X \arrow[d, "f", rightarrow] \\
+		Y \arrow[r, "g"', rightarrow] &
+		S
+	\end{tikzcd}
+	\end{equation} 
+	and satisfies the following universal property.
+	For every couple of morphism $\phi_X$ and $\phi_Y$ s.t.
+	$f \circ \phi_X = g \circ \phi_Y$, i.e. the following diagram commutes
+	\begin{equation}
+	\begin{tikzcd}[column sep=small]
+		Z \arrow[rd, "\exists\, !\, \phi", dashrightarrow] \arrow[rrd, "\phi_X", rightarrow, bend left] 
+		\arrow[rdd, "\phi_Y"', rightarrow, bend right] & & \\
+		&
+		X \cross_S Y \arrow[r, "\pi_X", rightarrow] \arrow[d, "\pi_Y"', rightarrow] &
+		X \arrow[d, "f", rightarrow] \\
+		&
+		Y \arrow[r, "g"', rightarrow] &
+		S\\
+	\end{tikzcd}
+	\end{equation} 
+	there exists a unique morphism $\phi: Z \to X \cross_S Y$ s.t. the whole diagram commutes,
+	i.e. $\phi_X = \pi_X \circ \phi$ and $\phi_Y = \pi_Y \circ \phi$.
+\end{defn}
+
+\begin{rem}[]
+	As with the usaul argument with universal properties, if $X \cross_S Y$ exists,
+	then it is unique up to isomorphism.
+	
+	Moreover one can construct $X \cross_S Y$ by a gluing construction.
+	The key point is that, called $X := \mathrm{Spec}\, M$, $Y := \mathrm{Spec}\, N$
+	and $S := \mathrm{Spec}\, R$
+	(in which $M$ and $N$ are $R$-algebras, since both $X$ and $Y$ are schemes over $S$)
+	then
+	\begin{equation}
+		\mathrm{Spec} \left( M \otimes_R N \right) = X \cross_S Y
+	.\end{equation} 
+\end{rem}
+
+\section{Projective schemes}
+\begin{defn}[Irrelevant ideal of a graded ring]
+	Let $R := \bigoplus_{d \geq 0} R_d$ be a graded ring.
+	The irrelevant ideal of $R$ is
+	\begin{equation}
+	R_+ := \bigoplus_{d > 0} R_d
+	.\end{equation} 
+\end{defn}
+
+\begin{defn}[Projective scheme]
+	Let $R$ be a graded ring.
+	The projective scheme associated with $R$ is
+	\begin{equation}
+	\mathrm{Proj}\, R := \left\{ \mathfrak{p} \triangleleft R \ \middle|\ 
+	\mathfrak{p} \text{ is a homogeneous prime ideal, and } R_+ \not\subset \mathfrak{p} \right\}
+	,\end{equation} 
+	with the topology defined by the closed subsets
+	\begin{equation}
+	\mathbb{V}\left( \mathcal{I} \right) =
+	\left\{ \mathfrak{p} \in \mathrm{Proj}\, R \ \middle|\ \mathfrak{p} \supset \mathcal{I} \right\}
+	\end{equation} 
+	for all homogeneous ideals $\mathcal{I} \triangleleft R$.
+\end{defn}
+
+\begin{rem}[]
+	The Zariski topology on $\mathrm{Proj}\, R$ is well defines, since
+	\begin{align}
+		\bigcap_{j \in \mathcal{J}} \mathbb{V}\left( \mathcal{I}_j \right) &=
+	\mathbb{V}\left( \sum_{j \in \mathcal{J}}^{} \mathcal{I}_j \right) \subset \mathrm{Proj}\, R\\
+	\mathbb{V}\left( \mathcal{I}_1 \right) \cup \mathbb{V}\left( \mathcal{I}_2 \right) =
+	\mathbb{V}\left( \mathcal{I}_1 \cdot \mathcal{I}_2 \right) \subset \mathrm{Proj}\, R
+	\end{align} 
+	also hold in this new setting.
+\end{rem}
+
+\begin{defn}[Structure sheaf]
+	Let $R$ be a graded ring and $X := \mathrm{Proj}\, R$.
+	\begin{enumerate}
+		\item For all $\mathfrak{p} \in \mathrm{Proj}\, R$ one sets
+			\begin{equation}
+				R_{(\mathfrak{p})} :=
+				\left\{ \frac{f}{g} \in R_{\mathfrak{p}} \ \middle|\ 
+				g \notin \mathfrak{p},\, f,g \in R_d 
+			\text{ for some } d \in \N \right\}
+			.\end{equation} 
+		\item For all open subsets $U \subset X$ we define
+			\begin{align*}
+				\mathcal{O}_{X} \left( U \right) := \bigg\{ &
+			\phi := \left( \phi_{\mathfrak{p}} \right)_{\mathfrak{p} \in U} \in 
+		\prod_{\mathfrak{p} \in U} R_{(\mathfrak{p})} \ \bigg|\ 
+	\text{for every } \mathfrak{p} \in U \text{ there is an open}\\
+	&\text{neighbourhood } V \text{ of } \mathfrak{p} \text{ and } f,g \in R_d \text{ for some } d \in \N\\
+	&\text{ s.t. } g \notin Q \text{ and } \phi_Q = \frac{f}{g} \,\forall\, Q \in V \bigg\}
+			.\end{align*} 
+	\end{enumerate}
+	$\mathcal{O}_X$ is called the {\em structure sheaf} of $X = \mathrm{Proj}\, R$.
+\end{defn}
+
+\begin{prop}
+	Let $R$ be a graded ring and $X := \mathrm{Proj}\, R$.
+	Then $\left( O, \mathcal{O}_{ O } \right)$ is a scheme with
+	\begin{enumerate}
+		\item $\mathcal{O}_{X, \mathfrak{p}} \cong R_{(\mathfrak{p})}$
+			for all $\mathfrak{p} \in X$,
+		\item for each homogeneous element $f \in R_d$, for $d > 0$,
+			we define the distinguished open subset
+			\begin{equation}
+			X_f := X \setminus \mathbb{V}\left( f \right) =
+			\left\{ \mathfrak{p} \in \mathrm{Proj}\, R \ \middle|\ f \notin \mathfrak{p} \right\}
+			.\end{equation} 
+			The distinguishe open subsets $X_f$ cover $X$ and satisfy
+			\begin{equation}
+			\left( X_f, \left.\mathcal{O}_{ X }\right|_{X_f} \right) \cong
+				\mathrm{Spec}\, R_{(f)}
+			,\end{equation} 
+			(i.e. distinguished open subsets are affine schemes),
+			with
+			\begin{equation}
+				R_{(f)} := \left\{ 
+				\frac{g}{f^r} \in R_f \ \middle|\ g \in R_{rd},\, d = \deg f \right\}
+			.\end{equation} 
+	\end{enumerate}
+\end{prop}
+\begin{proof}
+	The proof is analogous to the affine case, apart
+	from the fact that $X_f$ cover $X$.
+\end{proof}
+
+
+\begin{ex}
+	Consider $\left( \mathbb{P}^{n}_{\K} \right)_{\text{sch}} := \mathrm{Proj}\, \mathbb{K}\left[x_0, \ldots, x_n \right]$.
+	If $X \subset \mathbb{P}^{n}_{\K}$ is a projective variety, then
+	\begin{equation}
+		X_{\text{sch}} = \mathrm{Proj} \left( \mathbb{K}\left[x_0, \ldots, x_n \right]/
+		\mathbb{I}\left( X \right) \right)
+	,\end{equation} 
+	where $S(X) := \mathbb{K}\left[x_0, \ldots, x_n \right] / \mathbb{I}\left( X \right)$ is
+	the homogeneous coordinate ring of $X$.
+\end{ex} 
+ \begin{defn}[Projective subscheme]
+	 Let $\K$ be an algebraically closed field.
+	 A projective subscheme of $\mathbb{P}^{n}_{\K}$ is a scheme of the form
+	 \begin{equation}
+		 \mathrm{Proj} \left( \mathbb{K}\left[x_0, \ldots, x_n \right]/ \mathcal{I} \right)
+	 \end{equation} 
+	 for $\mathcal{I} \triangleleft \mathbb{K}\left[x_0, \ldots, x_n \right]$
+	 a homogeneous ideal.
+ \end{defn}
+
+ \begin{rem}[]
+ 	Projective subschemes can be reducible, e.g.
+	\begin{equation}
+		\mathrm{Proj}\, \mathbb{K}\left[x_0, x_1 \right]/ (x_1^2)
+	\end{equation} 
+	or even non-reduced, e.g.
+	\begin{equation}
+		\mathrm{Proj}\, \mathbb{K}\left[x_0, x_1, x_2 \right] / (x_1x_2)
+	.\end{equation} 
+ \end{rem}
+ 
+ \begin{rem}[]
+ 	Different homogeneous ideals may define the same projective subscheme in $\mathbb{P}^{n}$.
+	For example
+	\begin{equation}
+		\mathrm{Proj}\, \mathbb{K}\left[x_0, \ldots, x_n \right] / (f) =
+		\mathrm{Proj}\, \mathbb{K}\left[x_0, \ldots, x_n \right] /
+		(fx_0, fx_1, \ldots, fx_n)
+	.\end{equation} 
+ \end{rem}
+ 
+ \begin{defn}[Saturation of an ideal]
+ 	Let $\mathcal{I} \triangleleft R := \mathbb{K}\left[x_0, \ldots, x_n \right]$
+	be a homogeneous ideal.
+	The saturation of $\mathcal{I}$ is the homogeneous ideal
+	\begin{equation}
+	\overline{\mathcal{I}} := \left\{ f \in R \ \middle|\ 
+	x_0^mf, \ldots, x_n^mf \in \mathcal{I} \text{ for some } m \in \mathcal{I} \right\}
+	.\end{equation} 
+	A homogeneous ideal $\mathcal{I}$ is called saturated iff $\mathcal{I} = \overline{\mathcal{I}}$.
+ \end{defn}
+ 
+ \begin{lem}
+ 	\begin{equation}
+ 	\mathrm{Proj}\, R/I = \mathrm{Proj}\, R/J \iff
+	\overline{I} = \overline{J}
+ 	.\end{equation} 
+ \end{lem} 
+
+ \begin{thm}[]
+ 	There is a one to one correspondence
+	\begin{equation}
+	\begin{tikzcd}[row sep=tiny]
+		\left\{ 
+		\begin{matrix}
+			\text{projective}\\
+			\text{subschemes}\\
+			\text{of } \mathbb{P}^{n}_{\K}
+		\end{matrix} 
+		\right\} \arrow[r, "1:1", leftrightarrow] &
+		\left\{ 
+		\begin{matrix}
+			\text{saturated}\\
+			\text{homogeneous ideals}\\
+			\mathcal{I} \triangleleft \mathbb{K}\left[x_0, \ldots, x_n \right]
+		\end{matrix} 
+		\right\}\\
+		X \arrow[r, "", mapsto] &
+		\mathbb{I}\left( X \right) = \overline{\mathcal{I}}
+	\end{tikzcd}
+	,\end{equation} 
+	where $\mathcal{I}$ is any ideal defining $X$.
+ \end{thm}
+
+ \begin{defn}[Homogeneous coordinate ring of a projective subscheme]
+ 	Let $X$ be a projective subscheme in $\mathbb{P}^{n}_{\K}$.
+	The {\em homogeneous coordinate ring} of $X$ is
+	\begin{equation}
+		S(X) := \mathbb{K}\left[x_0, \ldots, x_n \right] / \mathbb{I}\left( X \right)
+	.\end{equation} 
+ \end{defn}
+ 

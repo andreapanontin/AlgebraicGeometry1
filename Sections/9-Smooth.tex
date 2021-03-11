@@ -1,0 +1,372 @@
+\subsection{Smooth varieties}
+\begin{defn}[Tangent space at a point]
+	Let $X \subset \mathbb{A}^{n}$ be an affine variety and $p \in X$.
+	After a linear change of coordinates
+	\begin{equation}
+	X_1 := x_1 - p_1, \qquad X_2 := x_2 - p_2, \qquad \ldots, \qquad
+	X_n := x_n - p_n
+	\end{equation} 
+	we can assume that $p = \left( 0, \ldots, 0 \right)$.
+	We define the \textbf{tangent space} to $X$ at $p$ to be
+	\begin{equation}
+	T_{X,p} := \mathbb{V}\left( \left\{ f_1 \in \mathbb{K}\left[x_1, \ldots, x_n \right] \ \middle|\ 
+	f \in \mathbb{I}(X)\right\} \right)
+	,\end{equation} 
+	in which $f_1$ represents the linear part of $f = \sum_{j \in \N}^{} f_j$, with
+	$f_j \in \mathbb{K}\left[x_1, \ldots, x_n \right]_j$ are the homogeneous components of $f$.
+\end{defn}
+
+\begin{rem}[]
+	Consider $p = \left( p_1, \ldots, p_n \right)$.
+	We can consider the Taylor expansion of $f \in \mathbb{K}\left[x_1, \ldots, x_n \right]$ at $p$
+	(after all it is a polynomial):
+	\begin{equation}
+		f \left( x_1, \ldots, x_n \right) =
+		f(p) + \sum_{i=1}^{n} \frac{\partial f}{\partial x_i} (p) \left( x_i - p_i \right) +
+		h.o.t.
+	.\end{equation} 
+	Then $T_{X,p}$ is defined by the linear equations
+	\begin{equation}
+		\sum_{i=1}^{n} \frac{\partial f}{\partial x_i} (p) \left( x_i - p_i \right) = 0
+	,\end{equation} 
+	for all $f \in \mathbb{I}(X)$ (for which, hence $f(p) = 0$).
+\end{rem}
+
+\begin{rem}[]
+	The degree $1$ part of an ideal is always contained in the initial ideal,
+	i.e. $\mathcal{I}_1 \subset \mathcal{I}^{in}$.
+	It follows that $C_{X,p} \subset T_{X, p}$, i.e. the tangent cone is contained in the tangent space.
+\end{rem}
+ 
+Let's give a more intrinsic definition to the tangent space:
+\begin{lem}
+	Let $p \in X \subset \mathbb{A}^{n}$ a point of an affine variety.
+	Then the Vector Space $T_{X,p} \subset \K^n$ is isomorphic to the space of
+	linear forms on $\mathfrak{m}_{X,p}/\mathfrak{m}^2_{X,p}$, where
+	\begin{equation}
+	\mathfrak{m}_{X,p} = \left\{ \varphi \in \mathcal{O}_{X,p} \ \middle|\ \varphi = 0 \right\}
+	\subset \mathcal{O}_{X,p} \subset \K(X)
+	,\end{equation} 
+	which can be identified with the germs of functions vanishing at $p$.
+	Analogously, for $\mathfrak{m}^2_{X,p}$, we have
+	\begin{equation}
+	\mathfrak{m}^2_{X,p} = \left\{ \varphi \cdot \psi \ \middle|\ \varphi, \psi \in \mathfrak{m}_{X,p} \right\}
+	\subset \mathcal{O}_{X,p} \subset \K(X)
+	,\end{equation} 
+	i.e. it contains the germs of functions vanishing at order $\geq 2$ at $p$.
+	Then
+	\begin{equation}
+		T_{X,p} \cong \left( \mathfrak{m}_{X,p}/\mathfrak{m}^2_{X,p} \right)^{\vee}
+	.\end{equation} 
+\end{lem} 
+\begin{proof}
+	We can assume, wlog, that $p = \left( 0, \ldots, 0 \right)$.
+Then, the coordinates $x_1, \ldots, x_n$ of $\mathbb{A}^{n} \cong \K^n$ define linear forms in $V^{\vee}$.
+In particular $x_1, \ldots, x_n$ is a basis of $V^{\vee} = \mathrm{Hom}_{\K}\left( V, \K \right)$.
+Let, now, $\mathcal{I} := \mathbb{I}(X)$ and $\mathcal{I}_1 \subset \mathbb{K}\left[x_1, \ldots, x_n \right]_1 = V^{\vee}$
+be a linear subspace.
+\begin{description}
+	\item[Step 1:] \textit{$V/\mathcal{I}_1$ is canonically isomorphic to
+		$T^{\vee}_{X,p} = \mathrm{Hom}_{\K}\left( T_{X,p}, \K \right)$}.
+
+		We define the restriction morphism $\varphi: V^{\vee} \to T_{X,p}^{\vee}$
+		that sends any linear form $l \in V^{\vee}$ to itself, as a linear form in $T^{\vee}_{X,p}$.
+		This is clearly a linear map.
+		Moreover $T^{\vee}_{X,p} = \mathrm{span} \left( \varphi(x_1), \ldots, \varphi(x_n) \right)$, 
+		hence $\varphi$ is surjective.
+		Finally $T_{X,p} = \mathbb{V}\left( \mathcal{I}_1 \right)$, hence
+		$\ker \varphi = \mathcal{I}_1$.
+
+	\item[Step 2:] \textit{There is a natural isomorphism}
+		\begin{align}
+			\psi: V^{\vee} / \mathcal{I}_1 &\to \mathfrak{m}_{X,p}/\mathfrak{m}^2_{X,p} \\
+			x_j &\mapsto [x_j]
+		.\end{align} 
+		Recall that $p = 0$, hence any $x_j$ identifies an equivalence class in $\mathfrak{m}_{X,p}/\mathfrak{m}^2_{X,p}$.
+		\textit{Injectivity:} Let $0 \neq \alpha \in \mathbb{K}\left[x_1, \ldots, x_n \right]_1$ be 
+		s.t. $[\alpha] = 0 \in \mathfrak{m}_{X,p}/\mathfrak{m}^2_{X,p}$.
+		Then $\alpha \in \mathcal{O}_{X,p}$ belongs to $\mathfrak{m}^2_{X,p}$, i.e.
+		\begin{equation}
+			\alpha = \frac{F_1}{G_1} \cdot \frac{F_2}{G_2} \in \K \left( x_1, \ldots, x_n \right)
+		,\end{equation} 
+		for $F_i, G_i \in \mathbb{K}\left[x_1, \ldots, x_n \right]$,
+		with $F_i(p) = 0$ and $G_i(p) \neq 0$ for $i = 1,2$.
+		Then
+		\begin{equation}
+		G_1G_2 \alpha = F_1F_2 \in \mathbb{K}\left[x_1, \ldots, x_n \right]
+		.\end{equation} 
+		Then, since $\alpha$ is of degree $1$, it is irreducible (hence prime).
+		Since $G_1$ cannot divide $F_i$ (they do not vanish at $p$, then $\alpha$ divides the product $F_1F_2$,
+		then $\alpha$ divides one of the two, let's say $F_1 = \alpha \widetilde{F_1}$.
+		Then $G_1G_2 = \widetilde{F_1}F_2$, but
+		\begin{equation}
+			0 \neq \left( G_1G_2 \right)(p) = \left( \widetilde{F_1}F_2 \right)(p) = 
+			\widetilde{F_1}(p) F_2(p) = 0
+		.\end{equation} 
+		This is a contradiction, hence $\alpha = 0$.
+
+		\textit{Surjectivity:} Let $\phi = \frac{f}{g} \in \mathfrak{m}_{X,p}$, wlog $g(p) = 1$.
+		We want to prove that
+		\begin{equation}
+			\phi' := \sum_{i}^{} \frac{\partial \phi}{\partial x_i} (p) x_i
+			\qquad \text{ where } \qquad
+			\frac{\partial \phi}{\partial x_i} =
+			\frac{\frac{\partial f}{\partial x_i} \cdot g - \frac{\partial g}{\partial x_i} \cdot f }{g^2}
+		\end{equation} 
+		is the inverse image of $\phi$, i.e. $\psi(\phi') - \phi \in \mathfrak{m}^2_{X,p}$.
+		Let's multiply by $g$, to obtain
+		\begin{align}
+			g \left( \phi' - \phi  \right) &=
+			f - \frac{g}{g^2} \sum_{i = 1}^{n} \left( \frac{\partial f}{\partial x_i} (p) g(p) -
+			\frac{\partial g}{\partial x_i} (p) f(p) \right)x_i\\
+			&\equiv f - \frac{g(p)}{g^2(p)} \sum_{i=1}^{n} \frac{\partial f}{\partial x_i} (p) x_i
+			\mod \mathfrak{m}^2_{X,p}\\
+			&\equiv f - \sum_{i=1}^{n} \frac{\partial f}{\partial x_i} (p) x_i \mod \mathfrak{m}^2_{X,p}
+		.\end{align} 
+\end{description} 
+\end{proof}
+
+\begin{rem}[]
+	The same proof yields
+	\begin{equation}
+	T_{X,p}^{\vee} \cong M/M^2 \qquad \text{ for } \qquad
+	M = \mathbb{I}(p)/\mathbb{I}(X) \subset \K[X]
+	.\end{equation} 
+\end{rem}
+\begin{rem}[]
+	The identification $T_{X,p} \cong \mathfrak{m}_{X,p}/\mathfrak{m}^2_{X,p}$ is
+	intrinsic, i.e. independent of the embedding in $\mathbb{A}^{n}$.
+	In particular we can use it to define $T_{X,p}$ for $X$ any
+	variety and $p \in X$ any point.
+	In this case $T_{X,p}$ is an abstract Vector Space (not
+	embedded in $\mathbb{A}^{n}$ anymore).
+\end{rem}
+ 
+\begin{rem}[Comparison with tangent cones]
+	Let $X \subset \mathbb{A}^{n}$ be an affine variety, and $p \in X$.
+	WLOG we assume that $p = \left( 0, \ldots, 0 \right)$.
+	Then, for $f_0 + f_1 + \ldots + f_d = f \in \mathbb{K}\left[x_1, \ldots, x_n \right]$,
+	with $f(p) = 0$ (i.e. $f_0 = 0$), we have
+	$f_1 \neq 0 \implies \mathrm{mindeg}\, f = 1$ and $f_1 = f^{in}$.
+	In particular $\mathbb{I}\left( X \right)_{in} = \left\{ f^{in} \ \middle|\ 
+	f \in \mathbb{I}\left( X \right) \right\} \supset \mathbb{I}\left( X \right)_1$.
+	Then $C_{C,p} = \mathbb{V}\left( \mathbb{I}\left( X \right)_{in} \right) \subset
+	\mathbb{V}\left( \mathbb{I}\left( X \right)_1 \right) = T_{X,p}$ in $\mathbb{A}^{n}$.
+
+	In particular we obtain that $\dim X = \dim C_{X,p} \leq \dim T_{X,p}$.
+	The dimension of the tangent (linear space) might be bigger than the dimension of the cone.
+\end{rem}
+
+\begin{defn}[Regular and singular points/varieties]
+	Given a variety $X$ we say that a point $p \in X$ is a \textbf{regular point} of $X$
+	iff $\dim T_{X,p} = \dim X$.
+	(Alternatively it can be called \textbf{simple}, \textbf{smooth}, \textbf{non-singular} point).
+	If, instead, $\dim T_{X,p} > \dim X$, then $p$ is called a \textbf{singular point}.
+
+	A variety $X$ is called \textbf{singular} iff it has at least one singular point.
+	Non-singular varieties are allso called \textbf{regular} or \textbf{smooth}.
+	
+	Finally, we define the regular locus of $X$ to be
+	\begin{equation}
+	X_{\text{reg}} := \left\{ p \in X \ \middle|\ X \text{ is regular at } p \right\}
+	\end{equation} 
+	and the singular locus of $X$ as
+	\begin{equation}
+	X_{\text{sing}} := X \setminus X_{\text{reg}}
+	.\end{equation} 
+\end{defn}
+
+\begin{ex}[Curves in $\mathbb{A}^{2}$]
+	Consider the parabola $X_1 := \mathbb{V}\left( x (x-1) - y \right)$,
+	the nodal cubic $X_2 := \mathbb{V}\left( x^2 + x^3 - y^2 \right)$
+	and the cuspidal cubic $X_3 := \mathbb{V}\left( x^3 - y^2 \right)$.
+	Then $T_{X_1, \mathbf{0}} = C_{X_1, \mathbf{0}}$, hence the parabola is regular at $\mathbf{0}$.
+	Instead $T_{X_2, \mathbf{0}} = T_{X_3, \mathbf{0}} = \mathbb{A}^{2}$, 
+	hence $X_2$ and $X_3$ are both singular at $\mathbf{0}$.
+
+	In fact the blow-ups at $\mathbf{0}$ are as follows.
+	For $\widetilde{X}_1 \to X_1$ is an isomorphism, in fact it coincides with the strict transform.
+	For $\widetilde{X}_2 \to X_2$ it is not even injective: the two tangent directions corresponing
+	to the two components of the tangent cone $C_{X_2, \mathbf{0}}$ get both mapped to $\mathbf{0}$.
+	$\widetilde{X}_3 \to X_3$, instead, is injective.
+	Indeed both $\widetilde{X}_2$ and $\widetilde{X}_3$ are smooth, whereas $X_2$ and $X_3$ are singular
+	(and this gives the fact that the above maps cannot be iso).
+	Moreover we call the above maps from the smooth varieties, obtained by
+	blowing up the singular locus, a resolution of singularities.
+	(Those are birational map inducing isomorphisms $p^{-1} \left( X_{i, \text{reg}} \right) \to X_{i, \text{reg}}$
+	s.t. $\widetilde{X}_i$ is smooth).
+	In particular the maps $\widetilde{X}_i \xrightarrow{p} X_i$ (for $i = 2,3$)
+	are resolutions of the singularities at $\mathbf{0}$.
+
+	Let's check, for instance, that $\widetilde{X}_3$ is non-singular.
+	We only need to check what happens at the preimage of $\mathbf{0}$.
+	\begin{equation}
+		\widetilde{\mathbb{A}^{2}} = \left\{ \left((x,y), [\zeta,\eta]\right) \ \middle|\ 
+		x \eta = y \zeta\right\} \subset \mathbb{A}^{2} \cross \mathbb{P}^{1}
+	.\end{equation} 
+	The local coordinates at $\left( p, [1,0] \right)$ are $(u,v) \in \mathbb{A}^{2}$.
+	Recall that the chart we are using is induced by
+	\begin{align}
+		\mathbb{A}^{2} &\to \widetilde{\mathbb{A}^{2}} = \mathbb{A}^{2} \cross \mathbb{P}^{1} \\
+		\left(u, v\right) &\mapsto \left((v, uv), [1, u] \right)
+	\end{align} 
+	for $u = \eta/\zeta$ (for $\zeta \neq 0$) and $v = x$.
+	The equation for $X_3$ is $y^2 - x^3 = 0$.
+	We substitute $x = v$ and $y = uv$ and obtain $(uv)^2 - v^3 = v^2 \left( u^2 - v \right) = 0$.
+	This has two components:
+	$v = 0$, which defines the exceptional line of $\widetilde{\mathbb{A}^{2}} \to \mathbb{A}^{2}$,
+	which is not contained in the stric transform $\widetilde{X}_3$, by definition.
+	And $u^2 - v = 0$, which gives the local equation for the strict transform $\widetilde{X}_3$.
+	It has a nontrivial linear part, hence $\widetilde{X}_3$ is smooth at $\left(p, [1,0]\right)$.
+
+	With similar computations one can check that $\widetilde{X}_2$ is smooth
+	at $(u,v) = (\pm1, 0)$, since the local equations are $v = 1 - u^2 = (1-u)(1+u)$.
+\end{ex} 
+
+In general, one needs to be careful, since one needs more than
+one blow-up to obtain a resolution of singularities.
+\begin{defn}[Jacobi matrix]
+	Given $F := \left( f_1, \ldots, f_r \right)$ an $r$-tuple of polynomials in $x_1, \ldots, x_n$,
+	we define the \textbf{Jacobi matrix} of $F$ at $p$ as
+	\begin{equation}
+		J_{F,p} := \left( \frac{\partial f_i}{\partial x_j}  \right)_{i,j}
+		\qquad \text{ for } i =1, \ldots, r \text{ and } j = 1, \ldots, n
+	.\end{equation} 
+\end{defn}
+
+\begin{prop}[Jacobi criterion]\leavevmode\vspace{-.2\baselineskip}
+	\begin{description}
+		\item[Affine case:] Let $X \subset \mathbb{A}^{n}$ be an affine variety, and
+			$f_1, \ldots, f_r$ be generators of $\mathbb{I}\left( C \right)$.
+			Then $p \in X$ is regular iff
+			\begin{equation}
+			\mathrm{rk}\, J_{\left( f_1, \ldots, f_r \right), p} \geq n - \dim X
+			.\end{equation} 
+		\item[Projective case:] Let $X \subset \mathbb{P}^{n}$ be a projective variety
+			and $f_1, \ldots, f_r$ homogeneous generators of $\mathbb{I}_p\left( X \right)$.
+			Then $p \in X$ is regular iff
+			\begin{equation}
+			\mathrm{rk}\, J_{\left( f_1, \ldots, f_r \right), p} \geq n - \dim X
+			.\end{equation} 
+			Notice that, even though the Jacobi matrix itself depends on the choice of
+			homogeneous coordinates for $p$, its rank does not change (each row gets multiplied by
+			a nonzero constant).
+	\end{description}
+	Moreover, in both cases, if $\mathrm{rk}\, J_{F,p} = r$,
+	then $X$ is smooth of dimension $n - r$ at $p$.
+\end{prop} 
+
+\begin{rem}\leavevmode\vspace{-.2\baselineskip}
+	\begin{itemize}
+		\item Set $d := \dim X$, then in the above notation
+			\begin{align}
+				X_{\text{sing}} &= \left\{ p \in X \ \middle|\ 
+			\mathrm{rk}\, J_{\left( f_1, \ldots, f_r \right), p} \leq n-d-1\right\}\\
+				&= \mathbb{V}\left( \left\{ (n-d) \cross (n-d) \text{-minors of }
+				J_{\left( f_1, \ldots, f_r \right), p}\right\} \right)		
+			,\end{align} 
+			hence $X_{\text{sing}} \subset X$ is a closed subset.
+		\item $X_{\text{reg}} \subset X$ is always a nonempty open subset.
+			In particular it is always dense.
+			Let's give a sketch of the argument:
+			Since $d := \dim X$, there is a surjective projection on $\mathbb{A}^{d}$.
+			Though let's stop a step earlier and consider
+			$\pi: X \to X' \subset \mathbb{A}^{d+1}$. Clearly $X'$ is a
+			hypersurface in $\mathbb{A}^{d+1}$.
+			Making a good choice of the projection there is a non empty open
+			subset of $X$, on which $\pi$ is an isomorphism.
+			Hence $\pi$ will be a birational map (it is a consequence of the
+			primitive element theorem).
+			It is easy to check that $X'_{\text{reg}} \neq \emptyset$, for hypersurfaces.
+			Then (one should check that the inclusion holds)
+			$X_{\text{reg}} \supset \pi^{-1} \left( X'_{\text{reg}} \cap V \right)$
+			(for $V = \pi(U)$) is non empty.
+	\end{itemize}
+\end{rem} 
+
+\begin{rem}[]
+	If $X$ is a hypersurface, and
+	\begin{itemize}
+		\item $X = \mathbb{V}\left( f \right) \subset \mathbb{A}^{n}$, for a square-free polynomial $f$
+			(not necessairily irreducible).
+			A point $p \in \mathbb{A}^{n}$ is a singular point of $X$ iff
+			\begin{equation}
+				f(p) = \frac{\partial f}{\partial x_1} (p) = \ldots
+				= \frac{\partial f}{\partial x_n} (p) = 0
+			.\end{equation} 
+		\item $X = \mathbb{V}_p\left( f \right) \subset \mathbb{P}^{n}$, for a suqare-free 
+			and homogeneous polynomial $f$. Then
+			\begin{equation}
+			p \in X_{\text{sing}} \iff
+			\frac{\partial f}{\partial x_0} (p) = \frac{\partial f}{\partial x_1} (p) =
+			\ldots = \frac{\partial f}{\partial x_n} (p) = f(p) = 0
+			.\end{equation} 
+			Moreover one can easily check that, set $d := \deg f$,
+			multiplying each partial derivative by the corresponding linear form
+			\begin{equation}
+				d \cdot f (x) = 
+				x_0 \frac{\partial f}{\partial x_0} (x) + \ldots +
+				x_n \frac{\partial f}{\partial x_n}
+			.\end{equation} 
+			(Clearly this only works for homogeneous polynomials).
+			Moreover, if $d$ is invertible in the ground field (e.g.
+			if the field is of char $0$), then one can omit the condition $f(p) = 0$.
+			Then we have
+			\begin{equation}
+			X_{\text{sing}} = \mathbb{V}_p\left( \frac{\partial f}{\partial x_0}, \ldots,
+			\frac{\partial f}{\partial x_n} \right)
+			.\end{equation} 
+	\end{itemize}
+\end{rem}
+
+\begin{ex}[Fermat hypersurfaces]
+	Consider $n,d \geq 1$. The Fermat hypersurfaces of degree $d$ in $\mathbb{P}^{n}$ are defined by
+	\begin{equation}
+	X_d := \mathbb{V}_p\left( x_0^d + \ldots + x_n^d \right) \subset \mathbb{P}^{n}
+	.\end{equation} 
+	This is a degree $d$ hypersurface if $\mathrm{char}\, \K = 0, p$ for $p \nmid d$
+	(otherwise we'd have $x_0^d + \ldots x_n^d = \left( x_0 + \ldots + x_n \right)^d$).
+	Then the Jacobi matrix is
+	\begin{equation}
+		J_f = \left( d x_0^{d-1}, d x_1^{d-1}, \ldots, d x_n^{d-1} \right)
+	.\end{equation} 
+	Hence $X_d$ is a smooth hypersurface by the Jacobi criterion.
+\end{ex}  
+
+\begin{ex}[Twisted cubic curve]
+	\begin{equation}
+		X = \left\{ [s^3, s^2t, st^2, t^3] \ \middle|\ [s,t] \in \mathbb{P}^{1} \right\}
+	.\end{equation} 
+	Since $X \cong \mathbb{P}^{1}$, we already know that $X$ is regular.
+	Let's check it with the Jacobi criterions:
+	\begin{equation}
+	X = \mathbb{V}_p\left( x_0x_2 - x_1^2, x_0x_3 - x_1x_2, x_1x_3 - x_2^2 \right)
+	\end{equation} 
+	(the above is determined by the determinant of the minors of the matrix 
+	$\begin{pmatrix} x_0 & x_1 & x_2\\ x_1 & x_2 & x_3 \end{pmatrix}$).
+	The Jacobi matrix is
+	\begin{equation}
+	J = 
+	\begin{pmatrix}
+		x_2 & -2 x_1 & x_0 & 0\\
+		x_3 & -x_2 & -x_1 & x_0\\
+		0 & x_3 & -2 x_2 & x_1\\
+	\end{pmatrix} 
+	.\end{equation} 
+	We need to check that, at every point $\mathrm{rk}\, J \geq \dim \mathbb{P}^{3} - \dim X = 3 - 1 = 2$.
+	We need to find $2 \cross 2$ minors that do not vanish simultaneosly:
+	\begin{equation}
+	\begin{vmatrix}
+		x_0 & 0\\
+		-x_1 & x_0
+	\end{vmatrix} = x_0^2
+	\qquad \text{ and } \qquad
+	\begin{vmatrix}
+		x_3 & -x_2 \\
+		0 & x_3
+	\end{vmatrix} = x_3
+	.\end{equation} 
+	The first vanishes only at $[0,0,0,1] \in X$, whereas the second at $[1,0,0,0] \in X$, 
+	i.e. they have no common zeros on $X$, hence $\mathrm{rk}\, J \geq 2$ at all $p \in X$.
+	In particular $X$ is regular.
+\end{ex} 	

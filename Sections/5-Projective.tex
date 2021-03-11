@@ -1,0 +1,412 @@
+\section{Projective spaces}
+\begin{defn}[Projective space]
+	Let $\K$ be a field.
+	The projective space of dimension $n$ over the field $\K$, denoted by $\mathbb{P}^n(\K) = \mathbb{P}^n$, is the set of all $1$-dimensional linear subspaces in $\K^{n+1}$.
+\end{defn}
+
+\begin{rem}
+	Each $1$-dimensional linear subspace of $\K^{n+1}$ is spanned by a nonzero vector $\mathbf{v} \in \K^{n+1}$,
+	and two vectors $\mathbf{v}, \mathbf{w} \in \K^{n+1} \setminus \left\{ \mathbf{0} \right\}$ have the same span iff
+	there exists $\lambda \in \K$ s.t. $\mathbf{v} = \lambda \mathbf{w}$.
+	Hence, set theoretically,
+	 \begin{equation}
+		 \mathbb{P}^n = \left( \K^{n+1} \setminus \left\{ \mathbf{0} \right\} \right)/\sim
+	,\end{equation} 
+	where $\left( v_0, \ldots, v_n \right) \sim \left( w_0, \ldots, w_n \right)$ if there is $\lambda \in \K \setminus \left\{ \mathbf{0} \right\}$ s.t. $\lambda w_i = v_i$ for every $i = 0, \ldots, n$.
+
+	The equivalence classe of $\mathbf{v} = \left( v_0, \ldots, v_n \right)$ is denoted as
+	\begin{equation}
+	\left[ \mathbf{v} \right] = \left( v_0 : v_1 : \ldots : v_n \right) = \left[ v_0, \ldots, v_n \right]
+	.\end{equation} 
+\end{rem}
+
+\begin{ex}
+	For $\mathbb{P}^1$ we can see its points with
+	\begin{align}
+		U_0 := \left\{ \left[ p_0, p_1 \right] \in \mathbb{P}^1 \ \middle|\ p_0 \neq 0 \right\} &\to \mathbb{A}^1 \\
+		\left[ p_0, p_1 \right] &\mapsto \frac{p_1}{p_0}\\
+		\left[ 1, t \right] &\mapsfrom t
+	,\end{align} 
+	which is a bijection, and with the points $\left[ 0, p_1 \right]$ with $p_1 \neq 0$, which is the unique point $\left[ 0, 1 \right]$ at infinity.
+	In particular 
+	\begin{equation}
+	\mathbb{P}^1 = \mathbb{A}^1 \cup_{} \left\{ \left[ 0, 1\right] \right\} 
+	.\end{equation} 
+\end{ex} 
+
+\begin{rem}
+	Analogously $\mathbb{P}^n$ can be covered by $n+1$ copies of $\mathbb{A}^n$.
+	In particular we have the $n+1$ bijections
+	\begin{align}
+		U_0 := \left\{ \left[ p_0, \ldots, p_n \right] \in \mathbb{P}^n \ \middle|\ p_0 \neq 0 \right\} &\to \mathbb{A}^n \\
+		\left[ p_0, p_1, \ldots p_n \right] &\mapsto \left( \frac{p_1}{p_0}, \ldots, \frac{p_n}{p_0} \right)\\
+		\left[ 1, t_1 \ldots, t_n \right] &\mapsfrom \left( t_1, \ldots, t_n \right)
+	.\end{align} 
+	These give rise to the decomposition
+	\begin{equation}
+	\mathbb{P}^n = U_0 \cup_{} \left\{ \left[ 0, p_1 , \ldots , p_n \right] \right\} \cong \mathbb{A}^n \cup_{} \mathbb{P}^{n-1} 
+	.\end{equation} 
+	As expected $\mathbb{P}^n$ can be covered by the open subsets $U_i$, with $i+1$-th coordinate equal to one.
+	Study what happens on the overlap $U_i \cap_{} U_j$, for $i \neq j$.
+\end{rem}
+
+\begin{rem}
+	$\mathbb{P}^n(\R)$ and $\mathbb{P}^n(\C{})$ are \textbf{compact}, when endowed with the quotient topology of the standard topology on $\R^{n+1} \setminus \left\{ \mathbf{0} \right\}$ and $\C{n+1}\setminus \left\{ \mathbf{0} \right\}$ respectively.
+\end{rem}
+
+\subsection{Projective algebraic sets}
+\begin{defn}[Homogeneous polynomials of degree $d$]
+	We define the set
+	\begin{equation}
+	\mathbb{K}\left[x_1, \ldots, x_n \right]_d := \mathrm{Span}\, \left\{ x_0^{i_0}x_1^{i_1}\cdot \ldots \cdot x_n^{i_n} \ \middle|\ i_0 + i_1 + \ldots + i_n = d \right\}
+	.\end{equation} 
+	The elements of this set are called \textbf{homogeneous polynomials} of degree $d$.
+\end{defn}
+
+\begin{rem}
+	$f \in \mathbb{K}\left[x_1, \ldots, x_n \right]_d$ implies, for any $\lambda \in \K$,
+	 \begin{equation}
+	f \left( \lambda x_0, \ldots, \lambda x_n \right) = \lambda^d f \left( x_0, \ldots, x_n \right)
+	.\end{equation} 
+	In particular the vanishing of $f$ gives a well-defined locus in $\mathbb{P}^n$.
+\end{rem}
+
+\subsection{Graded rings}
+\begin{defn}[Graded ring]
+	A \textbf{graded ring} $R$ is a ring with a decomposition
+	\begin{equation}
+	R = \bigoplus_{d \in \N} R_d
+	,\end{equation} 
+	with $R_d$ an abelian subgroup of $R$ for any $d \in \N$, satisfying the compatibility condition with the product:
+	$f_d \cdot f_e \in R_{d+e}$ for all $f_d \in R_d$ and $f_e \in R_e$.
+\end{defn}
+
+\begin{defn}[Graded algebra]
+	A graded $\K$-algebra $R$ is a graded ring which is also a $\K$-algebra and s.t. the $R_d$ are also linear subspaces.
+\end{defn}
+
+\begin{rem}
+	Notice that 
+	 \begin{equation}
+	\mathbb{K}\left[x_1, \ldots, x_n \right] = \bigoplus_{d \in \N} \mathbb{K}\left[x_1, \ldots, x_n \right]_d
+	\end{equation} 
+	is a graded $\K$-algebra.
+\end{rem}
+
+\begin{defn}[Homogeneous element]
+	Given a graded ring $R$, an element $f \in R$ is called \textbf{homogeneous} iff $\exists\, d \in \N$ s.t. $f \in R_d$.
+	Since $R = \oplus_{d \in \N} R_d$, then any $f \in R$ has a \textit{unique} decomposition
+	\begin{equation}
+	f = \sum_{m \in \N}^{}  f_m
+	,\end{equation} 
+	with $f_m \in R_m$.
+	The various  $f_m$ are called the \textbf{homogeneous components} of $f$.
+\end{defn}
+
+\begin{defn}[degree of an element]
+	Given $0 \neq f \in R$ a graded ring, with the decomposition $\sum_{m \in \N}^{} f_m$ as above, the \textbf{degree} of $f$ is the maximal $m$ s.t. $f_m \neq 0$.
+	Equivalently, if $d = \deg f$, then
+	\begin{equation}
+	f = f_0 + \ldots + f_d
+	,\end{equation} 
+	for $f_j \in R_j$.
+\end{defn}
+
+\begin{defn}[Homogeneous ideal]
+	An ideal $\mathcal{I}$ in a graded ring $R$ is called \textbf{homogeneous} iff it is generated by homogeneous elements.
+\end{defn}
+
+\begin{lem}
+	Let $\mathcal{I}, \mathcal{J}$ be ideals in a graded ring $R$.
+	\begin{enumerate}
+		\item $\mathcal{I}$ is \textbf{homogeneous} iff for all $f \in \mathcal{I}$, with decomposition in homogeneous components
+			 \begin{equation}
+			f = \sum_{d \in \N}^{} f_d
+			\end{equation} 
+			then $f_d \in R_d \cap_{} \mathcal{I}$ for all $d$.
+		\item If $\mathcal{I}$ and $\mathcal{J}$ are both homogeneous ideals, then also $\mathcal{I} + \mathcal{J}$, $\mathcal{I} \cdot \mathcal{J}$ and $\mathcal{I} \cap_{} \mathcal{J}$ are homogeneous.
+			Furthermore $\sqrt{\mathcal{J}}$ is homogeneous if $\mathcal{J}$ is.
+		\item If $\mathcal{I}$ is homogeneous, then
+			 \begin{equation}
+				 R/\mathcal{I} = \bigoplus_{d \in \N} R_d / \left( R_d \cap_{} \mathcal{I} \right)
+			\end{equation} 
+			gives $R/\mathcal{I}$ the structure of graded ring.
+	\end{enumerate}
+\end{lem} 
+
+\subsection{Projective algebraic sets}
+\begin{defn}[Projective algebraic set]
+	For any set $S \subset \mathbb{K}\left[x_0, \ldots, x_n \right]$ of \textit{homogeneous} polynomials we define the  \textbf{projective zero locus} of $S$ by
+	\begin{equation}
+		\mathbb{V}_p\left( S \right) := \left\{ x \in \mathbb{P}^n \ \middle|\ f(x) = 0 \text{ for all } f \in S \right\} \subset \mathbb{P}^n
+	.\end{equation} 
+	Analogously, for any homogeneous ideal $\mathcal{I}$ we set
+	\begin{equation}
+		\mathbb{V}_p\left( \mathcal{I} \right) := \left\{ x \in \mathbb{P}^n \ \middle|\ f(x) = 0 \text{ for all } f \in \mathcal{I} \right\} \subset \mathbb{P}^n
+	.\end{equation} 
+	Subsets of $\mathbb{P}^n$ of one of the above form are called \textbf{projective algebraic sets}.
+
+	Furthermore, for a subset $X \subset \mathbb{P}^n$ we define the ideal of $X$ by
+	\begin{equation}
+		\mathbb{I}_p(X) := \left( f \in \mathbb{K}\left[x_0, \ldots, x_n \right] \ \middle|\ f \text{ is homogeneous, } f(x) = 0 \text{ for all } x \in X \right) \subset \mathbb{K}\left[x_0, \ldots, x_n \right]
+	.\end{equation} 
+\end{defn}
+
+\begin{ex}\leavevmode\vspace{-.2\baselineskip}
+	\begin{itemize}
+		\item $\emptyset = \mathbb{V}_p\left( 1 \right)$ and $\mathbb{P}^n = \mathbb{V}_p\left( 0 \right)$ are projective algebraic sets.
+		\item Given $L_0, \ldots, L_m$ homogeneous linear forms, then $\mathbb{V}_p\left( L_0, \ldots, L_m \right)$ is a projective algebraic set.
+			In particular points in $\mathbb{P}^n$ are algebraic sets.
+	\end{itemize}
+\end{ex} 
+
+\begin{prop}\leavevmode\vspace{-.2\baselineskip}
+	\begin{enumerate}
+		\item If $\left\{ \mathcal{I}_i \right\}_{i \in I} $ is a family of homogeneous ideals in $\mathbb{K}\left[x_0, \ldots, x_n \right]$, then
+			\begin{equation}
+			\bigcap_{i \in I} \mathbb{V}_p\left( \mathcal{I}_i \right) = \mathbb{V}_p\left( \bigcup_{i \in I} \mathcal{I}_i \right) \subset \mathbb{P}^n
+			.\end{equation} 
+			In other words, arbitrary intersections of projective algebraic sets are algebraic.
+		\item If $\mathcal{I}_1, \mathcal{I}_2 \subset \mathbb{K}\left[x_1, \ldots, x_n \right]$ are homogeneous ideals, then
+			\begin{equation}
+			\mathbb{V}_p\left( \mathcal{I}_1 \right) \cup \mathbb{V}_p\left( \mathcal{I}_2 \right) = \mathbb{V}_p\left( \mathcal{I}_1 \cdot \mathcal{I}_2 \right) = \mathbb{V}_p\left( \mathcal{I}_1 \cap \mathcal{I}_2 \right) \subset \mathbb{P}^n
+			.\end{equation} 
+			As a consequence, finite union of algebraic sets are algebraic.
+	\end{enumerate}
+\end{prop} 
+
+\begin{defn}[Zariski topology on $\mathbb{P}^n$]
+	The \textbf{Zariski topology} on $\mathbb{P}^n$ is the topology whose closed subsets are precisely the projective algebraic sets.
+	If $X \subset \mathbb{P}^n$ we define the Zariski topology on $X$ as the subset topology, induced by the Zariski topology on $\mathbb{P}^n$.
+\end{defn}
+
+\begin{rem}
+	$\mathbb{P}^n$ is a \textbf{prevariety}, hence it is a \textbf{noetherian} topological space.
+	In particular we can consider $\dim X$ for all closed subsets $X \subset \mathbb{P}^n$.
+\end{rem} 
+
+\subsection{Projective varieties}
+\begin{defn}[Projective variety]
+	A projective variety is a \textbf{Zariski closed} subset $X \subset \mathbb{P}^n$.
+\end{defn}
+
+\begin{defn}[Cone]
+	An affine algebraic set $C \subset \mathbb{A}^{n+1}$ is called a \textbf{cone} iff 
+	\begin{itemize}
+		\item $C$ contains the origin,
+		\item for any $x \in C$, then $\lambda x \in C$ for any $\lambda \in \K$.
+	\end{itemize}
+\end{defn}
+
+\begin{defn}[Cone over an algebraic set]
+	Given any $X \subset \mathbb{P}^n$ a projective algebraic set, then we can define the cone over $X$ as
+	\begin{equation}
+		C(X) := \left\{ \mathbf{0} \right\} \cup \left\{ x \in \mathbb{A}^{n+1}\setminus \left\{ \mathbf{0} \right\} \ \middle|\ \left[ x \right] \in X \right\}
+	.\end{equation} 
+	Notice that the second part of the union is the preimage of $X$ under $\mathbb{A}^{n+1}\setminus \left\{ \mathbf{0} \right\} \to \mathbb{P}^{n}$.
+\end{defn}
+
+\begin{lem}[Relation between $X$ and $C(X)$]\leavevmode\vspace{-.2\baselineskip}
+	\begin{itemize}
+		\item Let $X = \mathbb{V}_p\left( \mathcal{I} \right) \subset \mathbb{P}^{n}$ be defined by a homogeneous ideal $\mathcal{I} \subsetneq \left( 1 \right)$.
+			Then 
+			\begin{equation}
+			C(X) = \mathbb{V}\left( \mathcal{I} \right) \subset \mathbb{A}^{n+1}
+			.\end{equation}
+		\item If $X \subset \mathbb{P}^{n}$ is a projective algebraic set, then
+			\begin{equation}
+				\mathbb{I}\left( C(X) \right) = \mathbb{I}_p(X)
+			.\end{equation} 
+	\end{itemize}
+\end{lem} 
+
+\subsection{Projective Nullstellensatz}
+\begin{lem}
+	Let $\mathcal{I} \subset \mathbb{K}\left[x_0, \ldots, x_n \right]$ be an homogeneous ideal.
+	The following properties are equivalent:
+	\begin{enumerate}
+		\item $\mathbb{V}_p\left( \mathcal{I} \right) = \emptyset \subset \mathbb{P}^{n}$,
+		\item either $\sqrt{\mathcal{I}} = \mathbb{K}\left[x_0, \ldots, x_n \right]$ or $\sqrt{\mathcal{I}} = \left( x_0, \ldots, x_n \right)$,
+		\item there is $d \geq 1$ a degree, s.t. $\mathbb{K}\left[x_0, \ldots, x_n \right]_d \subset \mathcal{I}$.
+	\end{enumerate}
+\end{lem} 
+
+\begin{thm}[Projective Nullstellenstaz]\leavevmode\vspace{-.1\baselineskip}\newline There is a one to one inclusion reversing correspondence
+	\begin{equation}
+	\begin{tikzcd}[row sep=tiny]
+			\left\{\begin{matrix}
+				\text{ algebraic sets }\\
+				\text{ in } \mathbb{P}^{n}(\K)
+			\end{matrix}\right\} \arrow[rr, "", leftrightarrow] & &
+			\left\{  \begin{matrix}
+				\text{ homogeneous }\\
+				\text{ radical ideals }\\
+				\mathcal{I} \neq \left( x_0, \ldots, x_n \right)_d
+			\end{matrix}\right\} \\
+			X \arrow[rr, "", rightarrow, maps to] & & \mathbb{I}_p(X)\\
+			\mathbb{V}_p\left( \mathcal{I} \right) & & \mathcal{I} \arrow[ll, "", rightarrow, maps to]
+	\end{tikzcd}
+	.\end{equation} 
+	Furthermore, for all subsets $X \subset \mathbb{P}^{n}$ and all homogeneous ideals $\mathcal{I}$ with $\mathbb{V}_p\left( \mathcal{I} \right) \neq \emptyset$, we have
+	\begin{align}
+		\mathbb{I}_p \left( \mathbb{V}_p\left( \mathcal{I} \right) \right) &= \sqrt{\mathcal{I}}\\
+		\mathbb{V}_p\left( \mathbb{I}_p(X) \right) &= \overline{X}
+	.\end{align} 
+\end{thm}
+
+\subsection{Regular functions on projective varieties}
+
+\begin{defn}[Homogeneous coordinate ring]
+	Given $X \subset \mathbb{P}^{n}$ a projective algebraic set, then the $\mathbb{K}$-algebra
+	\begin{equation}
+		S(X) := \frac{\mathbb{K}\left[x_0, \ldots, x_n \right]}{\mathbb{I}_p\left( X \right)}
+	\end{equation} 
+	is called the \textbf{homogeneous coordinate ring} of $X$.
+\end{defn}
+
+\begin{rem}
+	Elements of $S(X)$ are functions on the cone $C(X)$, but not on $X$
+	(they are not constant up to multiplication by a scalar).
+	However quotients $\frac{f}{g}$ with $\deg f = \deg g$ give well-defined functions outside $\mathbb{V}\left( g \right)$.
+	In fact
+	\begin{equation}
+	\frac{f \left( \lambda x_0, \ldots, \lambda x_n \right)}{ g \left( \lambda x_0, \ldots, \lambda x_n \right)} = \frac{\lambda^d f \left( x_0, \ldots, x_n \right)}{\lambda^d g \left( x_0, \ldots, x_n \right)} = \frac{f \left( x_0, \ldots, x_n \right)}{g \left( x_0, \ldots, x_n \right)}
+	\end{equation} 
+	hold for all $\lambda \neq 0$ and $ \left[ x_0 , \ldots , x_n \right] \in X$.
+
+	Let's now introduce the notation $S(X)_d = \mathbb{K}\left[x_0, \ldots, x_n \right]_d / \mathcal{I}_d$.
+\end{rem}
+
+\begin{defn}[Field of rational functions]
+	Let $X \subset \mathbb{P}^{n}$ be a projective variety.
+	The \textbf{field of rational functions} on $X$ is
+	\begin{equation}
+		\K(X) := \left\{ \frac{f}{g} \ \middle|\ f,g \in S(X)_d, g \neq 0 \right\}
+	.\end{equation} 
+\end{defn}
+
+\begin{defn}[Regular functions]\leavevmode\vspace{-\baselineskip}
+	\begin{enumerate}
+		\item We say that $\varphi \in \K(X)$ is \textbf{regular at} $p \in X$ iff
+			\begin{equation}
+				\varphi = \frac{f}{g} \in \K(X), \text{ with } g(p) \neq 0
+			,\end{equation}
+			i.e. $\varphi$ is well defined at $p$,
+		\item We define the \textbf{local ring of} $X$ at $p$ to be
+			\begin{equation}
+				\mathcal{O}_{X,p} := \left\{ \varphi \in \K(X) \ \middle|\ \varphi \text{ is regular at } p \right\}
+			,\end{equation}
+		\item For any $\emptyset \neq U \stackrel{\text{open}}{\subset} X$, we define
+			\begin{equation}
+				\mathcal{O}_X (U) := \bigcap_{p \in U} \mathcal{O}_{X,p}
+			,\end{equation}
+			the ring of regular functions on $U$.
+	\end{enumerate}
+\end{defn}
+
+\begin{rem}
+	We can show that only the constant functions on $\mathbb{P}^{n}$ are regular on the whole $\mathbb{P}^{n}$, hence that
+	\begin{equation}
+	\mathcal{O}_{\mathbb{P}^{n}} \left( \mathbb{P}^{n} \right) = \K
+	.\end{equation} 
+\end{rem}
+
+\begin{prop}
+	Let $X \subset \mathbb{P}^{n}$ be a projective variety.
+	Then $\left( X, \mathcal{O}_{ X } \right)$ is a prevariety.
+\end{prop} 
+\begin{rem}
+	From the proof of the proposition we obtain a one-to-onte correspondance
+	\begin{equation}
+	\begin{tikzcd}[row sep=tiny]
+			\left\{\begin{matrix}
+				\text{ affive viarieties }\\
+				\text{ in } \mathbb{A}^{n}(\K)
+			\end{matrix}\right\} \arrow[rr, "", leftrightarrow] & &
+			\left\{  \begin{matrix}
+				\text{ projective varieties in } \mathbb{P}^{n} \text{ not }\\
+				\text{ contained in the hyperplane at } \infty\\
+			\end{matrix}\right\}
+	\end{tikzcd}
+	.\end{equation} 
+\end{rem}
+
+\begin{rem}
+	All known constructions for prevarieties apply also to projective varieties.
+	In particular we know how to define
+	\begin{itemize}
+		\item morphisms,
+		\item products,
+		\item the function field of $X$ as a prevariety, which asctually is the same thing as the definition $\K(X)$.
+	\end{itemize}
+\end{rem}
+
+Let's now consider, for simplicity, $X_j := X \cap U_j \cong Y_j \subset \mathbb{A}^{n}$, with $j = 1$.
+\begin{defn}[Homogenization of a polynomial]
+	Let $f \in \mathbb{K}\left[x_1, \ldots, x_n \right], g \in \mathbb{K}\left[x_0, \ldots, x_n \right]_d$.
+	The \textbf{homogenization} of $f$, with respect to $x_0$, is
+	\begin{equation}
+		{}^h f \left( x_0, \ldots, x_n \right) := x_0^{\deg f} f \left( \frac{x_1}{x_0}, \ldots, \frac{x_n}{x_0} \right)
+		\in \mathbb{K}\left[x_0, \ldots, x_n \right]_{\deg f}
+	.\end{equation} 
+	Conversely, the dehomogenization of $g$, with respect to $x_0$, is
+	\begin{equation}
+		{}^a g \left( x_1, \ldots, x_n \right) := g \left( 1, x_1, \ldots, x_n \right) \in \mathbb{K}\left[x_1, \ldots, x_n \right]
+	.\end{equation} 
+\end{defn}
+
+\begin{defn}[Homogenization of an ideal]
+	Let $\mathcal{I} \subset \mathbb{K}\left[x_1, \ldots, x_n \right]$ be an ideal.
+	We define its \textbf{homogenization} by
+	\begin{equation}
+		{}^h \mathcal{I} := \left( {}^h f \ \middle|\ f \in \mathcal{I} \right)
+	.\end{equation} 
+\end{defn}
+
+\begin{rem}
+	It is easy to check that ${}^h f$ is a homogeneous polynomial of degree $\deg {}^h f = \deg f$.
+	With regards to the dehomogenization, instead, the degree might decrease, hence
+	$\deg {}^a g \leq \deg g$, with $<$ if $x_0$ divides $g$.
+
+	Moreover it can be easily checked that
+	\begin{equation}
+		{}^a \left( {}^h f \right) = f \quad \text{ and } \quad {}^h \left( {}^a g \right) = g \text{ iff } x_0 \nmid g
+	.\end{equation} 
+\end{rem}
+
+\begin{lem}\leavevmode\vspace{-.2\baselineskip}
+	\begin{itemize}
+		\item For $X = \mathbb{V}\left( \mathcal{I} \right) \subset \mathbb{A}^{n}$ we have
+			$\mathbb{V}_p\left( {}^h \mathcal{I} \right) = \overline{X}$, where
+			$\overline{X}$ is the projective closure of $X$, defined as the Zariski closure of
+			$X \subset \mathbb{A}^{n} \cong U_0$ in $\mathbb{P}^{n}$.
+		\item If $X = \mathbb{V}\left( f \right)$, then $\overline{X} = \mathbb{V}_p\left( {}^h f \right)$.
+		\item The map $\mathcal{I} \to {}^h \mathcal{I}$ induces a one-to-one correspondance
+	\begin{equation}
+	\begin{tikzcd}[row sep=tiny]
+			\left\{\begin{matrix}
+				\text{ Zariski closed }\\
+				\text{ subsets of } \mathbb{A}^{n}(\K)
+			\end{matrix}\right\} \arrow[rr, "", leftrightarrow] & &
+			\left\{  \begin{matrix}
+				\text{ Zariski closed subsets of } \mathbb{P}^{n} \text{ s.t. no }\\
+				\text{ irr. comp. is contained in } H_\infty = \mathbb{V}\left( x_0 \right)\\
+			\end{matrix}\right\} \\
+			\mathbb{V}\left( \mathcal{I} \right) \arrow[rr, "", leftrightarrow, maps to] & & \mathbb{V}\left( {}^h \mathcal{I} \right)\\
+	\end{tikzcd}
+	.\end{equation} 
+	\end{itemize}
+\end{lem}
+
+\begin{rem}
+	For hypersurfaces we just proved that
+	\begin{equation}
+		X = \mathbb{V}\left( f \right) \implies \overline{X} = \mathbb{V}_p\left( {}^h f \right)
+	.\end{equation} 
+	For an arbitrary number of polynomials, instead, in general
+	\begin{equation}
+		\overline{\mathbb{V}\left( F_1, \ldots, F_r \right)} \neq \mathbb{V}_p\left( {}^h F_1, \ldots, {}^h F_r \right)
+	.\end{equation} 
+	Only for sufficiently good sets of generators the ideal generated by their homogeneization corresponds with the homogeneization of the ideal.
+\end{rem}
+

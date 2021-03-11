@@ -1,0 +1,109 @@
+\section{Sheaves}
+Let $X$ be a topological space.
+
+\begin{defn}[Presheaf]
+	A \textbf{presheaf} of rings $\mathcal{F}$ on $X$ is the assignment of a ring $\mathcal{F}(U)$ to each open subsets $U \subset X$, and to each pair of comparable open subset $U,V$ (i.e. $U \subset V$), of a ring homomorphism
+	\begin{equation}
+		\rho_{V,U}: \mathcal{F}(V) \to \mathcal{F}(U)
+	,\end{equation}
+	satisfying the following requirements:
+	\begin{description}
+		\item[S1] $\mathcal{F}(\emptyset) = 0$,
+		\item[S2] $\rho_{U,U} = id_{\mathcal{F}(U)}$,
+		\item[S3] for all $U \subset V \subset W$, then
+			\begin{equation}
+			\rho_{W,U} = \rho_{V,U} \circ \rho_{W,V}
+			.\end{equation}
+	\end{description}
+	We call the rings $\mathcal{F}(U)$ sections of $\mathcal{F}$ over $U$ and the morphism $\rho_{V,U}$ the restriction morphisms, which we denote as
+	\begin{equation}
+		\rho_{V,U}(f) =: \left.f\right|_{V} 
+	.\end{equation} 
+\end{defn}
+
+\begin{defn}[Sheaf]
+	A presheaf $\mathcal{F}$ of rings is called a \textbf{sheaf} if it fulfills the gluing condition:
+	\begin{description}
+		\item[S4] for each open subset $U \subset X$, each open covering $\left\{ U_\alpha \right\}_{\alpha \in \mathcal{A}}$ of $U$ and each family of sections $\left\{ s_\alpha \in \mathcal{F}(U_\alpha) \right\}_{\alpha \in \mathcal{A}}$ s.t. $s_\alpha$ and $s_\beta$ have the same restriction to $U_\alpha \cap_{} U_\beta$ for all $\alpha, \beta \in \mathcal{A}$, there is a \textbf{unique} section $s \in \mathcal{F}(U)$ s.t. $\rho_{U, U_\alpha}(s) = s_\alpha$ for all $\alpha \in \mathcal{A}$.
+	\end{description} 
+\end{defn}
+
+\begin{rem}\leavevmode\vspace{-.2\baselineskip}
+	\begin{description}
+		\item[S2,S3] ensure that $\mathcal{F}$ is a contravariant functor
+			\begin{equation}
+				\mathcal{F}: \left\{ U \subset X \ \middle|\ U \text{ is open in } U \right\} =: \mathsf{Op}(X) \to \mathsf{Rings}
+			.\end{equation} 
+		\item[S1] is customary in algebraic geometry, but it is a trivial requirement:
+			given a functor $\mathcal{F}$ as above, then
+			\begin{equation}
+				\widetilde{\mathcal{F}}(U) =
+				\begin{cases}
+					0 & \text{ if } U = \emptyset,\\
+					\mathcal{F}(U) & \text{ if } U \neq \emptyset
+				\end{cases} 
+			\end{equation} 
+			is a presheaf.
+		\item[S4 $\implies$ S1] it follows from the case when $\mathcal{A} = \emptyset$, hence any \textbf{sheaf} is also a \textbf{presheaf}.
+	\end{description} 
+\end{rem}
+
+\begin{rem}
+	We can actually define (pre)-sheaves of abelian groups, by requiring  $\mathcal{F}(U)$ to be abelian groups and the maps $\rho_{U,V}$ to be group homomorphisms.
+\end{rem}
+\begin{rem}
+	We can also define (pre-)sheaves of $\K$-algebras, as before:
+	$\mathcal{F}(U)$ are $\K$-algebras, and $\rho_{U,V}$ are moprhisms of $\K$-algebras.
+\end{rem}
+
+\begin{ex}
+	Let $X \subset \mathbb{A}^n$ be an affine variety, then the rings $\mathcal{O}_X(U)$, with the natural restriction maps
+	\begin{equation}
+		\mathcal{O}_X(V) \to \mathcal{O}_X(U) \quad \text{ for } U \subset V
+	\end{equation} 
+	form a sheaf of rings ($\K$-algebras).
+	We denote this sheaf by $\mathcal{O}_X$ and it is called the \textbf{sheaf of regular functions}, or the \textbf{structure sheaf}, on $X$.
+\end{ex} 
+
+\begin{defn}[Ringed space]
+	A pair $\left(X, \mathcal{O}_X\right)$ of a topological space $X$ and a sheaf of rings $\mathcal{O}_X$ on $X$ is called a \textbf{ringed space}.
+	Moreover $\mathcal{O}_X$ is called the \textbf{structure sheaf} of the ringed space.
+\end{defn}
+\begin{rem}
+	In general, spaces of functions easily form a presheaf of rings.
+	However, they only form a sheaf if the conditions imposed on the functions are local.
+	In fact the condition \textbf{S4} guarantees that we can check whether a function belongs to the sections locally.
+\end{rem}
+
+\begin{defn}[Restrictions of (pre-)sheaves]
+	Let $U \subset X$ be an open subset.
+	Given a (pre-)sheaf $\mathcal{F}$ on $X$, we define its restriction $\left.\mathcal{F}\right|_{U}$ as the sheaf defined by
+		\begin{equation}
+			\left.\mathcal{F}\right|_{U} (V) := \mathcal{F}(V)
+		,\end{equation} 
+		for each open subset $V \subset U$ and we take the same restriction morphisms as $\mathcal{F}$.
+		Notice that, given a sheaf $\mathcal{F}$ also $\left.\mathcal{F}\right|_{U}$ is a sheaf.
+\end{defn}
+
+Generalization of the \textbf{local rings} $\mathcal{O}_{X,p}$ to sheaves:
+\begin{defn}[Stalk of a (pre-)sheaf]
+	Consider $\mathcal{F}$ a presheaf on $X$ and a point $p \in X$.
+	Consider the quotient space
+	\begin{equation}
+		\mathcal{F}_p := \left\{ \left(U, \phi\right) \ \middle|\ p \in U \stackrel{\text{open}}{\subset} X, \phi \in \mathcal{F}(U)  \right\}/\sim
+	,\end{equation} 
+	where the equivalence relation is defined as follows:
+	$\left(U_1, \phi_1, \right) \sim \left(U_2, \phi_2\right)$ iff $\exists\, V \stackrel{\text{open}}{\subset} X$ s.t.
+	$p \in V \subset U_1 \cap_{} U_2$, and $\left.\phi_1\right|_{V} = \left.\phi_2\right|_{V}$.
+
+	This quotient space is called the \textbf{stalk} of $\mathcal{F}$ at $p$, whereas its elements $\left[ \left(U, \phi\right) \right] \in \mathcal{F}_p$ are called  the \textbf{germs} of $\mathcal{F}$ at $p$.
+\end{defn}
+
+\begin{rem}
+	$\mathcal{F}_p$ inherits the algebraic structure from $\mathcal{F}(U)$. (We just need to check that the operations defined on $\mathcal{F}(U)$ are preserved by the equivalence relation).
+	In other words if $\mathcal{F}$ is a sheaf of rings, then $\mathcal{F}_p$ is a ring for any $p \in X$.
+\end{rem}
+
+\begin{lem}
+	Let $X$ be an affine variety and $p \in X$, then the stalk of $\mathcal{F}= \mathcal{O}_X$ at $p$ is (canonically isomorphic to) the local ring $\mathcal{O}_{X,p}$.
+\end{lem} 

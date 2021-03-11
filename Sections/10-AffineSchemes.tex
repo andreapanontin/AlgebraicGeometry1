@@ -1,0 +1,455 @@
+\section{Affine schemes}
+The idea is to extend the category of prevarieties in order to
+\begin{itemize}
+	\item include also reducible objects,
+	\item expand the (Nullstellensatz) one to one correspondance also to non-radical ideals:
+	\begin{equation}
+	\begin{tikzcd}[row sep=tiny]
+			\left\{\begin{matrix}
+				\text{ affive viarieties }\\
+				\text{ in } \mathbb{A}^{n}(\K)
+			\end{matrix}\right\} \arrow[rr, "", leftrightarrow] & &
+			\left\{  \begin{matrix}
+				\text{ radical ideals }\\
+				\text{ in } \mathbb{K}\left[x_1, \ldots, x_n \right]\\
+			\end{matrix}\right\}
+	\end{tikzcd}
+	.\end{equation} 
+\end{itemize}		
+In fact, for $X_1, X_2 \subset \mathbb{A}^{n}$, the ideal $\mathbb{I}\left( X_1 \right) + \mathbb{I}\left( X_2 \right)$
+contains more refined information then the associated ideal to the intersection $X_1 \cap X_2$
+and, in general, it is not radical.
+\begin{equation}
+\mathbb{I}\left( X_1 \cap X_2 \right) =
+\sqrt{\mathbb{I}\left( X_1 \right) + \mathbb{I}\left( X_2 \right)}
+.\end{equation} 
+For example, given $X_1' := \mathbb{V}\left( x^3 - y \right)$ and $X_2 := \mathbb{V}\left( x \right)$,
+then $\mathbb{I}\left( X_1' \right) + \mathbb{I}\left( X_2 \right) = \left( x,y \right)$.
+If, instead, we consider the curve $X_1 := \mathbb{V}\left( y^2 - x \right)$,
+then $\mathbb{I}\left( X_1 \right) + \mathbb{I}\left( X_2 \right) = \left( x, y^2 \right)$.
+
+We have two different geometrical situations (transverse intersection, against non-transverse intersection),
+signified by different sums of associated ideals, but clearly with the same radical ideal.
+
+For instance, in the second case,
+if we blow up $\mathbb{A}^{2}$ at $\mathbb{I}\left( X_1 \right) + \mathbb{I}\left( X_2 \right)$,
+then the strict transforms $\widetilde{X}_1$ and $\widetilde{X}_2$ are disjoint.
+If, instead, we blow up $\mathbb{I}\left( X_1 \cap X_2 \right) = \sqrt{\mathbb{I}\left( X_1 \right) + \mathbb{I}\left( X_2 \right)}$,
+then $\widetilde{X}_1 \cap \widetilde{X}_2 \neq 0$.
+Another reason why the radical ideal is not always the right choice.
+
+Moreover, from
+	\begin{equation}
+	\begin{tikzcd}[row sep=tiny]
+			\left\{\begin{matrix}
+				\text{ Affine }\\
+				\text{ varieties }
+			\end{matrix}\right\}_{/ \text{isom}}
+			\arrow[rr, "", leftrightarrow] & &
+			\left\{  \begin{matrix}
+				\text{ finitely generated } \K\text{-algebras }\\
+				\text{ that are integral domains}
+			\end{matrix}\right\}_{/ \text{isom}}
+	\end{tikzcd}
+	,\end{equation} 
+we will drop all assumptions on the right hand side
+and associate a ringed space (i.e. a space on which we can do geometry)
+to any commutative ring with unity.
+(The idea is that, when defining the Zariski topology, we didn't use the $\K$-algebra
+structure, but only ideals, hence the ring structure).
+
+\begin{defn}[Spectrum of a ring]
+	Let $R$ be a ring.
+	We define the \textbf{spectrum} of $R$ to be
+	\begin{equation}
+	\mathrm{Spec}\, R := \left\{ \mathfrak{p} \triangleleft R \ \middle|\ 
+	\mathfrak{p} \text{ is a prime ideal}\, \right\}
+	.\end{equation} 
+	$\mathrm{Spec}\, R$ is also called the \textbf{affine scheme} associated with $R$.
+	Moreover, for every $\mathfrak{p} \in \mathrm{Spec}\, R$, we define the residue field
+	of $\mathrm{Spec}\, R$ at $\mathfrak{p}$ to be
+	\begin{equation}
+	k(\mathfrak{p}) := Q \left( R/\mathfrak{p} \right)
+	.\end{equation} 
+	(Notice that we will use the convention that $(1) = R$ is not a prime ideal).
+
+	Moreover we can define $\mathrm{MaxSpec}\, R := \left\{ \mathfrak{m} \triangleleft R \ \middle|\ 
+	\mathfrak{m} \text{ is a maximal ideal}\, \right\}$ the maximal specturm of $R$.
+\end{defn}
+
+\begin{rem}[]
+	$R$ is the analogue of the coordinate ring:
+	we can view any element $f \in R$ as a function on $\mathrm{Spec}\, R$ by
+	\begin{equation}
+	\begin{tikzcd}[row sep=tiny, column sep=small]
+		R \arrow[r, "", twoheadrightarrow] &
+		R/\mathfrak{p} \arrow[r, "", hookrightarrow] &
+		k(\mathfrak{p})\\
+		f \arrow[rr, "", mapsto] && f(\mathfrak{p})
+	\end{tikzcd}
+	.\end{equation} 
+	Hence $f$ can be regarded as a function, although $f(\mathfrak{p})$ might lie
+	in different fields, depending on $\mathfrak{p}$.
+
+	If, in particular, $R = \mathbb{K}[X]$, for some affine variety $X$,
+	we can use point $x \in X$ to construct prime ideals, namely $\mathfrak{p} = \mathfrak{m}_x := \mathbb{I}\left( x \right) \in \mathrm{Spec}\, R$.
+	In particular $\mathbb{K}[X]/\mathfrak{m}_x \cong \K$.
+	Then, for all $f \in \mathbb{K}[X]$, we have $f(\mathfrak{p}) = f(x) \in \K$
+	in which the left hand side intereprets $f$ as a function on $\mathrm{Spec}\, R$,
+	whereas the right hand side interepresentationets it as a function on $X$.
+
+	If, instead, $\mathfrak{p} \subset \mathbb{K}[X]$ is prime, but not maximal, then
+	$\mathfrak{p} = \mathbb{I}\left( Y \right) \subset \mathbb{K}[X]$, for
+	some irreducible closed subset $Y \subset X$.
+	Then $f(\mathfrak{p}) \in k(\mathfrak{p}) = \K(Y)$ is the restriction of
+	$f: X \to \K$ to $Y$.
+\end{rem}
+
+\begin{ex}\leavevmode\vspace{-.2\baselineskip}
+\begin{enumerate}
+\item If $\K$ is a field (not necessairily algebraically closed),
+	then $\mathrm{Spec}\, \K = \left\{ (0) \right\}$ is a single point.
+\item $\mathrm{Spec}\, \mathbb{C}[x] = \left\{ (x-a) \ \middle|\ a \in \mathbb{C} \right\} \cup \left\{ (0) \right\}$.
+	The same description holds for any algebraically closed field $\mathbb{K}$ instead of $\mathbb{C}$.
+\item Let $X$ be an affine variety over the algebraically closed field $\K$.
+	Consider $R := \mathbb{K}[X]$. Then we have the bijection
+	\begin{equation}
+	\begin{tikzcd}[row sep=tiny]
+		\mathrm{Spec}\, R \arrow[r, "", leftrightarrow] &
+		\left\{ \text{subvarieties of } X \right\}\\
+		\mathbb{I}\left( Y \right) &
+		Y \arrow[l, "", rightarrow] 
+	\end{tikzcd}
+	\end{equation} 
+	in which subvarieties are exactly the irreducible closed subsets of $X$.
+	Then, restricting to the maximal spectrum of $R$, we obtain the correspondance
+	\begin{equation}
+	\begin{tikzcd}[row sep=tiny]
+		\mathrm{MaxSpec}\, R \arrow[r, "", leftrightarrow] &
+		X\\
+		\mathfrak{m}_x &
+		x \arrow[l, "", rightarrow] 
+	\end{tikzcd}
+	\end{equation} 
+	The element $\mathbb{I}\left( Y \right) \in \mathrm{Spec}\, R$ is called
+	\textbf{generic point} of $Y$.
+	If we don't want to consider the additional points of $\mathrm{Spec}\, R$ coming
+	from $\mathbb{I}\left( Y \right)$, for $\dim Y \geq 1$,
+	we may want to restrict to the maximal spectrum of $R$.
+
+\item Let's consider the special case in which the field is not algebraically closed, i.e. $\R$:
+	\begin{equation}
+	\mathrm{Spec}\, \R =
+	\left\{ (x-a) \ \middle|\ a \in \R \right\} \cup
+	\left\{ \left( (x-a)^2 + b^2 \right) \ \middle|\ a,b \in \R \text{ and } b > 0 \right\} \cup
+	\left\{ (0) \right\}
+	.\end{equation} 
+	Then the residue fields are:
+	\begin{enumerate}
+		\item $k \left( (x-a) \right) \cong \R$,
+		\item $k \left( \left( (x-a)^2 + b^2 \right) \right) \cong
+			k \left( (x^2 + 1) \right) \cong \mathbb{C}$ (by scaling things),
+		\item $k \left( (0) \right) \cong \R(x)$.
+	\end{enumerate}
+\item $\mathrm{Spec}\, \Z = \left\{ (2), (3), \ldots, (p), \ldots \right\} \cup \left\{ (0) \right\}$
+	for $p$ prime.
+	$(0)$ is the generic point of $\Z$.
+	Then $k \left( (p) \right) \cong Q \left( \mathbb{Z}/p\mathbb{Z} \right) = \mathbb{F}_p$
+	and, clearly, $k \left( (0) \right) = \mathbb{Q}$.
+
+	FInally, by definition, given $f \in \Z$, $f \left( (p) \right) = f \mod p \in \mathbb{F}_p$.
+\end{enumerate}
+\end{ex} 
+
+We want to defien a ringed space for $\mathrm{Spec}\, R$, hence we need to
+define a topology on it. Ideally we should mimic the Zariski topology on affine varieties.
+
+\begin{defn}[Vanishing locus]
+	Let $R$ be a ring and $S \subset R$.
+	We define the \textbf{vanishing locus} of $S$ as
+	\begin{align}
+		\mathbb{V}\left( S \right) :&= \left\{ \mathfrak{p} \in \mathrm{Spec}\, R \ \middle|\ 
+	f(\mathfrak{p}) = 0 \text{ for all } f \in S \right\}\\
+		&= \left\{ \mathfrak{p} \in \mathrm{Spec}\, R \ \middle|\ 
+		S \subset \mathfrak{p} \right\} \subset \mathrm{Spec}\, R
+	.\end{align} 
+\end{defn}
+
+\begin{rem}[]
+	We clearly have $\mathbb{V}\left( S \right) = \mathbb{V}\left( (S) \right)$,
+	where we denote the ideal generated by $S$ by $(S)$.
+\end{rem}
+
+\begin{lem}\leavevmode\vspace{-.2\baselineskip}
+\begin{enumerate}
+	\item $\mathbb{V}\left( 0 \right) = \mathrm{Spec}\, R$ and $\mathbb{V}\left( 1 \right) = \emptyset$.
+	\item If $\left\{ \mathcal{I}_j \right\}_{j \in J}$ is an arbitrary family
+		of ideals, then
+		\begin{equation}
+		\bigcap_{j \in J} \mathbb{V}\left( \mathcal{I}_j \right) =
+		\mathbb{V}\left( \sum_{j \in J}^{} \mathcal{I}_j \right) \subset \mathrm{Spec}\, R
+		.\end{equation} 
+	\item Given $\mathcal{I}_1, \mathcal{I}_2 \triangleleft R$, then
+		\begin{equation}
+		\mathbb{V}\left( \mathcal{I}_1 \right) \cup \mathbb{V}\left( \mathcal{I}_2 \right) =
+		\mathbb{V}\left( \mathcal{I}_1 \cdot \mathcal{I}_2 \right) \subset \mathrm{Spec}\, R
+		.\end{equation} 
+	\item Given $\mathcal{I}_1, \mathcal{I}_2 \triangleleft R$, we have
+		\begin{equation}
+		\mathbb{V}\left( \mathcal{I}_1 \right) \subset \mathbb{V}\left( \mathcal{I}_2 \right) \iff
+		\sqrt{\mathcal{I}_2} \subset \sqrt{\mathcal{I}_1}
+		.\end{equation} 
+\end{enumerate}
+\end{lem}
+
+\begin{defn}[Zariski topology]
+	The topology on $\mathrm{Spec}\, R$, whose closed subsets are of the form
+	$\mathbb{V}\left( S \right)$, for $S \subset R$, is called the \textbf{Zariski topology}.
+\end{defn}
+\begin{rem}[]
+	We can use the Zariski topology to study the irreducibility of $\mathrm{Spec}\, R$
+	and to define its dimension.
+\end{rem}
+
+\begin{rem}[]
+	Not all point of $\mathrm{Spec}\, R$ are closed.
+	In fact we have
+	\begin{equation}
+	\overline{\left\{ \mathfrak{p} \right\}} = \mathbb{V}\left( \mathfrak{p} \right) =
+	\left\{ \mathfrak{q} \in \mathrm{Spec}\, R \ \middle|\ \mathfrak{q} \supset \mathfrak{p} \right\}
+	.\end{equation} 
+	Then $\left\{ \mathfrak{p} \right\}$ is closed iff $\mathfrak{p}$ is a maximal ideal.
+	In particular, in $\mathrm{Spec}\, R$, the closed points are maximal ideals (i.e. the elements
+	that correspond to points in the ring of functions on an affine variety).
+	In other words $\left\{ \text{closed points} \right\} = \mathrm{MaxSpec}\, R$.
+	Whereas non-closed points are generic points of $\mathbb{V}\left( \mathfrak{p} \right)$.
+\end{rem}
+
+\begin{ex}[Generic points]
+	Let $\K$ be an algebraically closed field.
+	Consider $X := \mathrm{Spec}\, \mathbb{K}\left[x_1, x_2 \right]$
+	the spectrum of the coordinate ring of the affine plane.
+	Consider $L := \mathbb{V}\left( x_2 \right) \subset X$ the $x_1$-axis.
+	What is $X \setminus L$?
+	It contains
+	\begin{itemize}
+		\item all closed points not lying in $L$,
+		\item generic points (e.g. $\mathfrak{p} = x_1$, the $x_2$-axis).
+	\end{itemize}
+	The $x_1$-axis and the $x_2$-axis have common points, but
+	the generic points of the $x_2$-axis does not lie on the $x_1$-axis,
+	so that $(x_1) \in X \setminus L$.
+\end{ex} 
+
+\begin{defn}[Distinguished open subsets]
+	Let $R$ be a ring, and $X := \mathrm{Spec}\, R$.
+	The open subsets of the form $X_f := X \setminus \mathbb{V}\left( f \right)$, for some $f \in R$
+	are called the \textbf{distinguished open subsets} of $X$.
+\end{defn}
+
+\begin{rem}[]
+	As for varieties, the distinguished open subsets will form a basis for the Zariski topology.
+	Though, since we don't know whether this Zariski topology makes the spectrum of the ring $R$
+	a Noetherian space, we cannot say that every open subset can be obtained by
+	finite union of distinguished open subsets.
+\end{rem}
+
+\begin{defn}[Regular functions on an open subset]
+	Let $R$ be a ring, $X = \mathrm{Spec}\, R$ and $U \subset X$ an open subset.
+	We define the ring of regular functions on $U$, denoted by $\mathcal{O}_{X} \left( U \right)$,
+	as
+	\begin{align}
+		\mathcal{O}_{X} \left( U \right) := \bigg\{ &\varphi = \left( \varphi_{\mathfrak{p}} \right)_{\mathfrak{p} \in U}
+		\in \prod_{\mathfrak{p} \in U} R_{\mathfrak{p}} \ \bigg|\ \text{for every }
+		\mathfrak{p} \in U \text{ there is } V \subset U\\
+		&\text{an open neighbourhood of } \mathfrak{p} \text{ and } f,g \in R, 
+		\text{ with } g \notin Q,\\
+		&\varphi_Q = \frac{f}{g} \in R_Q \text{ for all } Q \in V \bigg\}
+	.\end{align} 
+	The idea is thet a regular function on $U$ should locally be a quotient $f/g$,
+	with $f,g \in R$. In particular $g$ should be ``ivertible" at some $Q \in U$, i.e.
+	$Q \notin \mathbb{V}\left( g \right)$.
+	Equivalently $g \notin Q$, for some $Q \in U$.
+\end{defn}
+
+\begin{rem}[Structure sheaf]
+	It is easy to see that $\mathcal{O}_{X}$ is a sheaf on $X$ (the defining condition
+	on $\varphi$ is local).
+	Moreover we call it the {\em structure sheaf} on $X$.
+\end{rem}
+
+\begin{prop}
+	Let $R$ be a ring and $X = \mathrm{Spec}\, R$.
+	\begin{enumerate}
+		\item For all $\mathfrak{p} \in X$ we have $\mathcal{O}_{X, \mathfrak{p}} \simeq R_{\mathfrak{p}}$
+			(the stalk of $\mathcal{O}_X$ at $\mathfrak{p}$ is isomorphic to the
+			localization of $R$ at $\mathfrak{p}$),
+		\item For any $f \in R$, $\mathcal{O}_{X} \left( X_f \right) \simeq R_f$.
+	\end{enumerate}
+	In particular, for $f = 1$, we obtain $\mathcal{O}_{X} \left( X \right) \simeq R$.
+\end{prop} 
+
+\begin{rem}[]
+	A regular function is not determined by its value at each point of $X := \mathrm{Spec}\, R.$
+\end{rem}
+
+\begin{ex}
+	Let $R := \K[x]/ (x^2)$ and $X := \mathrm{Spec}\, R$.
+	Clearly $R$ is not a domain and $X$ contains only the point $(x)$,
+	with residue field $k \left( (x) \right) \cong \mathbb{K}[x]/ (x) \cong \K$.
+	Since $R \cong \mathcal{O}_{X} \left( X \right)$ we have that $0$ and $x \in R$ define different functions on $X$.
+	However both functions have value $0$ at the only point of $X$.
+\end{ex} 
+
+\subsection{Locally ringed spaces}
+\begin{rem}[]
+To define morphisms between affine schemes one needs to keep in mind that
+the structure sheaf is not necessairily a sheaf of $\K$-valued functions.
+This means that, if we want to define a morphism $f: X \to Y$ between affine schemes,
+we need to also define the pull-back maps
+\begin{equation}
+	f^*: \mathcal{O}_{Y} \left( U \right) \to \mathcal{O}_{X} \left( f^{-1}(U) \right)
+\end{equation} 
+in the data required to define $f$.
+
+Recall, moreover, that the pull-back should:
+\begin{itemize}
+	\item be compatible with restriction morphisms, i.e. for all $V \stackrel{\text{open}}{\subset} U$ in $Y$,
+		the following diagram should commute
+		\begin{equation}
+			\begin{tikzcd}[column sep=large]
+			\mathcal{O}_{Y} \left( U \right) \arrow[r, "\rho_{U,V}", rightarrow] \arrow[d, "f^*_U"', rightarrow] &
+			\mathcal{O}_{Y} \left( V \right) \arrow[d, "f^*_{V}", rightarrow] \\
+			\mathcal{O}_{X} \left( f^{-1}(U) \right) \arrow[r, "\rho_{f^{-1}(U), f^{-1}(V)}"', rightarrow] &
+			\mathcal{O}_{X} \left( f^{-1}(V) \right)
+		\end{tikzcd}
+		;\end{equation} 
+	\item preserve the structure of the stalks as local rings:
+		$\mathcal{O}_{X, p}$ has a unique macimal ideal
+		\begin{equation}
+		\mathfrak{m}_{X, p} := \left\{ \phi \in \mathcal{O}_{X, p}
+		\ \middle|\ \phi(p) = 0 \right\}
+		\end{equation} 
+		and $\mathcal{O}_{Y, f(p)}$ has maximal ideal $\mathfrak{m}_{Y, f(p)}$.
+		Then we require that the induced map
+		\begin{align}
+			f^*_{p}: \mathcal{O}_{Y, f(p)} &\to \mathcal{O}_{X, p} \\
+			\left(U, \phi\right) &\mapsto \left(f^{-1}(U), f^* \phi\right)
+		\end{align} 
+		satisfies $\left( f^*_{p} \right)^{-1}(\mathfrak{m}_{X, p}) =
+		\mathfrak{m}_{Y, f(p)}$.
+\end{itemize}
+\end{rem}
+
+\begin{defn}[Locally ringed space]
+	A \textbf{locally ringed space} is a ringed space $\left( X, \mathcal{O}_{ X } \right)$ s.t.
+	at all $p \in X$ the stalk $\mathfrak{O}_{X, p}$ is a local ring,
+	wth maximal ideal denoted by $\mathfrak{m}_{X,p}$
+	and residue field $k(p) := \mathcal{O}_{X,p}/\mathfrak{m}_{X,p}$.
+\end{defn}
+
+\begin{defn}[Morphism of locally ringed spaces]
+	Consider two locally ringed spaces $\left( X, \mathcal{O}_{ X } \right)$ and $\left( Y, \mathcal{O}_{ Y } \right)$.
+	A morphism of locally ringed spaces is given by 
+	a continuous map $f: X \to Y$ and by a family, for all $U \subset Y$ open, of ring homomorphisms
+	\begin{equation}
+		f^*_U: \mathcal{O}_{Y} \left( U \right) \to \mathcal{O}_{X} \left( f^{-1}(U) \right)
+	\end{equation} 
+	satisfying
+	\begin{enumerate}
+		\item compatibility with restrictions, i.e.
+			for all $U \subset V \subset Y$ open, the diagram commutes
+			\begin{equation}
+			\begin{tikzcd}
+				\mathcal{O}_{Y} \left( V \right) \arrow[r, "f^*_V", rightarrow] 
+				\arrow[d, "\rho_{V,U}"', rightarrow] &
+				\mathcal{O}_{X} \left( f^{-1}(V) \right)
+				\arrow[d, "\rho_{f^{-1}(V), f^{-1}(U)}", rightarrow] \\
+				\mathcal{O}_{Y} \left( U \right) \arrow[r, "f^*_U"', rightarrow] &
+				\mathcal{O}_{X} \left( f^{-1}(U) \right)
+			\end{tikzcd}
+			,\end{equation} 
+		\item the induced maps $f^*_p : \mathcal{O}_{Y, f(p)} \to \mathcal{O}_{X,p}$
+			(whose existance is granted by the previous property)
+			satisfy $\left( f^*_p \right)^{-1}(\mathfrak{m}_{X,p}) = \mathfrak{m}_{Y, f(p)}$
+			for all $p \in X$.
+	\end{enumerate}
+	Notice that, in general, the subset $U \subset Y$ will be clear from the context, hence
+	one will write just $f^*$, instead of $f^*_U$.
+\end{defn}
+
+\begin{defn}[Morphism of affine schemes]
+	A morphism of affine schemes is a morphism of locally
+	ringed spaces, between affine schemes.
+\end{defn}
+
+\begin{prop}
+	Let $R,S$ be rings, $X := \mathrm{Spec}\, R$ and $Y := \mathrm{Spec}\, S$.
+	Then there is a one-to-one correspondance
+	\begin{equation}
+		\begin{tikzcd}[row sep=tiny]
+		\left\{ \text{morphisms } X \to Y \right\} \arrow[r, "", leftrightarrow] &
+		\left\{ \text{ring homomorphisms } S \to R \right\}\\
+		f \arrow[r, "", mapsto] & f^*\\
+		g^\# & g \arrow[l, "", mapsto]
+	\end{tikzcd}
+	,\end{equation} 
+	in which, for a ring homomorphism $g: S \to R$ we define
+	\begin{align}
+		g^{\#}: X = \mathrm{Spec}\, R &\to Y = \mathrm{Spec}\, S \\
+		\mathfrak{p} &\mapsto g^{-1}(\mathfrak{p})
+	.\end{align} 
+\end{prop} 
+
+\begin{ex}
+	Let $X := \mathrm{Spec}\, R$ and $\mathcal{I} \triangleleft R$ an ideal.
+	Define $Y := \mathrm{Spec}\, R/\mathcal{I}$.
+	The ring homomorphism $q: R \to R/\mathcal{I}$ gives rise to a morphism
+	\begin{align}
+		i: Y &\to X \\
+		\mathfrak{p} &\mapsto \mathfrak{p} + \mathcal{I} = q^{-1}(\mathfrak{p})
+	.\end{align} 
+	Let us observe that $i = q^{\#}$ gives a one-to-one correspondance
+	between prime ideals of $R/\mathcal{I}$ and prime ideals of $R$ containing $\mathcal{I}$.
+	Thus $i$ is injective and its image is $\mathbb{V}\left( \mathcal{I} \right) \subset X$.
+	In other words: ideals of $R$ give rise to affine closed subschemes of $X$.
+\end{ex} 
+
+\begin{defn}[Intersection scheme]
+	Let $Y_1$ and $Y_2$ be affine subschemes of $X$, then the intersection scheme
+	of $Y_1$ and $Y_2$ in $X$ is
+	\begin{equation}
+	Y_1 \cap Y_2 := \mathrm{Spec}\, \frac{R}{\mathcal{I}_1 + \mathcal{I}_2}
+	.\end{equation} 
+\end{defn}
+
+\begin{defn}[Union scheme]
+	Let $Y_1$ and $Y_2$ be affine subschemes of $X$, then the union scheme
+	of $Y_1$ and $Y_2$ in $X$ is
+	\begin{equation}
+	Y_1 \cup Y_2 := \mathrm{Spec}\, \frac{R}{\mathcal{I}_1 \cap \mathcal{I}_2}
+	.\end{equation} 
+\end{defn}
+
+\begin{ex}[Affine plane]
+	Consider the affine plane $X := \mathrm{Spec}\, \mathbb{C}[x_1,x_2]$
+	and $Y_1 := \mathrm{Spec}\, \mathbb{C}[x_1,x_2]/ (x_2)$ (the $x$ axis),
+	$Y_2 := \mathrm{Spec}\, \mathbb{C}[x_1,x_2]/ (x_2 - x_1^2+a^2)$ for a fixed $a \in \mathbb{C}$ (a parabola).
+	Then
+	\begin{equation}
+	Y_1 \cap Y_2 =
+	\mathrm{Spec}\, \mathbb{C}[x_1,x_2]/ (x_2, x_1^2-a^2) =
+	\mathrm{Spec}\, \mathbb{C}[x_1]/ ( (x_1-a)(x_1+a))
+	.\end{equation} 
+	If, in particular $a=0$, $Y_1 \cap Y_2 \cong \mathrm{Spec}\, \mathbb{C}[x]/ (x^2)$:
+	it is a double point, it encodes the point $(0,0)$ togethere with a tangent direction
+	(along the $x_1$-axis).
+\end{ex} 
+
+\begin{lem}
+	Let $R$ be a ring, $X := \mathrm{Spec}\, R$, and $f \in R$.
+	Then
+	\begin{equation}
+	X_f \cong \mathrm{Spec}\, R_f
+	.\end{equation} 
+\end{lem} 

@@ -1,0 +1,242 @@
+\section{Morphisms between affine varieties}
+\begin{defn}[Morphism of ringed spaces]
+	Given two ringed spaces $\left(X, \mathcal{O}_X\right)$ and $\left(Y, \mathcal{O}_Y\right)$, a \textbf{morphism of ringed spaces} from  $\left( X, \mathcal{O}_{ X } \right)$ to $\left( Y, \mathcal{O}_{ Y } \right)$ consists of:
+	\begin{itemize}
+		\item a continuous map $f: X \to Y$, 
+		\item for each open subset $U \subset Y$, a ring homomorphism
+			\begin{equation}
+				f_U: \mathcal{O}_Y(U) \to \mathcal{O}_X \left( f^{-1}(U) \right)
+			,\end{equation} 
+			s.t. the following diagram commutes for all $U \stackrel{\text{open}}{\subset}  V \stackrel{\text{open}}{\subset} Y$
+			\begin{equation}
+			\begin{tikzcd}
+				\mathcal{O}_Y(V) \arrow[rr, "\rho_{V,U}", rightarrow] \arrow[d, "f_V"', rightarrow] & \ & \mathcal{O}_Y(U) \arrow[d, "f_U", rightarrow] \\
+				\mathcal{O}_X \left( f^{-1}(V) \right) \arrow[rr, "\rho_{f^{-1}U, f^{-1}U}"', rightarrow] & \ & \mathcal{O}_X \left( f^{-1}(U) \right)
+			\end{tikzcd}
+			.\end{equation} 
+	\end{itemize}
+\end{defn}
+
+\begin{defn}[Isomorphism of ringed spaces]
+	An \textbf{isomorphism of ringed spaces} is a morphism of ringed spaces
+	\begin{equation}
+	f: \left( X, \mathcal{O}_{ X } \right) \to \left( Y, \mathcal{O}_{ Y } \right)
+	\end{equation} 
+	s.t. there exists another morphism of ringed spaces
+	\begin{equation}
+	g: \left( Y, \mathcal{O}_{ Y } \right) \to \left( X, \mathcal{O}_{ X } \right)
+	\end{equation} 
+	with $g \circ f = id_{\left( X, \mathcal{O}_{ X } \right)}$ and $f \circ g = id_{\left( Y, \mathcal{O}_{ Y } \right)}$.
+\end{defn}
+
+\begin{rem}
+	Notice that we only work with ringed spaces $\left( X, \mathcal{O}_{ X } \right)$ s.t.
+	\begin{itemize}
+		\item the elements of $\mathcal{O}_X(U)$, for any $U \stackrel{\text{open}}{\subset} X$ are functions $U \to\K$,
+		\item the restriction maps are given by
+			\begin{align}
+				\mathcal{O}_X(V) &\to \mathcal{O}_X(U) \\
+				\phi &\mapsto \left.\phi\right|_{U} 
+			.\end{align} 
+	\end{itemize}
+	This implies that a continuous map $f: X \to Y$ induces, for any $U \stackrel{\text{open}}{\subset} Y$, a ring homomorphism $f^*$:
+	\begin{align}
+		\mathcal{O}_Y(U) &\xrightarrow{f^*} \mathcal{O}_X \left( f^{-1}(U) \right) \\
+		\phi &\mapsto f^*\phi := \phi \circ f
+	.\end{align} 
+	We will almost always take these ring homomorphisms as our $f_U$.
+\end{rem}
+
+\begin{rem}
+	In our case, then, a morphism of ringed space $\left( X, \mathcal{O}_{ X } \right) \xrightarrow{f} \left( Y, \mathcal{O}_{ Y } \right)$ is a continuous map 
+	\begin{equation}
+	f: X \to Y
+	\end{equation} 
+	such that $f^*\phi \in \mathcal{O}_X \left( f^{-1}(U) \right)$ for any $U \stackrel{\text{open}}{\subset} Y$ and $\phi \in \mathcal{O}_Y(U)$.
+\end{rem}
+
+\begin{defn}[Morphism of affine varieties]
+	A \textbf{morphism of affine varieties}
+	\begin{equation}
+	f: X \to Y
+	\end{equation} 
+	is a morphism of ringed spaces $f: \left( X, \mathcal{O}_{ X } \right) \to \left( Y, \mathcal{O}_{ Y } \right)$ (with $f_U := f^*$ for all $U \stackrel{\text{open}}{\subset} Y$).
+\end{defn}
+
+\begin{lem}
+	Let $X, Y$ be \textbf{affine varieties} and $f: X \to Y$ a continuous map. TFAE:
+	\begin{enumerate}
+		\item $f$ is a morphism,
+		\item for every $\phi \in \mathcal{O}_Y(Y)$ we have $f^*\phi \in \mathcal{O}_{X}(X)$, i.e. the pull-back of any regular function on $Y$ is regular everywhere on $X$,
+		\item for every $p \in X$ and $\phi \in \mathcal{O}_{Y, f(p)}$ we have $f^*\phi \in \mathcal{O}_{X,p}$, i.e. the pull-back of a function regular at $f(p)$ is regular at $p$.
+	\end{enumerate}
+\end{lem} 
+
+\begin{ex}\leavevmode\vspace{-.2\baselineskip}
+	\begin{enumerate}
+		\item The following is a morphism of varieties
+			\begin{align}
+				 f: \mathbb{A}^1 &\to \mathbb{A}^1 \\
+				x &\mapsto x^2
+			,\end{align} 
+		\item Let $X, Y$ be affine varieties, $f_1, \ldots, f_n \in \mathbb{K}[X]$. Then a map of the following form is always a morphism
+			\begin{align}
+				f: X &\to Y \\
+				a &\mapsto \left( f_1(a), \ldots, f_n(a) \right)
+			.\end{align} 
+	\end{enumerate}
+\end{ex} 
+
+\begin{lem}
+	Let $X \subset \mathbb{A}^m, Y \subset \mathbb{A}^n$ be affine varieties.
+	We have a one to one correspondance
+%	\begin{align}
+%		\left\{ 
+%			\begin{matrix}
+%				\text{morphisms of varieties}\\
+%				f: X \to Y
+%			\end{matrix} 
+%		\right\} &\xrightarrow{\quad\quad} 
+%		\left\{ 
+%			\begin{matrix}
+%				\K-\text{algebra homomorphisms}\\
+%				\phi: \mathbb{K}[Y] \to \mathbb{K}[X]
+%			\end{matrix} 
+%		\right\}\\
+%		f \quad\quad\ \ &\xmapsto{\quad\quad}\quad\quad\ \ f^*
+%	.\end{align} 
+	\begin{equation}
+	\begin{tikzcd}[row sep=tiny]
+			\left\{\begin{matrix}
+				\text{ morphisms of varieties }\\
+				f: X \to Y
+			\end{matrix}\right\} \arrow[rr, "", leftrightarrow] & &
+			\left\{  \begin{matrix}
+				\ \K-\text{algebra homomorphisms }\\
+				\phi: \mathbb{K}[Y] \to \mathbb{K}[X]
+			\end{matrix}\right\} \\
+			f \arrow[rr, "", rightarrow, maps to] & & f^*
+	\end{tikzcd}
+	.\end{equation} 
+\end{lem} 
+
+\begin{rem}
+	Applying the lemma we can view the ring of regular functions on a variety as
+	\begin{equation}
+	\mathbb{K}[X] = \left\{ f: X \to \mathbb{A}^1 \ \middle|\ f  \text{ is a morphism of varieties}\, \right\}
+	.\end{equation} 
+\end{rem} 
+
+\begin{lem}
+	Let $f: X \to Y$ be a morphism of affine varieties and let $f^*: \mathbb{K}[Y] \to \mathbb{K}[X]$ be the associated map of $\K$-algebras.
+	\begin{itemize}
+		\item If $f$ is surjective, then $f^*$ is injective.
+		\item $f^*$ is injective iff $f(X)$ is dense in $Y$.
+		\item If $f^*$ is surjective, then $f$ is injective.
+		\item $f^*$ is surjective iff $f$ restricts to an isomorphism between $X$ and $f(X)$.
+			In such case we call $f$ an embedding.
+	\end{itemize}
+\end{lem} 
+
+\section{Product of varieties}
+\begin{lem}
+	If $X \subset \mathbb{A}^m$ and $Y \subset \mathbb{A}^n$ are \textbf{affine varieties}, then $X \cross Y \subset \mathbb{A}^{m+n}$ is an \textbf{affine variety}.
+\end{lem} 
+\begin{rem}
+	While it is true that, for generic irreducible topological spaces $X$ and $Y$, then $X \cross Y$ is irreducible with the product topology.
+	It is also true that the Zariski topology on $\mathbb{A}^{m+n}$ is not the product topology, it is actually finer (there are more closed subsets than in the product topology, hence it is harder to prove irreducibility).
+\end{rem}
+
+\begin{rem}
+	The natural projections
+	\begin{equation}
+	\begin{tikzcd}[column sep=tiny]
+		& X \cross Y \arrow[ld, "\pi_X"', rightarrow] \arrow[rd, "\pi_Y", rightarrow] & \\
+		X & & Y
+	\end{tikzcd}
+	\end{equation} 
+	are morphisms of varieties.
+\end{rem}
+
+\begin{prop}[Universal property of products of affine varieties]
+	Let $X$ and $Y$ be \textbf{affine varieties}, then for every $Z$ affine variety with morphisms $f_X: Z \to X$ and $f_Y: Z \to Y$, then $\exists\, ! f: Z \to X \cross Y$ s.t. the following diagram commutes
+	\begin{equation}
+	\begin{tikzcd}
+		& & X\\
+		Z \arrow[r, "\exists\, ! f", rightarrow] \arrow[rru, "f_X", rightarrow, bend left] \arrow[drr, "f_Y"', rightarrow, bend right] & X \cross Y \arrow[ru, "\pi_X"', rightarrow] \arrow[rd, "\pi_Y", rightarrow] & \\
+		& & Y
+	\end{tikzcd}	
+	\end{equation}
+	i.e. $f_X = \pi_X \circ f$ and $f_Y = \pi_Y \circ f$.
+
+	In particular, given $Z,X,Y$ affine varieties, there is a one to one correspondance
+	\begin{equation}
+		\begin{tikzcd}[row sep=tiny]
+			\left\{\begin{matrix}
+				\text{ morphisms of varieties }\\
+				f: Z \to X \cross Y
+			\end{matrix}\right\} \arrow[rr, "", leftrightarrow] & &
+			\left\{  \begin{matrix}
+				\ \text{pairs of morphisms }\\
+				\left(Z \xrightarrow{f_X} X,\, Z \xrightarrow{f_Y} Y\right)
+			\end{matrix}\right\} \\
+	\end{tikzcd}
+	.\end{equation} 
+\end{prop} 
+
+\begin{rem}
+	\begin{equation}
+	\mathbb{K}[X \cross Y] \cong \mathbb{K}[X] \otimes_\K \mathbb{K}[Y]
+	.\end{equation} 
+	This means that regular functions on $X \cross Y$ are finite linear combinations of products $f \cdot g$, with $f \in \mathbb{K}[X]$ and $g \in \mathbb{K}[Y]$. 
+\end{rem}
+
+\begin{defn}[Affine variety as ringed spaces]
+	A ringed space $\left( X, \mathcal{O}_{ X } \right)$ is an \textbf{affine variety} over $\K$ iff $\mathcal{O}_X$ is a sheaf of $\K$-algebras and $\left( X, \mathcal{O}_{ X } \right)$ is isomorphic to an affine variety $Y \subset \mathbb{A}^n(\K)$.
+\end{defn}
+
+\begin{thm}[]
+	An algebra $A$ over the field $\K$ is isomorphic to the coordinate ring $\mathbb{K}[X]$ of an affine variety $X$ iff $A$ is an integral domain, finitely generated, as a $\K$-algebra.
+\end{thm}
+
+\begin{rem}
+	We have an equivalence of categories:
+	\begin{equation}
+	\begin{tikzcd}[row sep=tiny]
+			\left\{\begin{matrix}
+				\text{ Affine }\\
+				\text{ varieties }
+			\end{matrix}\right\} \arrow[rr, "", leftrightarrow] & &
+			\left\{  \begin{matrix}
+				\text{ finitely generated } \K\text{-algebras }\\
+				\text{ that are integral domains}
+			\end{matrix}\right\} \\
+			\left( X, \mathcal{O}_{ X } \right) & & A \arrow[ll, "", rightarrow, maps to]
+	\end{tikzcd}
+	,\end{equation} 
+	with $\mathcal{O}_X(X) = A$ and $\mathcal{O}_X(U) = \left\{ \phi \in \mathcal{Q}(A) \ \middle|\ \phi \text{ is regular at } p \text{ for any } p \in U \right\}$ for any $U \stackrel{\text{open}}{\subset} X$.
+\end{rem}
+
+\begin{rem}
+	One can prove that an algebra $A$ is $A \cong \mathbb{K}[X]$ for some algebraic set $X \subset \mathbb{A}^n$ iff $A$ is a finitely generated $\K$-algebra with no nilpotent elements (i.e. it is a \textbf{reduced} algebra).
+
+	Recall that $f$ is nilpotent iff $\exists\, r \in \N$ s.t. $f^r = 0$.
+\end{rem}
+
+\begin{ex}[An affine variety from the new definition]
+	Let $X$ be an affine variety and $f \neq 0$ a fixed regular function on $X$.
+	Clearly $\left( X_f, \mathcal{O}_{ X_f } \right)$, with $\mathcal{O}_{X_f} := \left.\mathcal{O}_X\right|_{X_f}$ is a ringed space.
+	$A := \mathcal{O}_X(X_f)$ is a finitely generated algebra.
+	Then $X_f$ is an affine variety with coordinate ring $\mathbb{K}[X]_f$.
+\end{ex} 
+
+\begin{rem}
+	Not all open subsets of an affine variety are affine varieties.
+	For example $U := \mathbb{A}^2 \setminus \left\{ \left(0, 0 \right) \right\}$ is not an affine variety.
+
+	Though we can construct $U$ by patching together two affine varieties: 
+	$\mathbb{A}^{2}_x$ and $\mathbb{A}^{2}_y$.
+	In fact any open subset of an affine variety can be covered by a finite family
+	of distinguished open subsets (which are affine varieties indeed).
+\end{rem}
+

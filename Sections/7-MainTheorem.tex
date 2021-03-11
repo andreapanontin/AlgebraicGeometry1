@@ -1,0 +1,586 @@
+\section{Main theorem on projective varieties}
+
+\begin{rem}
+	Let's recall a few notions:
+	\begin{itemize}
+		\item $\mathbb{P}^{n}(\mathbb{C})$ is compact in the standard topology.
+			This means that every projective variety is compact in the analytic topology.
+		\item The image of a compact subset under a continuous map is compact.
+	\end{itemize}
+	Moreover, coming back to concepts concerning algebraic geometry:
+	the image of an affine variety under a morphism may not be closed.
+	An example is $\mathbb{A}^{2} \xrightarrow{\pi} \mathbb{A}^{1}$, then
+	\begin{equation}
+		\pi \left( \mathbb{V}\left( xy - 1 \right) \right) = \mathbb{A}^{1} \setminus \left\{ \mathbf{0} \right\}
+	.\end{equation} 
+	The first clearly is closed, whereas the latter is open.
+\end{rem}
+
+For the Zariski topology on projective varieties we will, instead, prove that the image of a projective variety under a morphism is always closed.
+In other words the image of a projective variety under a morphism is always a projective variety.
+(That's the reason why we needed to extend the definition of affine varieties to abstract varieties. In the case of projective ones we do not need to do so.)
+
+\begin{thm}[Projection map is closed]
+	Let $X \subset \mathbb{P}^{n} \cross \mathbb{P}^{m}$ be a closed subset.
+	Let $\pi: \mathbb{P}^{n} \cross \mathbb{P}^{m} \to \mathbb{P}^{n}$ be the canonical projection.
+	Then $\pi(X) \subset \mathbb{P}^{n}$ is closed.
+	In other words the projection map is closed.
+\end{thm}
+
+\begin{rem}
+	This theorem has application in computational algebra.
+	It is sometimes called the \textit{main theorem of elimination theory}.
+	In elimination theory, starting from a variety (i.e. the zero locus of a finite collection of bihomogeneous polynomials)
+	\begin{equation}
+		X: F_1(x,y) = F_2(x,y) = \ldots = F_r(x,y) = 0
+	.\end{equation} 
+	Then the projection sens $X$ to
+	\begin{equation}
+		\pi(X) = \left\{ x \in \mathbb{P}^{n} \ \middle|\ \exists\, y \in \mathbb{P}^{m} \text{ s.t. } F_i(x,y) = 0 \,\forall\, i \right\}
+	.\end{equation} 
+	We are trying to remove the $y$ variables from the first system.
+	Since $\pi(X)$ is closed, then it is the solution set of some polynomial equations.
+\end{rem}
+
+\begin{cor}
+	The projection morphism $\pi: \mathbb{P}^{n} \cross Y \to Y$ is closed for all varieties $Y$.
+\end{cor} 
+
+\begin{defn}[Complete variety]
+	A variety $X$ is \textbf{complete} iff the projection $\pi: X \cross Y \to Y$ is closed for any variety $Y$.
+\end{defn}
+
+\begin{ex}\leavevmode\vspace{-.2\baselineskip}
+	\begin{itemize}
+		\item $\mathbb{P}^{n}$ is complete, by the above corollary.
+		\item Any projective variety $X \subset \mathbb{P}^{n}$ is complete:
+			Any closed subset of $X \cross Y$ is also closed in $\mathbb{P}^{n} \cross Y$.
+			Since the image by the projection is the same, then also its
+			projection to $Y$ is closed.
+		\item There also exist complete varieties that are not projective, but it is hard to prove this last statement.
+	\end{itemize}
+\end{ex} 
+
+\begin{cor}
+	Let $f: X \to Y$ be a morphism of varieties.
+	Let $X$ be a complete variety, then
+	$f(X)$ is closed in $Y$.
+\end{cor} 
+\begin{proof}
+	The idea is to study an arbitrary map as a projection.
+\end{proof}
+
+Let's now see a few corollaries to the above theorem.
+
+\begin{cor}
+	Let $X \subset \mathbb{P}^{n}$ be a projective variety that contains more than one point (equivalently $\mathrm{dim}\, X \geq 1$).
+	Then, for any non constant homogeneous polynomial $f \in \mathbb{K}\left[x_0, \ldots, x_n \right]$, $X \cap \mathbb{V}_p\left( f \right) \neq \emptyset$.
+\end{cor} 
+
+\begin{cor}
+	Any two curves in $\mathbb{P}^{2}$ intersect.
+	In particular $\mathbb{P}^{2}$ is not isomorphic to $\mathbb{P}^{1} \cross \mathbb{P}^{1}$ 
+	(recall that $\mathbb{P}^{1} \cross \mathbb{P}^{1}$ is covered by a family of lines that do not intersect each other).
+\end{cor}
+
+\begin{cor}
+	Every regular fucntion on a complete variety is constant, i.e. for any $X$ complete
+	\begin{equation}
+	\mathcal{O}_{X} \left( X \right) = \K
+	.\end{equation} 
+\end{cor} 
+
+\subsection{Veronese variety}
+
+Let $n, d \geq 1$.
+Consider $\mathbb{K}\left[x_0, \ldots, x_n \right]_d$, a $\K$-Vector Space of dimension $\binom{n+d}{n}$.
+Let $F_0, \ldots, F_\nu$ be a basis for this space, hence
+\begin{equation}
+	\nu = \nu_{n,d} := \binom{n+d}{n} - 1
+.\end{equation} 
+One could choose the monomials of degree $d$ (ordered in some way, for example lexicographically), as a basis.
+For instance
+\begin{equation}
+F_0 = x_0^d, \qquad
+F_1 = x_0^{d-1} x_1,\qquad \ldots,\qquad
+F_{\nu} = x_n^d
+.\end{equation} 
+
+The basis induces a morphism of varieties
+\begin{align}
+	v_d: \mathbb{P}^{n} &\to \mathbb{P}^{\nu} \\
+	\left[ x_0 , \ldots , x_n \right] &\mapsto \left[ F_0(x) , \ldots , F_\nu(x) \right]
+.\end{align} 
+By the main theorem on projective varieties, the image of this morphism, $V_{n,d} := v_d \left( \mathbb{P}^{n} \right)$, is a projective variety.
+We call it the Veronese variety of degree $d$.
+
+\begin{prop}
+	The morphism $v_d: \mathbb{P}^{n} \to V_{n,d}$ is an isomorphism.
+\end{prop} 
+\begin{rem}
+	When we view $\mathbb{P}^{n}$ as $V_{n,d} \subset \mathbb{P}^{\nu}$, then the degree $d$ 
+	homogeneous polynomials in $x_0, \ldots, x_n$ give \textbf{linear} forms in the coordinates of $\mathbb{P}^{\nu}$.
+\end{rem} 
+
+\begin{ex}[$n = 1$: the rational normal curve of degree $d$]
+	$V_{1,d} \subset \mathbb{P}^{d}$ is called a \textit{rational normal curve of degree} $d$ in $\mathbb{P}^{d}$.
+	It is given by
+	\begin{align}
+		v_d: \mathbb{P}^{1} &\to \mathbb{P}^{d} \\
+		\left[ x_0 , x_1 \right] &\mapsto \left[ x_0^d, x_0^{d-1}x_1 , \ldots , x_1^d \right] = 
+		\left[ u_0, u_1 , \ldots , u_d \right]
+	.\end{align} 
+	As a subvariety of $\mathbb{P}^{d}$, $V_{1,d}$ is defined by the condition
+	\begin{equation}
+	\mathrm{rk}\, 
+	\begin{pmatrix}
+		u_0 & u_1 & \ldots & u_{d-1}\\
+		u_1 & u_2 & \ldots & u_d
+	\end{pmatrix} 
+	= 1
+	.\end{equation} 
+\end{ex} 
+
+\begin{cor}
+	Let $X \subset \mathbb{P}^{n}$ be a projective variety and $f \in \mathbb{K}\left[x_0, \ldots, x_n \right]$ any non constant homogeneous polynomial.
+	Then $X \setminus \mathbb{V}_p\left( f \right)$ is an affine variety.
+\end{cor} 
+
+\section{Dimension}
+Recall that the dimension of a \textit{Noetherian} topological space $X$ is the largest
+index $d$ for which there is exists a chain
+\begin{equation}
+\emptyset \subsetneq X_0 \subsetneq X_1 \subsetneq \ldots \subsetneq X_d = X
+\end{equation} 
+of irreducible closed subsets $X_i \subset X$.
+We will call such chain a \textit{longest chain} in $X$.
+
+\begin{rem}
+	What do we know about dimension as of now?
+	\begin{itemize}
+		\item $\dim \left\{ pt \right\} = 0$.
+		\item $\dim \mathbb{A}^{1} = \dim \mathbb{P}^{1} = 1$, since the only irreducible closed subsets are the points.
+		\item \textit{Bezout's theorem}: two curves $\mathbb{V}\left( f \right), \mathbb{V}\left( g \right) \subset \mathbb{A}^{2}$ with no common irreducible component, 
+			intersect in $\left( \deg f \right) \left( \deg g \right)$ points (counted with multiplicity).
+			This means that the irreducible closed subsets of $\mathbb{A}^{2}$ are:
+			\begin{itemize}
+				\item $\mathbb{A}^{2}$,
+				\item irreducible curves $X = \mathbb{V}\left( f \right)$, for $f \in \mathbb{K}\left[x, y \right]$ irreducible,
+				\item points.
+			\end{itemize}
+			Hence longest chains are of the form
+			\begin{equation}
+			\emptyset \subsetneq \left\{ pt \right\} \subsetneq \mathbb{V}\left( f \right) \subsetneq \mathbb{A}^{2}
+			,\end{equation} 
+			with $f(p) = 0$ and $f$ is irreducible.
+			This implies that $\dim \mathbb{A}^{2} = 2$.
+			Since, moreover, $\mathbb{P}^{2} = \mathbb{A}^{2} \cup \mathbb{V}_p\left( x_0 \right)$, we obtain that $\dim \mathbb{P}^{2} = 2$.
+		\item We also noticed that $\dim \mathbb{A}^{n} \geq n$, in fact we have the \textit{longest chain}
+			\begin{equation}
+			\emptyset \subsetneq \mathbb{V}\left( x_1, \ldots, x_n \right) \subsetneq
+			\mathbb{V}\left( x_2, \ldots, x_n \right) \subsetneq \ldots \subsetneq
+			\mathbb{V}\left( x_n \right) \subsetneq \mathbb{A}^{n}
+			.\end{equation} 
+			Analogously we can show that $\dim \mathbb{P}^{n} \geq n$.
+	\end{itemize}
+\end{rem}
+
+\begin{lem}\leavevmode\vspace{-.2\baselineskip}
+	\begin{enumerate}
+		\item If $X$ is a Noehterian topological space and we consider a longest chain
+			\begin{equation}
+			\emptyset \subsetneq X_0 \subsetneq X_1
+			\subsetneq \ldots \subsetneq X_n = X
+			,\end{equation} 
+			then $\dim X_j = j$ for all $j = 0, \ldots, n$.
+		\item If $X$ is irreducible and $Y \subsetneq X$ is closed, then $\dim Y < \dim X$.
+	\end{enumerate}
+\end{lem} 
+
+A comment on what's to come:
+\begin{itemize}
+	\item We'll prove that dimension is a local property, i.e. that given a variety $X$ and an affine open subset $U \subset X$, 
+		then $\dim U = \dim X$.
+		Moreover, for any $U \subset \mathbb{A}^{n}$, then $\dim Y = \dim U$, for $Y:= \overline{U} \subset \mathbb{P}^{n}$.
+		This means that we can concentrate our study only on projective varieties.
+	\item Given a surjective morphism $f: X \to Y$ of projective varieties, then $\dim Y \leq \dim X$.
+		From this idea we get the expectation that, given $X$ a projective variety, then $\dim X$ is the largest integer $d$ 
+		s.t. there is a surjective morphism $f: X \to \mathbb{P}^{d}$.
+\end{itemize}
+
+\begin{lem}
+	Let $f: X \to Y$ be a surjective morphism of projective varieties.
+	Then every longest chain
+	\begin{equation}
+	\emptyset \subsetneq Y_0 \subsetneq Y_1 \subsetneq
+	\ldots \subsetneq Y_n = Y
+	\end{equation} 
+	can be lifted to a chain
+	\begin{equation}
+	\emptyset \subsetneq X_0 \subsetneq X_1 \subsetneq \ldots
+	\subsetneq X_n = X
+	\end{equation} 
+	of irreducible closed subsets $X_j \subset X$, s.t. $f(X_j) = Y_j$ for all $j = 0, \ldots, n$.
+	In particular $\dim X \geq \dim Y$.
+\end{lem} 
+
+\begin{rem}[Next step]
+	Our next aim is to show that every projective variety $X \subset \mathbb{P}^{n}$ admits a surjective morphism to $\mathbb{P}^{m}$, for some $m \leq n$.
+	It will be constructed by taking a sequence of projections.
+\end{rem}
+\begin{proof}[Construction]
+	Let $X \subsetneq \mathbb{P}^{n}$ a projective variety and $p \in \mathbb{P}^{n}$ s.t. $p \not\in X$.
+	Let $H \subset \mathbb{P}^{n}$ be a linear subspace of codim $1$ no passing through $p$,
+	i.e. $H$ is the zero locus of a degree $1$ homogeneous polynomial.
+	For instance $H = \mathbb{V}_p\left( a_0 x_0 + \ldots + a_n x_n \right)$, with $a_i \neq 0$ for some $i$.
+	WLOG $a_n \neq 0$.
+	Then $H$ is isomorphic to $\mathbb{P}^{n-1}$, via
+	\begin{align}
+		\sigma: H = \mathbb{V}_p\left( a_0 x_0 + \ldots + a_n x_n \right) &\xrightarrow{\cong} \mathbb{P}^{n-1} \\
+		\left[ x_0 , \ldots , x_n \right] &\mapsto \left[ x_0 , \ldots , x_{n-1} \right]
+	,\end{align} 
+	where $x_n = -\frac{a_0}{a_n} x_0 - \ldots - \frac{a_{n-1}}{a_n}$.
+	We then define the projection $\pi: X \to \mathbb{P}^{n-1}$ as the map sending $q \in X$
+	to the point of $H \cong \mathbb{P}^{n-1}$ corresponding to the intersection of $H$ with the line $pq$.
+	Up to a linear change of coordinates we may assume $p = \left[ 0 , \ldots , 0, 1 \right]$,
+	and $H = \mathbb{V}_p\left( x_n \right)$.
+	Then
+	\begin{align}
+		\pi: X &\to \mathbb{P}^{n-1} \\
+		\left[ x_0 , \ldots , x_n \right] &\mapsto \left[ x_0 , \ldots , x_{n-1} \right]
+	.\end{align} 
+	Let's now construct this change of coordinates.
+	Recall that a linear change of coordinates $A \in \mathrm{PGL}(n+1)$ is determined by the image
+	of $n+2$ points in general position (which means that no $n+1$ of them are contained in a hyperplane).
+	In particular we choose $n$ points, $q_0, \ldots, q_{n-1}$ in general position s.t. $\mathrm{span}(q_0, \ldots, q_n) = H$,
+	$p \not\in H$ and $r$ any point on $pq_{n-1}$ different both from $p$ and $q_{n-1}$, then $A$ is defined as follows
+	\begin{equation}
+	\begin{matrix}
+		q_0& \mapsto &\left[ 1, 0 , \ldots , 0 \right]\\
+		   &\vdots&\\
+		q_{n-1}& \mapsto &\left[ 0 , \ldots , 1, 0 \right]\\
+		p& \mapsto &\left[ 0 , \ldots , 0, 1 \right]\\
+		r& \mapsto &\left[ 1, 1 , \ldots , 1, 1 \right]
+	\end{matrix} 
+	.\end{equation} 
+\end{proof}
+
+\begin{rem}[]\leavevmode\vspace{-.2\baselineskip}
+	\begin{itemize}
+		\item The map $\pi: X \to \mathbb{P}^{n-1}$ is a morphism, since $x_0 = \ldots = x_{n-1} = 0$
+			has no common solution on $X$ ($p \not\in X$).
+		\item All fibers of $\pi$ are finite sets:
+			for all $a \in H$, $\pi^{-1}\left( \left\{ a \right\} \right) = pa \cap X$ is a closed subset of
+			$pa$ (a line), different from the whole $pa$, since $p \not\in X$.
+			The closed subsets of a line are finite sets by the classification of closed sybsets of $\mathbb{P}^{1}$.
+		\item We can iterate
+			\begin{equation}
+			X \xrightarrow{\pi_{p_1}} \mathbb{P}^{n-1} \xrightarrow{\pi_{p_2}} 
+			\ldots \xrightarrow{\pi_{p_{n-m}}} \mathbb{P}^{m}
+			,\end{equation} 
+			so long as $\exists\, p_i \not\in \mathbb{P}^{n-i}$, until
+			$f = \pi_{p_{n-m}} \circ \ldots \circ\pi_{p_2} \circ \pi_{p_1}$ is surjective.
+			We can interpret geometrically $f$ as a projection of $X$ onto a linear subspace
+			$H' \cong \mathbb{P}^{m}$, with center a linear subspace of dimension $n-m-1$,
+			spanned by $p_1, \ldots, p_{n-m}$
+	\end{itemize}
+\end{rem}
+
+\begin{lem}\label{lem:Lem3_Dim}
+	Let $X \subsetneq \mathbb{P}^{n}$ be a projective variety not containing $p = \left[ 0 , \ldots , 0, 1 \right]$.
+	Then, for every $f \in S(X) = \mathbb{K}\left[x_0, \ldots, x_n \right]/\mathbb{I}_p(X)$
+	there exists a degree $D \geq 1$, and homogeneous polynomials
+	$a_0, \ldots, a_{D-1} \in \mathbb{K}\left[x_0, \ldots, x_{n-1} \right]$ s.t.
+	\begin{equation}\label{eqn:Lem3_Dim}
+		f^D + a_{D-1} f^{D-1} + \ldots + a_1 f + a_0 = 0 \in S(X)
+	.\end{equation} 
+\end{lem} 
+\begin{rem}[]
+	If we consider $f = \bar{x}_n$, we obtain again that the fibers of $\pi$ are finite.
+	However it is a stronger condition: let's restrict to an affine open subset $p \not \in U \cong \mathbb{A}^{n}$ of $\mathbb{P}^{n}$.
+	(Let, for simplicity, $U = U_0$), then we have the projection
+	\begin{align}
+		\left.\pi\right|_{Y}: X \cap U_0 \subset \mathbb{A}^{n} &\to \mathbb{A}^{n-1} \\
+		\left( t_1, \ldots, t_n \right) &\mapsto \left( t_1, \ldots, t_{n-1} \right)
+	.\end{align} 
+	Moreover the formula \eqref{eqn:Lem3_Dim} in lemma \ref{lem:Lem3_Dim}
+	says that $\left( \left.\pi\right|_{Y} \right)^*$ realizes $\mathbb{K}[Y]$
+	as an integral ring extension of $\mathbb{K}\left[t_1, \ldots, t_{n-1} \right] = \mathbb{K}[\mathbb{A}^{n-1}]$.
+	Morphisms satisfying this property (on each affine open set) are called \textbf{finite morphisms}.
+\end{rem}
+
+\begin{lem}
+	Let $\pi: X \to \mathbb{P}^{n-1}$ be the projection of $X \subset \mathbb{P}^{n}$ with center $p \notin X$.
+	If $Y \subset X$ is a closed subset and $\pi(X) = \pi(Y)$, then $Y = X$.
+\end{lem} 
+\begin{rem}[]
+	Equivalently, for a closed $Y \subsetneq X$, then $\pi(Y) \subsetneq \pi(X)$.
+\end{rem}
+
+\begin{cor}
+	Let $\pi: X \to \mathbb{P}^{n-1}$ be the projections from $p \notin X$.
+	Then $\dim X = \dim \pi(X)$.
+\end{cor} 
+\begin{cor}
+	$\dim \mathbb{P}^{n} = n$.
+\end{cor} 
+
+\subsection{Dimension of the intersection with a hypersurface}
+\subsubsection{Projective case}
+\begin{prop}
+	Let $X \subset \mathbb{P}^{n}$ be a projective variety, and $f \in \mathbb{K}\left[x_0, \ldots, x_n \right]$
+	be a non constant homogeneous polynomial, s.t. $f \notin \mathbb{I}_p(X)$.
+	Then
+	 \begin{equation}
+		 \dim \left( X \cap \mathbb{V}_p\left( f \right) \right) = \dim X - 1
+	.\end{equation} 
+\end{prop} 
+\begin{rem}[]
+	If the intersection $X \cap \mathbb{V}_p\left( f \right)$ is reducible,
+	we don't know if all the components have maximal dimension ($\dim X - 1$).
+	However we will later prove that all components have the same dimension,
+	i.e. $X \cap \mathbb{V}_p\left( f \right)$ is of pure dimension $\dim X - 1$.
+\end{rem}
+
+\begin{prop}
+	Let $X$ be a variety and $\emptyset \neq U \subset X$ be an open subset.
+	Then $\dim X = \dim U$.
+\end{prop}  
+
+\begin{rem}[Some consequences]\leavevmode\vspace{-.2\baselineskip}
+	\begin{enumerate}
+		\item $\mathbb{A}^{n} \subset \mathbb{P}^{n}$ is open, hence $\dim \mathbb{A}^{n} = \dim \mathbb{P}^{n}$.
+		\item $\mathbb{A}^{n+m} = \mathbb{A}^{n} \cross \mathbb{A}^{m} \stackrel{\text{open}}{\subset} 
+			\mathbb{P}^{n} \cross \mathbb{P}^{m}$, hence
+			$\dim \left( \mathbb{P}^{n} \cross \mathbb{P}^{m} \right) = n + m$.
+		\item Given $f \in \mathbb{K}\left[x_1, \ldots, x_n \right]$ a non-constant polynomial,
+			then $\mathbb{V}\left( f \right) \subset \mathbb{A}^{n}$ has dimension $n-1$.
+			This follows from $X \subset \overline{X} = \mathbb{V}_p\left( {}^hf \right) \subset \mathbb{P}^{n}$.
+		\item Moreover every irreducible component of $\mathbb{V}\left( f \right)$,
+			with $f$ the above polynomial, has dimension $n-1$.
+			This follows from the factorization in prime components
+			(possible, since $\mathbb{K}\left[x_1, \ldots, x_n \right]$ is a UFD)
+			\begin{equation}
+			f = f_1 \cdot \ldots \cdot f_r
+			,\end{equation} 
+			with $f_1, \ldots, f_r$ prime.
+			Then the irreducible components of $\mathbb{V}\left( f \right)$ are exactly $\mathbb{V}\left( f_i \right)$,
+			and, by the above remark, they are exactly of dimension $n-1$.
+		\item If $f \in \mathbb{K}\left[x_0, \ldots, x_n \right]$ is a non-constant polynomial 
+			and $X := \mathbb{V}_p\left( f \right) \subset \mathbb{P}^{n}$,
+			then each irreducible component of $X$ has dimension $n-1$.
+
+			This is true, since we can always find a hyperplane 
+			$H \not\subset X ( \subsetneq \mathbb{P}^{n})$.
+			Then $\mathbb{A}^{n}\supset X \cap \left( \mathbb{P}^{n} \setminus H \right) \simeq
+			\mathbb{V}\left( g \right)$, for some $g \in \mathbb{K}\left[x_1, \ldots, x_n \right]$ non-constant.
+			Then the irreducible components of $X$ are the projective closures of the irreducible components
+			of $\mathbb{V}\left( g \right)$, which have dimension $n-1$ by the above remark.
+
+			In particular, given a factorization
+			\begin{equation}
+			f = f_1 \cdot \ldots \cdot f_r
+			\end{equation} 
+			for $f \in \mathbb{K}\left[x_0, \ldots, x_n \right]$, in prime components
+			(which can be obtained homogenizing the prime components of $g$).
+			Then
+			\begin{equation}
+			X = \mathbb{V}_p\left( f \right) =
+			\underbrace{\mathbb{V}_p\left( f_1 \right) \cup \ldots \cup \mathbb{V}_p\left( f_r \right)}_{\text{irreducible components of } X}
+			.\end{equation} 
+	\end{enumerate}
+\end{rem}
+
+\begin{defn}[Hypersurface]
+	A \textbf{hypersurface} in $\mathbb{A}^{n}$, resp. $\mathbb{P}^{n}$, is a closed subset of dimension $n-1$.
+	The minimal degree of a generator of its ideal is called the \textit{degree} of the hypersurface $X$.
+
+	Hypersurfaces of degree $1$ are called \textit{hyperplanes}.
+\end{defn}
+
+\begin{rem}[]
+	Up to scaling, we have the following correspondances
+	\begin{equation}
+	\begin{tikzcd}
+		\left\{ 
+		\begin{matrix}
+		\text{irreducible degree } d\\
+		\text{hypersurfaces in } \mathbb{A}^{n}
+		\end{matrix} 
+		\right\} \arrow[r, "", leftrightarrow] &
+		\left\{ 
+		\begin{matrix}
+		\text{irreducible degree } d\\
+		\text{polynomials }
+		\end{matrix} 
+		\right\}_{/ \K^*}
+		\subset \mathbb{P} \left( \mathbb{K}\left[x_1, \ldots, x_n \right]_{\leq d} \right)
+	\end{tikzcd}
+	.\end{equation} 
+	\begin{equation}
+	\begin{tikzcd}
+		\left\{ 
+		\begin{matrix}
+		\text{irreducible degree } d\\
+		\text{hypersurfaces in } \mathbb{P}^{n}
+		\end{matrix} 
+		\right\} \arrow[r, "", leftrightarrow] &
+		\left\{ 
+		\begin{matrix}
+		\text{irred. homogoneneous}\\
+		\text{polynomials of deg. } d 
+		\end{matrix} 
+		\right\}_{/ \K^*}
+		\subset \mathbb{P} \left( \mathbb{K}\left[x_0, \ldots, x_n \right]_{d} \right)
+	\end{tikzcd}
+	.\end{equation} 
+	One can actually prove that the locus of irreducible polynomials is a dense open subset
+	in the projective space of all homogenous polynomials of a fixed degree.
+	This is indeed a consequence of Main theorem on projective varieties.
+\end{rem}
+
+\begin{defn}[Codimension]
+	Let $Y \subset X$ be a closed subset.
+	We define the \textbf{codimension} of $Y$ in $X$ as
+	\begin{equation}
+	\mathrm{codim}_X\, Y := \dim X - \dim Y
+	.\end{equation} 
+\end{defn}
+
+\subsubsection{Affine case}
+\begin{rem}[]
+	The projective case does not imply the affine one.
+	In fact, let $X := \mathbb{V}\left( x_2 - x_1^2 \right) \subset \mathbb{A}^{2}$ and $f = x_1$.
+	Let $\overline{X} = \mathbb{V}_p\left( x_0x_2 - x_1^2 \right) \subset \mathbb{P}^{2}$.
+	Then
+	\begin{equation}
+		\dim \left( \overline{X} \cap \mathbb{V}_p\left( x_1 \right) \right) =
+		\dim \overline{X} - 1 = 0
+	.\end{equation} 
+	More explicitly 
+	\begin{equation}
+	\overline{X} \cap \mathbb{V}_p\left( x_1 \right) = 
+	\big\{ \left[ 1, 0, 0 \right], 
+	\underbrace{\left[ 0 , 0, 1 \right]}_{\begin{matrix}{\scriptstyle \text{contained in}}\\
+	{\scriptstyle H = \mathbb{V}_p\left( x_0 \right)}\end{matrix}} \big\}
+	.\end{equation} 
+	Moreover factorizing $f$ does not help to construct all irreducible components.
+\end{rem}
+
+\begin{prop}
+	Let $X \subset \mathbb{A}^{n}$ be an affine variety, and
+	$f \in \mathbb{K}\left[x_1, \ldots, x_n \right]$ be a polynomial not vanishing identically on $X$.
+	Then, if $X \cap \mathbb{V}\left( f \right) \neq \emptyset$, we have
+	$\dim \left( X \cap \mathbb{V}\left( f \right) \right) = \dim X - 1$.
+\end{prop} 
+
+\begin{cor}
+	If $X \subset \mathbb{A}^{n}$ is an affine variety, and
+	$f \notin \mathbb{I}(X)$ is a non constant polynomial, then
+	all irreducible components of $X \cap \mathbb{V}\left( f \right)$ have dimension equal to
+	$\dim X - 1$.
+\end{cor} 
+
+\begin{thm}[Dimension of a fiber (weak version)]
+	Let $f: X \to Y$ be a morphism of varieties and assume there is a nonempty
+	open subset $U \subset Y$ s.t. $f^{-1}(p) \neq \emptyset$ for all $p \in U$
+	and $\dim f^{-1}(p) = n$ for all $p \in U$, then
+	\begin{equation}
+	\dim X = \dim Y + n
+	.\end{equation} 
+\end{thm}
+
+\begin{thm}[Dimension of a fiber (complete version)]
+	Let $f: X \to Y$ be a surjective morphism of varieties, then
+	$\dim X \geq \dim Y$ and
+	\begin{enumerate}
+		\item for every $y \in Y$ and every component $F$ of $f^{-1}(y)$,
+			we have $\dim F \geq \dim X - \dim Y$,
+		\item there exists a non-empty open subset $U \subset Y$
+			s.t. $\dim f^{-1}(y) = \dim X - \dim Y$ for all $y \in U$.
+	\end{enumerate}
+\end{thm}
+
+\begin{cor}
+	Let $X \subset \mathbb{P}^{n}$ be Zariski closed and
+	$f: X \to Y$ be a morphism to a variety $Y$ (in the sense that
+	$f$ is the restriction of a morphism defined on some larger subvariety of $\mathbb{P}^{n}$).
+	If all fibers $f^{-1}(y)$, for $y \in Y$, are irreducible and of the same dimension, 
+	then $X$ is irreducible.
+\end{cor} 
+
+\begin{cor}
+	For any two varieties $X$ and $Y$, we have
+	\begin{equation}
+	\dim X \cross Y = \dim X + \dim Y
+	.\end{equation} 
+	[Consider $\pi_Y: X \cross Y \to Y$, with fibers isomorphic to $X$].
+\end{cor} 
+
+\begin{cor}
+	Let $X, Y \subset \mathbb{A}^{n}$ be affine varieties s.t. $X \cap Y \neq \emptyset$,
+	then every irreducible component $Z$ of $X \cap Y$ has dimension
+	\begin{equation}
+	\dim Z \geq \dim X + \dim Y - n
+	.\end{equation} 
+\end{cor} 
+
+\begin{cor}
+	Let $X, Y \subset \mathbb{P}^{n}$ be projective varieties.
+	Then every irreducible component of $X \cap Y$ has dimension 
+	$\geq \dim X + \dim Y - n$ and, if $\dim X + \dim Y \geq n$, then
+	$X \cap Y \neq 0$.
+\end{cor} 
+
+\subsection{Dimension - again}
+\begin{rem}[]
+	Let $X$ be a variety.
+	Denote by $\mathbb{K}(X)$ the function field of $X$, i.e. the field
+	of rational functions on $X$.
+
+	If $X \subset \mathbb{A}^{n}$ is affine, then $\mathbb{K}(X) = Q(\mathbb{K}[X])$,
+	e.g.
+	\begin{equation}
+		\mathbb{K}(\mathbb{A}^{n}) = \mathbb{K}(x_1, \ldots, x_n) \qquad \text{ the field of rational functions}
+	.\end{equation} 
+	If $X \subset \mathbb{P}^{n}$ is projective, then
+	\begin{equation}
+		\mathbb{K}(\mathbb{P}^{n}) = \left\{ 
+		\frac{p(x_0, \ldots, x_n)}{q(x_0, \ldots, x_n)} \ \middle|\ p, q \in S(X)_d \text{ and } 
+	q \neq 0\right\}
+	.\end{equation} 
+	If $X$ is an arbitrary variety, by ex. 6, ex-sh 3, we have
+	\begin{equation}
+		\K(X) = \left\{  \left(U, \phi\right) \ \middle|\ 
+		\phi \in \mathcal{O}_{X} \left( U \right) \right\}/\sim
+	,\end{equation} 
+	where $\left(U, \phi\right) \sim \left(U', \phi'\right)$ iff $\left.\phi\right|_{V} = \left.\phi'\right|_{V}$ for some 
+	$\emptyset \subsetneq V \subset U \cap U'$ open.
+	The fundamental property is that $\K(X) = \K(U)$ for any (affine) open set $U \neq \emptyset$.
+\end{rem}
+
+\begin{defn}[Transcendence degree]
+	Given $\K \subset E$ a field extension, we define the \textbf{transcendence degree}, 
+	denoted by $\mathrm{tr.deg.}(E/\K)$, is the largest integer $l$ s.t.
+	there exists $l$ algebraically independent elements $\zeta_1, \ldots, \zeta_l \in E$.
+	In the above algebraically independent means that the valuation morphism
+	\begin{align}
+		\phi: \mathbb{K}\left[x_1, \ldots, x_l \right] &\to E \\
+		F(x_1, \ldots, x_l) &\mapsto F(\zeta_1, \ldots, \zeta_l)
+	\end{align} 
+	has trivial kernel.
+\end{defn}
+
+\begin{thm}[]
+	If $X$ is a variety, then $\dim X$ equals the 
+	transendence degree of $\K(X)$ over $\K$.
+\end{thm}
+
+\begin{rem}[]
+	If $X \subset \mathbb{A}^{m}$ is an affine variety, then there is a finite map
+	$X \to \mathbb{A}^{n}$, with $n = \dim X$, given by a sequence of
+	projections.
+	Hence $\K(X)$ is an integral extension of $\mathbb{K}\left[x_1, \ldots, x_n \right]$, then
+	$\mathrm{tr.deg.}\, \K(X) = n$.
+\end{rem}
+
