@@ -29,7 +29,7 @@
 	\begin{equation}
 		\sum_{i=1}^{n} \frac{\partial f}{\partial x_i} (p) \left( x_i - p_i \right) = 0
 	,\end{equation} 
-	for all $f \in \mathbb{I}(X)$ (for which, hence $f(p) = 0$).
+	for all $f \in \mathbb{I}(X)$ (for which, hence, $f(p) = 0$).
 \end{rem}
 
 \begin{rem}[]
@@ -44,13 +44,14 @@ Let's give a more intrinsic definition to the tangent space:
 	Then the Vector Space $T_{X,p} \subset \K^n$ is isomorphic to the space of
 	linear forms on $\mathfrak{m}_{X,p}/\mathfrak{m}^2_{X,p}$, where
 	\begin{equation}
-	\mathfrak{m}_{X,p} = \left\{ \varphi \in \mathcal{O}_{X,p} \ \middle|\ \varphi = 0 \right\}
+		\mathfrak{m}_{X,p} = \left\{ \varphi \in \mathcal{O}_{X,p} \ \middle|\ \varphi(p) = 0 \right\}
 	\subset \mathcal{O}_{X,p} \subset \K(X)
 	,\end{equation} 
 	which can be identified with the germs of functions vanishing at $p$.
 	Analogously, for $\mathfrak{m}^2_{X,p}$, we have
 	\begin{equation}
-	\mathfrak{m}^2_{X,p} = \left\{ \varphi \cdot \psi \ \middle|\ \varphi, \psi \in \mathfrak{m}_{X,p} \right\}
+	\mathfrak{m}^2_{X,p} = \left\langle \varphi \cdot \psi \ \middle|\ 
+\varphi, \psi \in \mathfrak{m}_{X,p} \right\rangle
 	\subset \mathcal{O}_{X,p} \subset \K(X)
 	,\end{equation} 
 	i.e. it contains the germs of functions vanishing at order $\geq 2$ at $p$.
@@ -134,7 +135,7 @@ be a linear subspace.
 	.\end{equation} 
 \end{rem}
 \begin{rem}[]
-	The identification $T_{X,p} \cong \mathfrak{m}_{X,p}/\mathfrak{m}^2_{X,p}$ is
+	The identification $T_{X,p}^{\vee} \cong \mathfrak{m}_{X,p}/\mathfrak{m}^2_{X,p}$ is
 	intrinsic, i.e. independent of the embedding in $\mathbb{A}^{n}$.
 	In particular we can use it to define $T_{X,p}$ for $X$ any
 	variety and $p \in X$ any point.
@@ -150,7 +151,7 @@ be a linear subspace.
 	$f_1 \neq 0 \implies \mathrm{mindeg}\, f = 1$ and $f_1 = f^{in}$.
 	In particular $\mathbb{I}\left( X \right)_{in} = \left\{ f^{in} \ \middle|\ 
 	f \in \mathbb{I}\left( X \right) \right\} \supset \mathbb{I}\left( X \right)_1$.
-	Then $C_{C,p} = \mathbb{V}\left( \mathbb{I}\left( X \right)_{in} \right) \subset
+	Then $C_{X,p} = \mathbb{V}\left( \mathbb{I}\left( X \right)_{in} \right) \subset
 	\mathbb{V}\left( \mathbb{I}\left( X \right)_1 \right) = T_{X,p}$ in $\mathbb{A}^{n}$.
 
 	In particular we obtain that $\dim X = \dim C_{X,p} \leq \dim T_{X,p}$.
